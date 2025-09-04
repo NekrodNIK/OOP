@@ -36,23 +36,25 @@ application {
     mainClass = "org.example.App"
 }
 
-tasks.test {
-    finalizedBy(tasks.jacocoTestReport) // report is always generated after tests run
-}
-
 tasks.jacocoTestReport {
     dependsOn(tasks.test) // tests are required to run before generating the report
 
     reports {
-        xml.required = true
-        html.required = true
+        xml.required = false
+        csv.required = false
     }
 
+    var reports = reports
+
     doLast {
-        // Correct way to access the reports directory
-        println("HTML report generated: ${reports.html.outputLocation.get().asFile.absolutePath}")
-        println("XML report generated: ${reports.xml.outputLocation.get().asFile.absolutePath}")
+        println("HTML report generated: " + reports.html.entryPoint)
     }
+}
+
+tasks.named<Test>("test") {
+    // Use JUnit Platform for unit tests.
+    useJUnitPlatform()
+    finalizedBy(tasks.jacocoTestReport)
 }
 
 tasks {
