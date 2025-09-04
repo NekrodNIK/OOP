@@ -3,12 +3,16 @@
  */
 package org.example;
 
+import static org.junit.Assert.assertArrayEquals;
+
 import org.junit.Test;
-import static org.junit.Assert.*;
 
 public class AppTest {
-    @Test public void appHasAGreeting() {
-        App classUnderTest = new App();
-        assertNotNull("app should have a greeting", classUnderTest.getGreeting());
-    }
+  @Test
+  public void simpleTest() {
+    int arr[] = { 9, 8, 7, 6, 5, 4, 3 };
+    int expected[] = { 3, 4, 5, 6, 7, 8, 9 };
+    App.sort(arr);
+    assertArrayEquals(arr, expected);
+  }
 }
