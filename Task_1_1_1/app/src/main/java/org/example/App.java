@@ -3,11 +3,15 @@
  */
 package org.example;
 
-import java.util.Arrays;
 import java.util.PriorityQueue;
 
 
 public class App {
+   /**
+  * heap sort impl
+  *
+  * @param arr Sortable array
+  */
   public static void sort(int[] arr) {
     PriorityQueue<Integer> queue = new PriorityQueue<Integer>();
 
