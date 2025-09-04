@@ -4,20 +4,20 @@ import java.util.PriorityQueue;
 
 /** App. */
 public class App {
-  /**
-   * heap sort impl.
-   *
-   * @param arr Sortable array
-   */
-  public static void sort(int[] arr) {
-    PriorityQueue<Integer> queue = new PriorityQueue<Integer>();
+    /**
+     * heap sort impl.
+     *
+     * @param arr Sortable array
+     */
+    public static void sort(int[] arr) {
+        PriorityQueue<Integer> queue = new PriorityQueue<Integer>();
 
-    for (int i = 0; i < arr.length; i++) {
-      queue.add(arr[i]);
-    }
+        for (int i = 0; i < arr.length; i++) {
+            queue.add(arr[i]);
+        }
 
-    for (int i = 0; i < arr.length; i++) {
-      arr[i] = queue.poll();
+        for (int i = 0; i < arr.length; i++) {
+            arr[i] = queue.poll();
+        }
     }
-  }
 }
