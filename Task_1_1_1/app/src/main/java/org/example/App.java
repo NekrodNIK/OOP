@@ -3,12 +3,20 @@
  */
 package org.example;
 
+import java.util.Arrays;
+import java.util.PriorityQueue;
+
+
 public class App {
-    public String getGreeting() {
-        return "Hello World!";
+  public static void sort(int[] arr) {
+    PriorityQueue<Integer> queue = new PriorityQueue<Integer>();
+
+    for (int i = 0; i < arr.length; i++) {
+      queue.add(arr[i]);
     }
 
-    public static void main(String[] args) {
-        System.out.println(new App().getGreeting());
+    for (int i = 0; i < arr.length; i++) {
+      arr[i] = queue.poll();
     }
+  }
 }
