@@ -17,8 +17,10 @@ repositories {
 }
 
 dependencies {
-    // Use JUnit test framework.
-    testImplementation(libs.junit)
+    // Use JUnit Jupiter for testing.
+    testImplementation(libs.junit.jupiter)
+
+    testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 
     // This dependency is used by the application.
     implementation(libs.guava)
@@ -34,10 +36,6 @@ java {
 application {
     // Define the main class for the application.
     mainClass = "org.example.App"
-}
-
-tasks.test {
-    finalizedBy(tasks.jacocoTestReport) // report is always generated after tests run
 }
 
 tasks.jacocoTestReport {
@@ -61,3 +59,8 @@ tasks {
     withType<Test>().configureEach { defaultCharacterEncoding = "UTF-8" }
 }
 
+tasks.named<Test>("test") {
+    // Use JUnit Platform for unit tests.
+    useJUnitPlatform()
+    finalizedBy(tasks.jacocoTestReport) // report is always generated after tests run
+}
