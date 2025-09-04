@@ -2,10 +2,10 @@ package org.example;
 
 import java.util.PriorityQueue;
 
-/** App */
+/** App. */
 public class App {
   /**
-   * heap sort impl
+   * heap sort impl.
    *
    * @param arr Sortable array
    */
