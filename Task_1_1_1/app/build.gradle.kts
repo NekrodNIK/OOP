@@ -42,7 +42,11 @@ tasks.test {
 
 tasks.jacocoTestReport {
     dependsOn(tasks.test) // tests are required to run before generating the report
-    val reports = reports
+    val reports = reports {
+        xml.required = false
+        csv.required = false
+    }
+
     doLast {
         println("HTML report generated: " + reports.html.entryPoint)
     }
