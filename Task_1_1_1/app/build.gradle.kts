@@ -48,10 +48,10 @@ tasks.jacocoTestReport {
         html.required = true
     }
 
-    var reports = reports
-
     doLast {
-        println("HTML report generated: " + reports.html.entryPoint)
+        // Correct way to access the reports directory
+        println("HTML report generated: ${reports.html.outputLocation.get().asFile.absolutePath}")
+        println("XML report generated: ${reports.xml.outputLocation.get().asFile.absolutePath}")
     }
 }
 
