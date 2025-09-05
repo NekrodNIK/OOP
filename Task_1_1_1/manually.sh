@@ -1,3 +1,11 @@
-javac -d build/classes app/src/main/java/org/example/App.java 
-javadoc -d build/docs app/src/main/java/org/example/App.java
-java -cp "build/classes" org.example.App
+JAVA_SRCS=$(find app/src/main -name '*.java')
+JAR='app.jar'
+MANIFEST='MANIFEST.mf'
+BUILD_DIR='builddir'
+
+javac -d $BUILD_DIR $JAVA_SRCS
+jar -cfm $JAR $MANIFEST -C $BUILD_DIR .
+java -jar $JAR
+
+rm -r $BUILD_DIR
+rm $JAR
