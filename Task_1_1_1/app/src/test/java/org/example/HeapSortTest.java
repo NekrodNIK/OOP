@@ -35,6 +35,34 @@ public class HeapSortTest {
     }
 
     @Test
+    public void testSingle() {
+        int[] arr = {2};
+        HeapSort.sort(arr);
+        assertArrayEquals(new int[] {2}, arr);
+    }
+
+    @Test
+    public void testSorted() {
+        int[] sorted = {1, 2, 3, 4, 5};
+        HeapSort.sort(sorted);
+        assertArrayEquals(new int[] {1, 2, 3, 4, 5}, sorted);
+    }
+
+    @Test
+    public void testReverseOrderSorted() {
+        int[] reversed = {5, 4, 3, 2, 1};
+        HeapSort.sort(reversed);
+        assertArrayEquals(new int[] {1, 2, 3, 4, 5}, reversed);
+    }
+
+    @Test
+    public void testWithEqualItems() {
+        int[] arr = {2, 3, 1, 3, 4, 2};
+        HeapSort.sort(arr);
+        assertArrayEquals(new int[] {1, 2, 2, 3, 3, 4}, arr);
+    }
+
+    @Test
     public void testRandom() {
         Random random = new Random();
 
