@@ -5,10 +5,9 @@ import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 
 import java.util.Arrays;
 import java.util.Random;
-
 import org.junit.jupiter.api.Test;
 
-/** Test for heap sorting algorithm */
+/** Test for heap sorting algorithm. */
 public class HeapSortTest {
     /** Test for positive items. */
     @Test
