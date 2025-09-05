@@ -7,7 +7,7 @@ public class HeapSort {
     }
 
     for (int i = arr.length - 1; i > 0; i--) {
-      swap(arr, 0, i);
+      swap(arr, i, 0);
       siftDown(arr, i, 0);
     }
   }
