@@ -31,7 +31,9 @@ public class HeapSort {
             int r = l + 1;
             int j = (r < n && arr[r] > arr[l]) ? r : l;
 
-            if (arr[i] > arr[j]) break;
+            if (arr[i] > arr[j]) {
+                break;
+            }
 
             swap(arr, i, j);
             i = j;
