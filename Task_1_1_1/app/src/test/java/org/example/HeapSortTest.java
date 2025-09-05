@@ -8,7 +8,6 @@ import java.util.Random;
 
 import org.junit.jupiter.api.Test;
 
-
 /** Test for heap sorting algorithm */
 public class HeapSortTest {
     /** Test for positive items. */
