@@ -26,7 +26,7 @@ public class HeapSortTest {
         int[] expected = {-8, -5, -4, -2, -1};
         assertArrayEquals(expected, arr);
     }
-
+    
     @Test
     public void testEmpty() {
         int[] arr = new int[0];
@@ -38,8 +38,8 @@ public class HeapSortTest {
     public void testRandom() {
         Random random = new Random();
         
-        int[] arr = new int[10000];        
-        for (int i = 0; i < 10000; i++)
+        int[] arr = new int[100000];        
+        for (int i = 0; i < 100000; i++)
             arr[i] = random.nextInt();
 
         int[] arr_copy = arr.clone();
