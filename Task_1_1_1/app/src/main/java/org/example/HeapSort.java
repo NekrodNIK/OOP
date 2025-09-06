@@ -3,7 +3,8 @@ package org.example;
 /** The heap sorting algorithm. */
 public class HeapSort {
     /**
-     * The entry point.
+     * A function that performs heap
+     * sorting of the array passed to it.
      *
      * @param arr input array
      */
