@@ -72,7 +72,8 @@ public class HeapSortTest {
     /** Randomized items test. */
     @Test
     public void testRandom() {
-        Random random = new Random();
+        long seed = 1757137778;
+        Random random = new Random(seed);
 
         int[] arr = new int[100000];
         for (int i = 0; i < 100000; i++) {
