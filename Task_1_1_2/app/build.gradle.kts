@@ -35,7 +35,7 @@ java {
 
 application {
     // Define the main class for the application.
-    mainClass = "org.example.App"
+    mainClass = "sys.pro.App"
 }
 
 tasks.jacocoTestReport {
@@ -45,6 +45,14 @@ tasks.jacocoTestReport {
         xml.required = true
         html.required = true
     }
+
+     classDirectories.setFrom(
+        files(classDirectories.files.map {
+            fileTree(it) {
+                exclude("**/App.class")
+            }
+        })
+    )
 }
 
 tasks {
@@ -59,3 +67,9 @@ tasks.named<Test>("test") {
     useJUnitPlatform()
     finalizedBy(tasks.jacocoTestReport) // report is always generated after tests run
 }
+
+tasks.named<JavaExec>("run") {
+    standardInput = System.`in`
+}
+
+
