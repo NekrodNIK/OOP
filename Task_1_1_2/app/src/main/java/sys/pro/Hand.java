@@ -46,9 +46,7 @@ public class Hand {
         return cards.stream().filter((c) -> c.hidden).findAny();
     }
 
-    /**
-     * Convert card to String
-     */
+    /** Convert card to String */
     private String cardToString(Card card) {
         if (card.hidden) {
             return card.toString();
@@ -56,9 +54,7 @@ public class Hand {
         return "%s (%d)".formatted(card, card.getPoints(threshold));
     }
 
-    /**
-     * Convert Hand to String
-     */
+    /** Convert Hand to String */
     @Override
     public String toString() {
         return "[%s] => %d"
