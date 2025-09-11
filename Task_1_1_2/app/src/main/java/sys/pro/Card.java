@@ -1,6 +1,8 @@
 package sys.pro;
 
+/** Playing card representation. */
 public class Card {
+    /** Card rank. */
     public enum Rank {
         TWO("Двойка", 2),
         THREE("Тройка", 3),
@@ -25,6 +27,7 @@ public class Card {
         }
     }
 
+    /** Card suit. */
     public enum Suit {
         HEARTS("черви"),
         DIAMONDS("бубны"),
@@ -42,18 +45,36 @@ public class Card {
     public Suit suit;
     public Boolean hidden;
 
+    /**
+     * Card.
+     *
+     * @param Rank rank
+     * @param Suit suit
+     * @param Boolean hidden
+     */
     public Card(Rank rank, Suit suit, Boolean hidden) {
         this.rank = rank;
         this.suit = suit;
         this.hidden = hidden;
     }
 
+    /**
+     * Get points based on threshold.
+     *
+     * @param Boolean hidden
+     * @return int points
+     */
     public int getPoints(Boolean threshold) {
         if (hidden) return 0;
         if (this.rank == Rank.ACE && threshold) return 1;
         return this.rank.default_points;
     }
 
+    /**
+     * Convert Card to String
+     *
+     * @return String str
+     */
     @Override
     public String toString() {
         if (hidden) return "<закрытая карта>";
