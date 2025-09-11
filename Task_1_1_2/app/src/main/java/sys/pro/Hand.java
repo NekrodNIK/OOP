@@ -36,7 +36,9 @@ public class Hand {
         int total = cards.stream().mapToInt((card) -> card.getPoints(false)).sum();
 
         threshold = total >= 21;
-        if (threshold) total = cards.stream().mapToInt((card) -> card.getPoints(threshold)).sum();
+        if (threshold) {
+            total = cards.stream().mapToInt((card) -> card.getPoints(threshold)).sum();
+        }
         return total;
     }
 
