@@ -48,9 +48,6 @@ public class Hand {
 
     /**
      * Convert card to String
-     *
-     * @param Card card
-     * @return String str
      */
     private String cardToString(Card card) {
         if (card.hidden) {
@@ -61,9 +58,6 @@ public class Hand {
 
     /**
      * Convert Hand to String
-     *
-     * @param Card card
-     * @return String str
      */
     @Override
     public String toString() {

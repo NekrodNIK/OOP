@@ -46,11 +46,7 @@ public class Card {
     public Boolean hidden;
 
     /**
-     * Card.
-     *
-     * @param Rank
-     * @param Suit
-     * @param Boolean
+     * Card constructor
      */
     public Card(Rank rank, Suit suit, Boolean hidden) {
         this.rank = rank;
@@ -60,9 +56,6 @@ public class Card {
 
     /**
      * Get points based on threshold.
-     *
-     * @param Boolean
-     * @return int points
      */
     public int getPoints(Boolean threshold) {
         if (hidden) {
@@ -76,8 +69,6 @@ public class Card {
 
     /**
      * Convert Card to String.
-     *
-     * @return String str
      */
     @Override
     public String toString() {
