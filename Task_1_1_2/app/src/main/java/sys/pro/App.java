@@ -169,9 +169,9 @@ public class App {
 
         public void updateScore() {
             if (isVictory()) {
-                pScore++;
+                pscore++;
             } else {
-                dScore++;
+                dscore++;
             }
         }
 
