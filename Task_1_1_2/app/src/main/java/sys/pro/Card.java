@@ -87,4 +87,3 @@ public class Card {
         return String.format("%s %s", this.rank.label, this.suit.label);
     }
 }
-Unused @param tag for 'Boolean'.
