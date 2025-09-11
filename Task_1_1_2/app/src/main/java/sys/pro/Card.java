@@ -4,37 +4,37 @@ package sys.pro;
 public class Card {
     /** Card rank. */
     public enum Rank {
-        /** TWO */
+        /** TWO. */
         TWO("Двойка", 2),
-        /** THREE */
+        /** THREE. */
         THREE("Тройка", 3),
-        /** FOUR */
+        /** FOUR. */
         FOUR("Четвёрка", 4),
-        /** FIVE */
+        /** FIVE. */
         FIVE("Пятёрка", 5),
-        /** SIX */
+        /** SIX. */
         SIX("Шестёрка", 6),
-        /** SEVEN */
+        /** SEVEN. */
         SEVEN("Семёрка", 7),
-        /** EIGHT */
+        /** EIGHT. */
         EIGHT("Восьмёрка", 8),
-        /** NINE */
+        /** NINE. */
         NINE("Девятка", 9),
-        /** TEN */
+        /** TEN. */
         TEN("Десятка", 10),
-        /** JACK */
+        /** JACK. */
         JACK("Валет", 10),
-        /** QUEEN */
+        /** QUEEN. */
         QUEEN("Дама", 10),
-        /** KING */
+        /** KING. */
         KING("Король", 10),
-        /** ACE */
+        /** ACE. */
         ACE("Туз", 11);
 
-        /** display label */
+        /** display label. */
         public final String label;
 
-        /** defautl points */
+        /** default points. */
         public final int defaultPoints;
 
         private Rank(String label, int defaultPoints) {
@@ -62,17 +62,17 @@ public class Card {
         }
     }
 
-    /** rank */
+    /** rank. */
     public Rank rank;
 
-    /** suit */
+    /** suit. */
     public Suit suit;
 
     /** hidden flag */
     public Boolean hidden;
 
     /**
-     * Card constructor
+     * Card constructor.
      *
      * @param rank Card rank
      * @param suit Card suit
