@@ -66,11 +66,11 @@ public class App {
 
   private static void printStatus(Game game) {
     println(
-        "    Ваши карты: %s => %d"
-            .formatted(game.getPlayerHand(), game.getPlayerPoints()));
+        "    Ваши карты: %s"
+            .formatted(game.getPlayerHand()));
     println(
-        "    Карты дилера: %s => %d\n"
-            .formatted(game.getDealerHand(), game.getDealerPoints()));
+        "    Карты дилера: %s\n"
+            .formatted(game.getDealerHand()));
   }
 
   private static void updateAndPrintScore(Game game) {

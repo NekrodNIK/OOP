@@ -1,21 +1,12 @@
 package sys.pro;
 
-import java.util.Collection;
-import java.util.HashSet;
+import java.util.ArrayList;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
 public class Hand {
-  private HashSet<Card> cards;
+  private ArrayList<Card> cards = new ArrayList<Card>();
   private Boolean threshold = false;
-
-  public Hand(Collection<Card> init_cards) {
-    cards = new HashSet<Card>(init_cards);
-  }
-
-  public Hand() {
-    cards = new HashSet<Card>();
-  }
 
   public void add(Card card) {
     cards.add(card);
@@ -51,9 +42,10 @@ public class Hand {
 
   @Override
   public String toString() {
-    return "[%s]".formatted(
+    return "[%s] => %d".formatted(
         cards.stream()
             .map((card) -> cardToString(card))
-            .collect(Collectors.joining(", ")));
+            .collect(Collectors.joining(", ")),
+        getTotal());
   }
 }
