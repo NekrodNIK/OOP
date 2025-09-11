@@ -50,6 +50,7 @@ tasks.jacocoTestReport {
         files(classDirectories.files.map {
             fileTree(it) {
                 exclude("**/App.class")
+                exclude("**/App$Game.class")
             }
         })
     )
