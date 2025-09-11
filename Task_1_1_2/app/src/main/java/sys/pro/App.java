@@ -12,7 +12,7 @@ public class App {
      *
      * @param args CLI arguments
      */
-    public static void main(String[] args) {
+    public void main(String[] args) {
         Scanner input = new Scanner(System.in);
 
         Game game = new Game();
