@@ -5,7 +5,13 @@ import java.util.Collections;
 import java.util.Optional;
 import java.util.Scanner;
 
+/** A class containing the entry point. */
 public class App {
+    /**
+     * The entry point. Run the game.
+     *
+     * @param args CLI arguments
+     */
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
 
@@ -66,8 +72,6 @@ public class App {
 
             updateAndPrintScore(game);
         }
-
-        // input.close();
     }
 
     private static void printStatus(Game game) {
