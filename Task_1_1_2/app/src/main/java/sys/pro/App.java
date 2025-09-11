@@ -34,7 +34,6 @@ public class App {
                 updateAndPrintScore(game);
                 continue;
             }
-            ;
 
             println("Ваш ход:\n-------");
             outer:
@@ -134,7 +133,9 @@ class Game {
         player.add(deck.removeLast());
         player.add(deck.removeLast());
 
-        if (player.getTotal() == 21) blackjack = true;
+        if (player.getTotal() == 21) {
+            blackjack = true;
+        }
 
         Card card = deck.removeLast();
         card.hidden = true;
@@ -151,11 +152,14 @@ class Game {
 
     public Optional<String> dealerTurn() {
         Optional<Card> mes;
-        if (dealer.getTotal() >= 17 || (mes = dealer.findHiddenCard()).isEmpty())
+        if (dealer.getTotal() >= 17 || (mes = dealer.findHiddenCard()).isEmpty()) {
             return Optional.empty();
+        }
 
         mes.get().hidden = false;
-        if (dealer.getTotal() == 21) blackjack = true;
+        if (dealer.getTotal() == 21) {
+            blackjack = true;
+        }
 
         return Optional.of(mes.get().toString());
     }
@@ -165,8 +169,9 @@ class Game {
     }
 
     public void updateScore() {
-        if (isVictory()) p_score++;
-        else d_score++;
+        if (isVictory()) {
+            p_score++;
+        } else d_score++;
     }
 
     public void nextRound() {
@@ -178,11 +183,16 @@ class Game {
     }
 
     public Boolean isVictory() {
-        if (blackjack && player.getTotal() == 21) return true;
-        if (blackjack && dealer.getTotal() == 21) return false;
+        if (blackjack && player.getTotal() == 21) {
+            return true;
+        }
+        if (blackjack && dealer.getTotal() == 21) {
+            return false;
+        }
 
-        if (player.getTotal() < 21 && dealer.getTotal() < 21)
+        if (player.getTotal() < 21 && dealer.getTotal() < 21) {
             return player.getTotal() > dealer.getTotal();
+        }
 
         return dealer.getTotal() > 21;
     }

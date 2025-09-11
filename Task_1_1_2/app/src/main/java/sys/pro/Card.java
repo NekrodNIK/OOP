@@ -61,12 +61,16 @@ public class Card {
     /**
      * Get points based on threshold.
      *
-     * @param Boolean hidden
+     * @param Boolean treshold
      * @return int points
      */
     public int getPoints(Boolean threshold) {
-        if (hidden) return 0;
-        if (this.rank == Rank.ACE && threshold) return 1;
+        if (hidden) {
+            return 0;
+        }
+        if (this.rank == Rank.ACE && threshold) {
+            return 1;
+        }
         return this.rank.defaultPoints;
     }
 
@@ -77,7 +81,9 @@ public class Card {
      */
     @Override
     public String toString() {
-        if (hidden) return "<закрытая карта>";
+        if (hidden) {
+            return "<закрытая карта>";
+        }
         return String.format("%s %s", this.rank.label, this.suit.label);
     }
 }

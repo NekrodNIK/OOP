@@ -53,7 +53,9 @@ public class Hand {
      * @return String str
      */
     private String cardToString(Card card) {
-        if (card.hidden) return card.toString();
+        if (card.hidden) {
+            return card.toString();
+        }
         return "%s (%d)".formatted(card, card.getPoints(threshold));
     }
 
