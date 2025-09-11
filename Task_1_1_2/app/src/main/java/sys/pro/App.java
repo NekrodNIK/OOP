@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 /** A class containing the entry point. */
 public class App {
-    /** App constructor */
+    /** App constructor. */
     public App() {}
 
     /**
@@ -81,9 +81,6 @@ public class App {
         println("    Карты дилера: %s\n".formatted(game.getDealerHand()));
     }
 
-    /**
-     * @param game
-     */
     private static void updateAndPrintScore(Game game) {
         game.updateScore();
         print(game.isBlackJack() ? "Блэкждэк! " : "");
@@ -106,16 +103,10 @@ public class App {
         print(".\n\n");
     }
 
-    /**
-     * @param str
-     */
     private static void println(String str) {
         System.out.println(str);
     }
 
-    /**
-     * @param str
-     */
     private static void print(String str) {
         System.out.print(str);
     }
