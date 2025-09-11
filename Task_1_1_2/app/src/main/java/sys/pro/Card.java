@@ -19,11 +19,11 @@ public class Card {
         ACE("Туз", 11);
 
         public final String label;
-        public final int default_points;
+        public final int defaultPoints;
 
-        private Rank(String label, int default_points) {
+        private Rank(String label, int defaultPoints) {
             this.label = label;
-            this.default_points = default_points;
+            this.defaultPoints = defaultPoints;
         }
     }
 
@@ -67,7 +67,7 @@ public class Card {
     public int getPoints(Boolean threshold) {
         if (hidden) return 0;
         if (this.rank == Rank.ACE && threshold) return 1;
-        return this.rank.default_points;
+        return this.rank.defaultPoints;
     }
 
     /**
