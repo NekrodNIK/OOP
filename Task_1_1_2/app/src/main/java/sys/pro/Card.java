@@ -75,7 +75,7 @@ public class Card {
     }
 
     /**
-     * Convert Card to String
+     * Convert Card to String.
      *
      * @return String str
      */
@@ -87,3 +87,4 @@ public class Card {
         return String.format("%s %s", this.rank.label, this.suit.label);
     }
 }
+Unused @param tag for 'Boolean'.
