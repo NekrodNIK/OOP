@@ -9,10 +9,13 @@ public class Hand {
     private ArrayList<Card> cards = new ArrayList<Card>();
     private Boolean threshold = false;
 
+    /** Hand constructor. */
+    public Hand() {}
+
     /**
      * Add a card in the hand.
      *
-     * @param Card
+     * @param card a card
      */
     public void add(Card card) {
         cards.add(card);
@@ -27,7 +30,7 @@ public class Hand {
     /**
      * Get the total amount of cards in the hand.
      *
-     * @return int total amount
+     * @return amount
      */
     public int getTotal() {
         int total = cards.stream().mapToInt((card) -> card.getPoints(false)).sum();
@@ -40,13 +43,13 @@ public class Hand {
     /**
      * Finds any hidden card, if exists.
      *
-     * @return Optional<Card> maybe card
+     * @return maybe
      */
     public Optional<Card> findHiddenCard() {
         return cards.stream().filter((c) -> c.hidden).findAny();
     }
 
-    /** Convert card to String */
+    /** Convert Card to String */
     private String cardToString(Card card) {
         if (card.hidden) {
             return card.toString();
