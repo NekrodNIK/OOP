@@ -170,7 +170,9 @@ public class App {
         public void updateScore() {
             if (isVictory()) {
                 pScore++;
-            } else dScore++;
+            } else {
+                dScore++;
+            }
         }
 
         public void nextRound() {
