@@ -85,14 +85,14 @@ public class App {
         print(game.isVictory() ? "Вы выиграли раунд!" : "Вы проиграли раунд.");
         print(" ");
 
-        int pScore = game.getPlayerScore();
-        int dScore = game.getDealerScore();
+        int pscore = game.getPlayerScore();
+        int dscore = game.getDealerScore();
 
-        print("Счёт %d:%d в ".formatted(pScore, dScore));
+        print("Счёт %d:%d в ".formatted(pscore, dscore));
 
-        if (pScore > dScore) {
+        if (pscore > dscore) {
             print("вашу пользу");
-        } else if (pScore < dScore) {
+        } else if (pscore < dscore) {
             print("пользу дилера");
         } else {
             print("ничью");
@@ -113,8 +113,8 @@ public class App {
         private Hand player = new Hand();
         private Hand dealer = new Hand();
 
-        private int pScore = 0;
-        private int dScore = 0;
+        private int pscore = 0;
+        private int dscore = 0;
         private Boolean blackjack;
 
         private void init() {
@@ -203,11 +203,11 @@ public class App {
         }
 
         public int getPlayerScore() {
-            return pScore;
+            return pscore;
         }
 
         public int getDealerScore() {
-            return dScore;
+            return dscore;
         }
 
         public String getPlayerHand() {
