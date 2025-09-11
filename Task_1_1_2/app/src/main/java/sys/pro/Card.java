@@ -48,9 +48,9 @@ public class Card {
     /**
      * Card.
      *
-     * @param Rank rank
-     * @param Suit suit
-     * @param Boolean hidden
+     * @param Rank
+     * @param Suit
+     * @param Boolean
      */
     public Card(Rank rank, Suit suit, Boolean hidden) {
         this.rank = rank;
@@ -61,7 +61,7 @@ public class Card {
     /**
      * Get points based on threshold.
      *
-     * @param Boolean treshold
+     * @param Boolean
      * @return int points
      */
     public int getPoints(Boolean threshold) {
