@@ -52,6 +52,10 @@ public class Hand {
       return cards.getLast();
     }
 
+    public int size() {
+        return cards.size();
+    }
+
     /** Convert Card to String. */
     private String cardToString(Card card) {
         if (card.isHidden()) {

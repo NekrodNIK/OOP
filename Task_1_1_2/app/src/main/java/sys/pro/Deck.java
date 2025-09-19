@@ -3,6 +3,7 @@ package sys.pro;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.List;
 
 public class Deck {
   private ArrayList<Card> arr = new ArrayList<Card>();
@@ -29,5 +30,13 @@ public class Deck {
     Card card = arr.removeLast();
     card.hide();
     hand.add(card);
+  }
+
+  public List<Card> toList() {
+    return arr;
+  }
+
+  public int size() {
+    return arr.size();
   }
 }
