@@ -2,74 +2,14 @@ package sys.pro;
 
 /** Playing card representation. */
 public class Card {
-    /** Card rank. */
-    public enum Rank {
-        /** TWO. */
-        TWO("Двойка", 2),
-        /** THREE. */
-        THREE("Тройка", 3),
-        /** FOUR. */
-        FOUR("Четвёрка", 4),
-        /** FIVE. */
-        FIVE("Пятёрка", 5),
-        /** SIX. */
-        SIX("Шестёрка", 6),
-        /** SEVEN. */
-        SEVEN("Семёрка", 7),
-        /** EIGHT. */
-        EIGHT("Восьмёрка", 8),
-        /** NINE. */
-        NINE("Девятка", 9),
-        /** TEN. */
-        TEN("Десятка", 10),
-        /** JACK. */
-        JACK("Валет", 10),
-        /** QUEEN. */
-        QUEEN("Дама", 10),
-        /** KING. */
-        KING("Король", 10),
-        /** ACE. */
-        ACE("Туз", 11);
-
-        /** display label. */
-        public final String label;
-
-        /** default points. */
-        public final int defaultPoints;
-
-        private Rank(String label, int defaultPoints) {
-            this.label = label;
-            this.defaultPoints = defaultPoints;
-        }
-    }
-
-    /** Card suit. */
-    public enum Suit {
-        /** HEARTS */
-        HEARTS("черви"),
-        /** DIAMONDS */
-        DIAMONDS("бубны"),
-        /** CLUBS */
-        CLUBS("трефы"),
-        /** SPADES */
-        SPADES("пики");
-
-        /** display label */
-        public final String label;
-
-        private Suit(String label) {
-            this.label = label;
-        }
-    }
-
     /** rank. */
-    public Rank rank;
+    private Rank rank;
 
     /** suit. */
-    public Suit suit;
+    private Suit suit;
 
     /** hidden flag */
-    public Boolean hidden;
+    private Boolean hidden;
 
     /**
      * Card constructor.
@@ -97,7 +37,27 @@ public class Card {
         if (this.rank == Rank.ACE && threshold) {
             return 1;
         }
-        return this.rank.defaultPoints;
+        return this.rank.getDefaultPoints();
+    }
+
+    public Suit getSuit() {
+        return suit;
+    }
+    
+    public Rank getRank() {
+        return rank;
+    }
+
+    public Boolean isHidden() {
+        return hidden;
+    }
+    
+    public void hide() {
+        hidden = true;
+    }
+    
+    public void show() {
+        hidden = false;
     }
 
     /** Convert Card to String. */
@@ -106,6 +66,6 @@ public class Card {
         if (hidden) {
             return "<закрытая карта>";
         }
-        return String.format("%s %s", this.rank.label, this.suit.label);
+        return String.format("%s %s", this.rank.getLabel(), this.suit.getLabel());
     }
 }

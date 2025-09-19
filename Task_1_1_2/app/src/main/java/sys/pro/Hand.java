@@ -9,9 +9,6 @@ public class Hand {
     private ArrayList<Card> cards = new ArrayList<Card>();
     private Boolean threshold = false;
 
-    /** Hand constructor. */
-    public Hand() {}
-
     /**
      * Add a card in the hand.
      *
@@ -48,12 +45,16 @@ public class Hand {
      * @return maybe
      */
     public Optional<Card> findHiddenCard() {
-        return cards.stream().filter((c) -> c.hidden).findAny();
+        return cards.stream().filter((c) -> c.isHidden()).findAny();
+    }
+
+    public Card getLastAddedCard() {
+      return cards.getLast();
     }
 
     /** Convert Card to String. */
     private String cardToString(Card card) {
-        if (card.hidden) {
+        if (card.isHidden()) {
             return card.toString();
         }
         return "%s (%d)".formatted(card, card.getPoints(threshold));
