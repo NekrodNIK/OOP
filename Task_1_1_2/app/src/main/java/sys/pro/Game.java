@@ -18,9 +18,10 @@ public class Game {
     }
 
     /**
-      * Constructor.
-      * @param deck Initial deck
-      */
+     * Constructor.
+     *
+     * @param deck Initial deck
+     */
     public Game(Deck deck) {
         this.deck = deck;
         player = new Hand();
@@ -44,19 +45,20 @@ public class Game {
     }
 
     /**
-      * Deal a card to a player.
-      * @return Card
-      */
+     * Deal a card to a player.
+     *
+     * @return Card
+     */
     public Card dealToPlayer() {
         deck.dealFaceUp(player);
         return player.getLastAddedCard();
     }
 
     /**
-      * Make one dealer turn.
-      * If the dealer's move is not possible, returns None.
-      * @return Card or None
-      */
+     * Make one dealer turn. If the dealer's move is not possible, returns None.
+     *
+     * @return Card or None
+     */
     public Optional<Card> dealerTurn() {
         Optional<Card> mes;
         if (dealer.getTotal() >= 17 || (mes = dealer.findHiddenCard()).isEmpty()) {
@@ -92,17 +94,19 @@ public class Game {
     }
 
     /**
-      * Check if the round is end.
-      * @return status
-      */
+     * Check if the round is end.
+     *
+     * @return status
+     */
     public Boolean isEnd() {
         return blackjack || player.getTotal() > 21 || dealer.getTotal() > 21;
     }
-    
+
     /**
-      * check if the round is player victory.
-      * @return status
-      */
+     * check if the round is player victory.
+     *
+     * @return status
+     */
     public Boolean isVictory() {
         if (blackjack && player.getTotal() == 21) {
             return true;
@@ -120,51 +124,52 @@ public class Game {
     }
 
     /**
-      * check if the round is blackjack.
-      * @return status
-      */
+     * check if the round is blackjack.
+     *
+     * @return status
+     */
     public Boolean isBlackJack() {
         return blackjack;
     }
 
     /**
-      * @return player score
-      */
+     * @return player score
+     */
     public int getPlayerScore() {
         return pscore;
     }
 
     /**
-      * @return dealer score
-      */
+     * @return dealer score
+     */
     public int getDealerScore() {
         return dscore;
     }
 
     /**
-      * @return player hand
-      */
+     * @return player hand
+     */
     public Hand getPlayerHand() {
         return new Hand(player);
     }
 
     /**
-      * @return dealer hand
-      */
+     * @return dealer hand
+     */
     public Hand getDealerHand() {
         return new Hand(dealer);
     }
 
     /**
-      * @return player points
-      */
+     * @return player points
+     */
     public int getPlayerPoints() {
         return player.getTotal();
     }
-    
+
     /**
-      * @return dealer points
-      */
+     * @return dealer points
+     */
     public int getDealerPoints() {
         return dealer.getTotal();
     }

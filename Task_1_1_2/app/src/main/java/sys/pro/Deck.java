@@ -13,6 +13,7 @@ public class Deck {
 
     /**
      * Constructor.
+     *
      * @param initial Initial state
      */
     public Deck(Collection<Card> initial) {
@@ -22,10 +23,13 @@ public class Deck {
 
     /** Default constructor. */
     public Deck() {
-        this(Stream.of(Rank.values())
-              .flatMap(rank -> Stream.of(Suit.values())
-                  .map(suit -> new Card(rank, suit, true)))
-              .toList());
+        this(
+                Stream.of(Rank.values())
+                        .flatMap(
+                                rank ->
+                                        Stream.of(Suit.values())
+                                                .map(suit -> new Card(rank, suit, true)))
+                        .toList());
     }
 
     /** Shuffle the Deck. */
@@ -41,7 +45,8 @@ public class Deck {
 
     /**
      * Deal a Card face up into a Hand.
-     * @param hand Some Hand 
+     *
+     * @param hand Some Hand
      */
     public void dealFaceUp(Hand hand) {
         Card card = arr.removeLast();
@@ -51,7 +56,8 @@ public class Deck {
 
     /**
      * Deal a Card face down into a Hand.
-     * @param hand Some Hand 
+     *
+     * @param hand Some Hand
      */
     public void dealFaceDown(Hand hand) {
         Card card = arr.removeLast();
@@ -61,6 +67,7 @@ public class Deck {
 
     /**
      * Returns an immutable list representation of the Deck
+     *
      * @return list
      */
     public List<Card> toList() {
