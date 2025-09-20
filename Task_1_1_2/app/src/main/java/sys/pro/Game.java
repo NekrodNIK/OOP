@@ -132,32 +132,32 @@ public class Game {
         return blackjack;
     }
 
-    /** Returns player score */
+    /** Returns player score. */
     public int getPlayerScore() {
         return pscore;
     }
 
-    /** Returns dealer score */
+    /** Returns dealer score. */
     public int getDealerScore() {
         return dscore;
     }
 
-    /** Returns player hand */
+    /** Returns player hand. */
     public Hand getPlayerHand() {
         return new Hand(player);
     }
 
-    /** Returns dealer hand */
+    /** Returns dealer hand. */
     public Hand getDealerHand() {
         return new Hand(dealer);
     }
 
-    /** Returns player points */
+    /** Returns player points. */
     public int getPlayerPoints() {
         return player.getTotal();
     }
 
-    /** Returns dealer points */
+    /** Returns dealer points. */
     public int getDealerPoints() {
         return dealer.getTotal();
     }
