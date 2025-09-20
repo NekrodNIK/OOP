@@ -28,7 +28,7 @@ public class Deck {
 
   public void restore() {
     arr.clear();
-    arr.addAll(this.initial);
+    arr.addAll(initial);
   }
 
   public void dealFaceUp(Hand hand) {

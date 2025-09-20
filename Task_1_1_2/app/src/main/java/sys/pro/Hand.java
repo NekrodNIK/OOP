@@ -6,9 +6,19 @@ import java.util.stream.Collectors;
 
 /** The player/dealer hand. */
 public class Hand {
-    private ArrayList<Card> cards = new ArrayList<Card>();
-    private Boolean threshold = false;
+    private ArrayList<Card> cards;
+    private Boolean threshold;
 
+    public Hand() {
+        cards = new ArrayList<Card>();
+        threshold = false;
+    }
+    
+    public Hand(Hand src) {
+        cards = new ArrayList<Card>(src.cards);
+        threshold = src.threshold;      
+    }
+    
     /**
      * Add a card in the hand.
      *
@@ -32,7 +42,7 @@ public class Hand {
     public int getTotal() {
         int total = cards.stream().mapToInt((card) -> card.getPoints(false)).sum();
 
-        threshold = total >= 21;
+        threshold = total > 21;
         if (threshold) {
             total = cards.stream().mapToInt((card) -> card.getPoints(threshold)).sum();
         }
@@ -73,5 +83,14 @@ public class Hand {
                                 .map((card) -> cardToString(card))
                                 .collect(Collectors.joining(", ")),
                         getTotal());
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o instanceof Hand other) {
+            return other.cards.equals(this.cards);
+        }
+        
+        return false;
     }
 }

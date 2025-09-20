@@ -47,8 +47,17 @@ public class DeckTest {
   }
 
   @Test
-  void testClear() {
-    deck.clear();
-    assertEquals(0, deck.size());
+  void testRestore() {
+    deck.dealFaceDown(hand);
+    deck.shuffle();
+    deck.restore();
+    assertEquals(initial, deck.toList());
+  }
+  
+  @Test
+  void testSize() {
+    deck.dealFaceDown(hand);
+    deck.dealFaceDown(hand);
+    assertEquals(initial.size() - 2, deck.size());
   }
 }

@@ -2,6 +2,8 @@ package sys.pro;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertNotSame;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -60,5 +62,19 @@ public class HandTest {
         card.hide();
         assertFalse(hand.toString().contains(card.getRank().getLabel()));
         assertFalse(hand.toString().contains(card.getSuit().getLabel()));
+    }
+
+    @Test
+    void testCopy() {
+        Hand copy = new Hand(hand);
+
+        assertNotSame(hand, copy);
+        assertEquals(hand, copy);
+    }
+
+    @Test
+    void testEquals() {
+        assertEquals(hand, hand);
+        assertNotEquals(hand, new Object());
     }
 }

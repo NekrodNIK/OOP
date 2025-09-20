@@ -21,11 +21,10 @@ public class Game {
     dealer = new Hand();
     pscore = 0;
     dscore = 0;
+    blackjack = false;
   }
 
-  private void startRound() {
-    deck.shuffle();
-    
+  public void dealStartingCards() {
     deck.dealFaceUp(player);
     deck.dealFaceUp(player);
 
@@ -37,9 +36,9 @@ public class Game {
     deck.dealFaceUp(dealer);
   }
 
-  public String dealToPlayer() {
+  public Card dealToPlayer() {
     deck.dealFaceUp(player);
-    return player.getLastAddedCard().toString();
+    return player.getLastAddedCard();
   }
 
   public Optional<String> dealerTurn() {
@@ -57,7 +56,7 @@ public class Game {
   }
 
   public Boolean isEnd() {
-    return player.getTotal() > 21 || dealer.getTotal() > 21;
+    return blackjack || player.getTotal() > 21 || dealer.getTotal() > 21;
   }
 
   public void updateScore() {
@@ -70,17 +69,19 @@ public class Game {
 
   public void nextRound() {
     deck.restore();
+    deck.shuffle();
     player.clear();
     dealer.clear();
     blackjack = false;
     
-    startRound();
+    dealStartingCards();
   }
 
   public Boolean isVictory() {
     if (blackjack && player.getTotal() == 21) {
       return true;
     }
+
     if (blackjack && dealer.getTotal() == 21) {
       return false;
     }
@@ -104,12 +105,12 @@ public class Game {
     return dscore;
   }
 
-  public String getPlayerHand() {
-    return player.toString();
+  public Hand getPlayerHand() {
+    return new Hand(player);
   }
 
-  public String getDealerHand() {
-    return dealer.toString();
+  public Hand getDealerHand() {
+    return new Hand(dealer);
   }
 
   public int getPlayerPoints() {
