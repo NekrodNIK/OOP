@@ -2,25 +2,23 @@ package sys.pro;
 
 /** Card suit. */
 public enum Suit {
-    /** HEARTS */
+    /** HEARTS. */
     HEARTS("черви"),
-    /** DIAMONDS */
+    /** DIAMONDS. */
     DIAMONDS("бубны"),
-    /** CLUBS */
+    /** CLUBS. */
     CLUBS("трефы"),
-    /** SPADES */
+    /** SPADES. */
     SPADES("пики");
 
-    /** display label */
+    /** display label. */
     private final String label;
 
     private Suit(String label) {
         this.label = label;
     }
 
-    /**
-     * @return label
-     */
+    /** Returns label */
     public String getLabel() {
         return label;
     }
