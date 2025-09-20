@@ -22,7 +22,8 @@ public class App {
       println("Раунд %d".formatted(r));
       println("Дилер раздал карты");
       nextRound(game, input);
-      updateAndPrintScore(game);
+      game.updateScore();
+      printScore(game);
     }
   }
 
@@ -70,11 +71,6 @@ public class App {
   private static void printStatus(Game game) {
     println("    Ваши карты: %s".formatted(game.getPlayerHand()));
     println("    Карты дилера: %s\n".formatted(game.getDealerHand()));
-  }
-
-  private static void updateAndPrintScore(Game game) {
-    game.updateScore();
-    printScore(game);
   }
 
   private static void printScore(Game game) {
