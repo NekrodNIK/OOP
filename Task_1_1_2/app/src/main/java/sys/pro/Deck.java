@@ -6,7 +6,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.stream.Stream;
 
-/** Deck representation */
+/** Deck representation. */
 public class Deck {
     private ArrayList<Card> initial;
     private ArrayList<Card> arr;
