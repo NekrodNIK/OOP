@@ -12,114 +12,115 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 public class GameTest {
-  ArrayList<Card> initial;
-  
-  @BeforeEach
-  void setUp() {
-    initial = new ArrayList<Card>();
-    initial.add(new Card(Rank.FIVE, Suit.DIAMONDS, false));
-    initial.add(new Card(Rank.JACK, Suit.CLUBS, false));
-    initial.add(new Card(Rank.ACE, Suit.CLUBS, false));
-  }
+    ArrayList<Card> initial;
 
-  @Test
-  void testDefaultConstructor() {
-    new Game();
-  }
+    @BeforeEach
+    void setUp() {
+        initial = new ArrayList<Card>();
+        initial.add(new Card(Rank.FIVE, Suit.DIAMONDS, false));
+        initial.add(new Card(Rank.JACK, Suit.CLUBS, false));
+        initial.add(new Card(Rank.ACE, Suit.CLUBS, false));
+    }
 
-  @Test
-  void testDealStartingCards() {
-    initial.add(new Card(Rank.FIVE, Suit.CLUBS, false));
-    Game game = new Game(new Deck(initial));
+    @Test
+    void testDefaultConstructor() {
+        new Game();
+    }
 
-    game.dealStartingCards();
-    
-    assertEquals(2, game.getDealerHand().size());
-    assertEquals(2, game.getPlayerHand().size());
-  }
-  
-  @Test
-  void testPlayerBlackJack() {
-    initial.add(new Card(Rank.QUEEN, Suit.CLUBS, false));
-    Game game = new Game(new Deck(initial));
+    @Test
+    void testDealStartingCards() {
+        initial.add(new Card(Rank.FIVE, Suit.CLUBS, false));
+        Game game = new Game(new Deck(initial));
 
-    game.dealStartingCards();
+        game.dealStartingCards();
 
-    assertEquals(21, game.getPlayerPoints());
-    assertTrue(game.isBlackJack() && game.isEnd() && game.isVictory());
+        assertEquals(2, game.getDealerHand().size());
+        assertEquals(2, game.getPlayerHand().size());
+    }
 
-    game.updateScore();
+    @Test
+    void testPlayerBlackJack() {
+        initial.add(new Card(Rank.QUEEN, Suit.CLUBS, false));
+        Game game = new Game(new Deck(initial));
 
-    assertEquals(1, game.getPlayerScore());
-    assertEquals(0, game.getDealerScore());
-  }
-  
-  @Test
-  void testPlayerNotBlackJack() {
-    initial.add(new Card(Rank.FIVE, Suit.CLUBS, false));
-    Game game = new Game(new Deck(initial));
+        game.dealStartingCards();
 
-    game.dealStartingCards();
+        assertEquals(21, game.getPlayerPoints());
+        assertTrue(game.isBlackJack() && game.isEnd() && game.isVictory());
 
-    assertNotEquals(21, game.getPlayerPoints());
-    assertFalse(game.isBlackJack() || game.isEnd());
-  }
+        game.updateScore();
 
-  @Test
-  void testDealToPlayer() {
-    initial.add(new Card(Rank.FIVE, Suit.CLUBS, false));
-    initial.add(new Card(Rank.FIVE, Suit.SPADES, false));
-    Game game = new Game(new Deck(initial));
+        assertEquals(1, game.getPlayerScore());
+        assertEquals(0, game.getDealerScore());
+    }
 
-    game.nextRound();
-    
-    game.dealToPlayer();
-    assertTrue(initial.contains(game.getPlayerHand().getLastAddedCard()));    
-  }
-  
-  @Test
-  void testPlayerLose() {
-    initial.removeLast();
-    initial.add(new Card(Rank.JACK, Suit.DIAMONDS, false));
-    initial.add(new Card(Rank.QUEEN, Suit.DIAMONDS, false));
-    initial.addFirst(new Card(Rank.KING, Suit.SPADES, false));
-    Game game = new Game(new Deck(initial));
+    @Test
+    void testPlayerNotBlackJack() {
+        initial.add(new Card(Rank.FIVE, Suit.CLUBS, false));
+        Game game = new Game(new Deck(initial));
 
-    game.nextRound();
-    
-    game.dealToPlayer();
-    assertTrue(game.isEnd() && !game.isVictory());    
-  }
+        game.dealStartingCards();
 
-  @Test
-  void testDealerBlackJack() {
-    initial.add(new Card(Rank.QUEEN, Suit.CLUBS, false));
-    Collections.reverse(initial);
-    Game game = new Game(new Deck(initial));
+        assertNotEquals(21, game.getPlayerPoints());
+        assertFalse(game.isBlackJack() || game.isEnd());
+    }
 
-    game.dealStartingCards();
-    assertFalse(game.isBlackJack());
-    
-    while (game.dealerTurn().isPresent()) {};
+    @Test
+    void testDealToPlayer() {
+        initial.add(new Card(Rank.FIVE, Suit.CLUBS, false));
+        initial.add(new Card(Rank.FIVE, Suit.SPADES, false));
+        Game game = new Game(new Deck(initial));
 
-    assertTrue(game.isBlackJack() && game.isEnd() && !game.isVictory());
-    
-    game.updateScore();
+        game.nextRound();
 
-    assertEquals(0, game.getPlayerScore());
-    assertEquals(1, game.getDealerScore());
-  }
+        game.dealToPlayer();
+        assertTrue(initial.contains(game.getPlayerHand().getLastAddedCard()));
+    }
 
-  @Test
-  void testReguralDealerTurn() {
-    initial.add(new Card(Rank.ACE, Suit.DIAMONDS, false));
-    Collections.reverse(initial);
-    Game game = new Game(new Deck(initial));
+    @Test
+    void testPlayerLose() {
+        initial.removeLast();
+        initial.add(new Card(Rank.JACK, Suit.DIAMONDS, false));
+        initial.add(new Card(Rank.QUEEN, Suit.DIAMONDS, false));
+        initial.addFirst(new Card(Rank.KING, Suit.SPADES, false));
+        Game game = new Game(new Deck(initial));
 
-    game.dealStartingCards();
-    game.dealerTurn();
+        game.nextRound();
 
-    assertTrue(game.getDealerPoints() < 21);
-    assertTrue(game.isVictory());
-  }
+        game.dealToPlayer();
+        assertTrue(game.isEnd() && !game.isVictory());
+    }
+
+    @Test
+    void testDealerBlackJack() {
+        initial.add(new Card(Rank.QUEEN, Suit.CLUBS, false));
+        Collections.reverse(initial);
+        Game game = new Game(new Deck(initial));
+
+        game.dealStartingCards();
+        assertFalse(game.isBlackJack());
+
+        while (game.dealerTurn().isPresent()) {}
+        ;
+
+        assertTrue(game.isBlackJack() && game.isEnd() && !game.isVictory());
+
+        game.updateScore();
+
+        assertEquals(0, game.getPlayerScore());
+        assertEquals(1, game.getDealerScore());
+    }
+
+    @Test
+    void testReguralDealerTurn() {
+        initial.add(new Card(Rank.ACE, Suit.DIAMONDS, false));
+        Collections.reverse(initial);
+        Game game = new Game(new Deck(initial));
+
+        game.dealStartingCards();
+        game.dealerTurn();
+
+        assertTrue(game.getDealerPoints() < 21);
+        assertTrue(game.isVictory());
+    }
 }

@@ -55,7 +55,7 @@ public class HandTest {
     void testToString() {
         hand.add(new Card(Rank.ACE, Suit.CLUBS, false));
         Card card = hand.getLastAddedCard();
-    
+
         assertTrue(hand.toString().contains(card.getRank().getLabel()));
         assertTrue(hand.toString().contains(card.getSuit().getLabel()));
 

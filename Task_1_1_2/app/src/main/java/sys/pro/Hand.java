@@ -13,12 +13,12 @@ public class Hand {
         cards = new ArrayList<Card>();
         threshold = false;
     }
-    
+
     public Hand(Hand src) {
         cards = new ArrayList<Card>(src.cards);
-        threshold = src.threshold;      
+        threshold = src.threshold;
     }
-    
+
     /**
      * Add a card in the hand.
      *
@@ -59,7 +59,7 @@ public class Hand {
     }
 
     public Card getLastAddedCard() {
-      return cards.getLast();
+        return cards.getLast();
     }
 
     public int size() {
@@ -90,7 +90,7 @@ public class Hand {
         if (o instanceof Hand other) {
             return other.cards.equals(this.cards);
         }
-        
+
         return false;
     }
 }

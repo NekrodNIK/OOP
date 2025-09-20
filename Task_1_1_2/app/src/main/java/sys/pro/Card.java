@@ -43,7 +43,7 @@ public class Card {
     public Suit getSuit() {
         return suit;
     }
-    
+
     public Rank getRank() {
         return rank;
     }
@@ -51,11 +51,11 @@ public class Card {
     public Boolean isHidden() {
         return hidden;
     }
-    
+
     public void hide() {
         hidden = true;
     }
-    
+
     public void show() {
         hidden = false;
     }
