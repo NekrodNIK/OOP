@@ -4,20 +4,31 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Stream;
 
 public class Deck {
-  private ArrayList<Card> arr = new ArrayList<Card>();
+  private ArrayList<Card> initial;
+  private ArrayList<Card> arr;
 
-  public void addAll(Collection<Card> inital) {
-    arr.addAll(inital);
+  public Deck(Collection<Card> initial) {
+    this.initial = new ArrayList<Card>(initial);
+    arr = new ArrayList<Card>(initial);
+  }
+
+  public Deck() {
+    this(Stream.of(Rank.values())
+        .flatMap(rank -> Stream.of(Suit.values())
+            .map(suit -> new Card(rank, suit, true)))
+        .toList());
   }
 
   public void shuffle() {
     Collections.shuffle(arr);
   }
-  
-  public void clear() {
+
+  public void restore() {
     arr.clear();
+    arr.addAll(this.initial);
   }
 
   public void dealFaceUp(Hand hand) {
@@ -25,7 +36,7 @@ public class Deck {
     card.show();
     hand.add(card);
   }
-  
+
   public void dealFaceDown(Hand hand) {
     Card card = arr.removeLast();
     card.hide();
@@ -33,7 +44,7 @@ public class Deck {
   }
 
   public List<Card> toList() {
-    return arr;
+    return Collections.unmodifiableList(arr);
   }
 
   public int size() {

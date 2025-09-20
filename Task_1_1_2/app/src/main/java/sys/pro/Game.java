@@ -1,27 +1,31 @@
 package sys.pro;
 
-import java.util.List;
 import java.util.Optional;
-import java.util.stream.Stream;
 
 public class Game {
-  private Deck deck = new Deck();
-  private Hand player = new Hand();
-  private Hand dealer = new Hand();
+  private Deck deck;
+  private Hand player;
+  private Hand dealer;
 
-  private int pscore = 0;
-  private int dscore = 0;
+  private int pscore;
+  private int dscore;
   private Boolean blackjack;
 
+  public Game() {
+    this(new Deck());
+  }
+
+  public Game(Deck deck) {
+    this.deck = deck;
+    player = new Hand();
+    dealer = new Hand();
+    pscore = 0;
+    dscore = 0;
+  }
+
   private void startRound() {
-    List<Card> initial = Stream.of(Rank.values())
-        .flatMap(rank -> Stream.of(Suit.values())
-            .map(suit -> new Card(rank, suit, true)))
-        .toList();
-
-    deck.addAll(initial);
     deck.shuffle();
-
+    
     deck.dealFaceUp(player);
     deck.dealFaceUp(player);
 
@@ -65,7 +69,7 @@ public class Game {
   }
 
   public void nextRound() {
-    deck.clear();
+    deck.restore();
     player.clear();
     dealer.clear();
     blackjack = false;

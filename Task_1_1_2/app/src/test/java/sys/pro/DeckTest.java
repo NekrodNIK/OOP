@@ -16,14 +16,13 @@ public class DeckTest {
 
   @BeforeEach
   void setUp() {
-    deck = new Deck();
-    hand = new Hand();
-
     initial = Stream.of(Rank.values())
         .flatMap(rank -> Stream.of(Suit.values())
             .map(suit -> new Card(rank, suit, true)))
         .toList();
-    deck.addAll(initial);
+
+    deck = new Deck(initial);
+    hand = new Hand();
   }
 
   @Test
