@@ -62,9 +62,9 @@ public class App {
 
         println("\nХод дилера:\n-------");
 
-        Optional<String> str;
-        while ((str = game.dealerTurn()).isPresent()) {
-            println("Дилер открывает карту %s".formatted(str.get()));
+        Optional<Card> card;
+        while ((card = game.dealerTurn()).isPresent()) {
+            println("Дилер открывает карту %s".formatted(card.get()));
             printStatus(game);
             break;
         }
