@@ -18,6 +18,9 @@ public enum Suit {
         this.label = label;
     }
 
+    /**
+     * @return label
+     */
     public String getLabel() {
         return label;
     }

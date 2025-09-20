@@ -8,7 +8,7 @@ public class Card {
     /** suit. */
     private Suit suit;
 
-    /** hidden flag */
+    /** hidden flag. */
     private Boolean hidden;
 
     /**

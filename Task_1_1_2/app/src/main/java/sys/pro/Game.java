@@ -2,6 +2,7 @@ package sys.pro;
 
 import java.util.Optional;
 
+/** Game driver. */
 public class Game {
     private Deck deck;
     private Hand player;
@@ -11,10 +12,15 @@ public class Game {
     private int dscore;
     private Boolean blackjack;
 
+    /** Default constructor. */
     public Game() {
         this(new Deck());
     }
 
+    /**
+      * Constructor.
+      * @param deck Initial deck
+      */
     public Game(Deck deck) {
         this.deck = deck;
         player = new Hand();
@@ -24,6 +30,7 @@ public class Game {
         blackjack = false;
     }
 
+    /** Deal cards at the beginning of the game. */
     public void dealStartingCards() {
         deck.dealFaceUp(player);
         deck.dealFaceUp(player);
@@ -36,12 +43,21 @@ public class Game {
         deck.dealFaceUp(dealer);
     }
 
+    /**
+      * Deal a card to a player.
+      * @return Card
+      */
     public Card dealToPlayer() {
         deck.dealFaceUp(player);
         return player.getLastAddedCard();
     }
 
-    public Optional<String> dealerTurn() {
+    /**
+      * Make one dealer turn.
+      * If the dealer's move is not possible, returns None.
+      * @return Card or None
+      */
+    public Optional<Card> dealerTurn() {
         Optional<Card> mes;
         if (dealer.getTotal() >= 17 || (mes = dealer.findHiddenCard()).isEmpty()) {
             return Optional.empty();
@@ -52,13 +68,10 @@ public class Game {
             blackjack = true;
         }
 
-        return Optional.of(mes.get().toString());
+        return Optional.of(mes.get());
     }
 
-    public Boolean isEnd() {
-        return blackjack || player.getTotal() > 21 || dealer.getTotal() > 21;
-    }
-
+    /** Update score. */
     public void updateScore() {
         if (isVictory()) {
             pscore++;
@@ -67,6 +80,7 @@ public class Game {
         }
     }
 
+    /** Start the next round. */
     public void nextRound() {
         deck.restore();
         deck.shuffle();
@@ -77,6 +91,18 @@ public class Game {
         dealStartingCards();
     }
 
+    /**
+      * Check if the round is end.
+      * @return status
+      */
+    public Boolean isEnd() {
+        return blackjack || player.getTotal() > 21 || dealer.getTotal() > 21;
+    }
+    
+    /**
+      * check if the round is player victory.
+      * @return status
+      */
     public Boolean isVictory() {
         if (blackjack && player.getTotal() == 21) {
             return true;
@@ -93,30 +119,52 @@ public class Game {
         return dealer.getTotal() > 21;
     }
 
+    /**
+      * check if the round is blackjack.
+      * @return status
+      */
     public Boolean isBlackJack() {
         return blackjack;
     }
 
+    /**
+      * @return player score
+      */
     public int getPlayerScore() {
         return pscore;
     }
 
+    /**
+      * @return dealer score
+      */
     public int getDealerScore() {
         return dscore;
     }
 
+    /**
+      * @return player hand
+      */
     public Hand getPlayerHand() {
         return new Hand(player);
     }
 
+    /**
+      * @return dealer hand
+      */
     public Hand getDealerHand() {
         return new Hand(dealer);
     }
 
+    /**
+      * @return player points
+      */
     public int getPlayerPoints() {
         return player.getTotal();
     }
-
+    
+    /**
+      * @return dealer points
+      */
     public int getDealerPoints() {
         return dealer.getTotal();
     }
