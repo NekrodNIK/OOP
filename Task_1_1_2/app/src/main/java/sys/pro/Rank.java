@@ -37,16 +37,12 @@ public enum Rank {
         this.defaultPoints = defaultPoints;
     }
 
-    /**
-     * @return label
-     */
+    /** Returns label. */
     public String getLabel() {
         return label;
     }
 
-    /**
-     * @return defaultPoints
-     */
+    /** Returns default points. */
     public int getDefaultPoints() {
         return defaultPoints;
     }

@@ -66,7 +66,7 @@ public class Deck {
     }
 
     /**
-     * Returns an immutable list representation of the Deck
+     * Returns an immutable list representation of the Deck.
      *
      * @return list
      */
@@ -75,6 +75,7 @@ public class Deck {
     }
 
     /**
+     * Return size of Deck.
      * @return size
      */
     public int size() {
