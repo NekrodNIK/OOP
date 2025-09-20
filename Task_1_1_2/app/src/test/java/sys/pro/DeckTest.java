@@ -9,6 +9,7 @@ import java.util.stream.Stream;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+/** Test for Deck. */
 public class DeckTest {
     Deck deck;
     List<Card> initial;

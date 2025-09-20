@@ -11,6 +11,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import java.util.ArrayList;
 import java.util.Collections;
 
+/** Test for Game. */
 public class GameTest {
     ArrayList<Card> initial;
 

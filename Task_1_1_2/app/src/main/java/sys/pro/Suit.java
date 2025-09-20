@@ -11,14 +11,13 @@ public enum Suit {
     /** SPADES. */
     SPADES("пики");
 
-    /** display label. */
     private final String label;
 
     private Suit(String label) {
         this.label = label;
     }
 
-    /** Returns label */
+    /** Returns label. */
     public String getLabel() {
         return label;
     }
