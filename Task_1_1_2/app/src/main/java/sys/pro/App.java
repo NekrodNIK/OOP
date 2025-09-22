@@ -22,8 +22,6 @@ public class App {
             println("Раунд %d".formatted(r));
             println("Дилер раздал карты");
             nextRound(game, input);
-            game.updateScore();
-            printScore(game);
         }
     }
 
@@ -35,6 +33,13 @@ public class App {
      * @return state
      */
     protected static State nextRound(Game game, Scanner input) {
+        State state = runRound(game, input);
+        game.updateScore();
+        printScore(game);
+        return state;
+    }
+
+    private static State runRound(Game game, Scanner input) {
         game.nextRound();
 
         printStatus(game);
