@@ -13,14 +13,14 @@ import org.junit.jupiter.api.Test;
 public class AppTest {
     @Test
     void testNextRound() {
-        ArrayList<Card> initial_deck = new ArrayList<Card>();
-        initial_deck.add(new Card(Rank.KING, Suit.HEARTS, true));
-        initial_deck.add(new Card(Rank.FIVE, Suit.CLUBS, true));
-        initial_deck.add(new Card(Rank.FIVE, Suit.SPADES, true));
-        initial_deck.add(new Card(Rank.FIVE, Suit.HEARTS, true));
-        initial_deck.add(new Card(Rank.FIVE, Suit.DIAMONDS, true));
+        ArrayList<Card> initialDeck = new ArrayList<Card>();
+        initialDeck.add(new Card(Rank.KING, Suit.HEARTS, true));
+        initialDeck.add(new Card(Rank.FIVE, Suit.CLUBS, true));
+        initialDeck.add(new Card(Rank.FIVE, Suit.SPADES, true));
+        initialDeck.add(new Card(Rank.FIVE, Suit.HEARTS, true));
+        initialDeck.add(new Card(Rank.FIVE, Suit.DIAMONDS, true));
 
-        Deck deck = new Deck(initial_deck, true);
+        Deck deck = new Deck(initialDeck, true);
         Game game = new Game(deck);
         Scanner input = new Scanner("1\n0\n");
 
@@ -31,13 +31,13 @@ public class AppTest {
 
     @Test
     void testNextRoundBlackJack() {
-        ArrayList<Card> initial_deck = new ArrayList<Card>();
-        initial_deck.add(new Card(Rank.FIVE, Suit.SPADES, true));
-        initial_deck.add(new Card(Rank.FIVE, Suit.HEARTS, true));
-        initial_deck.add(new Card(Rank.ACE, Suit.DIAMONDS, true));
-        initial_deck.add(new Card(Rank.KING, Suit.HEARTS, true));
+        ArrayList<Card> initialDeck = new ArrayList<Card>();
+        initialDeck.add(new Card(Rank.FIVE, Suit.SPADES, true));
+        initialDeck.add(new Card(Rank.FIVE, Suit.HEARTS, true));
+        initialDeck.add(new Card(Rank.ACE, Suit.DIAMONDS, true));
+        initialDeck.add(new Card(Rank.KING, Suit.HEARTS, true));
 
-        Deck deck = new Deck(initial_deck, true);
+        Deck deck = new Deck(initialDeck, true);
         Game game = new Game(deck);
         Scanner input = new Scanner("");
 
@@ -49,14 +49,14 @@ public class AppTest {
 
     @Test
     void testNextRoundDealerVictory() {
-        ArrayList<Card> initial_deck = new ArrayList<Card>();
-        initial_deck.add(new Card(Rank.KING, Suit.HEARTS, true));
-        initial_deck.add(new Card(Rank.FIVE, Suit.CLUBS, true));
-        initial_deck.add(new Card(Rank.FIVE, Suit.SPADES, true));
-        initial_deck.add(new Card(Rank.FIVE, Suit.HEARTS, true));
-        initial_deck.add(new Card(Rank.FIVE, Suit.DIAMONDS, true));
+        ArrayList<Card> initialDeck = new ArrayList<Card>();
+        initialDeck.add(new Card(Rank.KING, Suit.HEARTS, true));
+        initialDeck.add(new Card(Rank.FIVE, Suit.CLUBS, true));
+        initialDeck.add(new Card(Rank.FIVE, Suit.SPADES, true));
+        initialDeck.add(new Card(Rank.FIVE, Suit.HEARTS, true));
+        initialDeck.add(new Card(Rank.FIVE, Suit.DIAMONDS, true));
 
-        Deck deck = new Deck(initial_deck, true);
+        Deck deck = new Deck(initialDeck, true);
         Game game = new Game(deck);
         Scanner input = new Scanner("0\n");
 
@@ -67,14 +67,14 @@ public class AppTest {
 
     @Test
     void testNextRoundDraw() {
-        ArrayList<Card> initial_deck = new ArrayList<Card>();
-        initial_deck.add(new Card(Rank.KING, Suit.HEARTS, true));
-        initial_deck.add(new Card(Rank.FIVE, Suit.CLUBS, true));
-        initial_deck.add(new Card(Rank.FIVE, Suit.SPADES, true));
-        initial_deck.add(new Card(Rank.FIVE, Suit.HEARTS, true));
-        initial_deck.add(new Card(Rank.FIVE, Suit.DIAMONDS, true));
+        ArrayList<Card> initialDeck = new ArrayList<Card>();
+        initialDeck.add(new Card(Rank.KING, Suit.HEARTS, true));
+        initialDeck.add(new Card(Rank.FIVE, Suit.CLUBS, true));
+        initialDeck.add(new Card(Rank.FIVE, Suit.SPADES, true));
+        initialDeck.add(new Card(Rank.FIVE, Suit.HEARTS, true));
+        initialDeck.add(new Card(Rank.FIVE, Suit.DIAMONDS, true));
 
-        Deck deck = new Deck(initial_deck, true);
+        Deck deck = new Deck(initialDeck, true);
         Game game = new Game(deck);
         Scanner input0 = new Scanner("0\n");
         Scanner input1 = new Scanner("1\n0\n");
