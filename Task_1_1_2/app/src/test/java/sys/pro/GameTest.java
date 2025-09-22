@@ -102,7 +102,6 @@ public class GameTest {
         assertFalse(game.isBlackJack());
 
         while (game.dealerTurn().isPresent()) {}
-        ;
 
         assertTrue(game.isBlackJack() && game.isEnd() && !game.isVictory());
 
