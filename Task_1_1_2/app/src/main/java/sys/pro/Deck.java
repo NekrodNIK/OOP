@@ -10,7 +10,7 @@ import java.util.stream.Stream;
 public class Deck {
     private ArrayList<Card> initial;
     private ArrayList<Card> arr;
-    private boolean disable_shuffle;
+    private boolean disableShuffle;
 
     /**
      * Constructor.
@@ -18,10 +18,10 @@ public class Deck {
      * @param initial Initial state
      * @param disable_shuffle Turn off deck shuffling
      */
-    public Deck(Collection<Card> initial, boolean disable_shuffle) {
+    public Deck(Collection<Card> initial, boolean disableShuffle) {
         this.initial = new ArrayList<Card>(initial);
         arr = new ArrayList<Card>(initial);
-        this.disable_shuffle = disable_shuffle;
+        this.disableShuffle = disableShuffle;
     }
 
     /**
@@ -46,7 +46,7 @@ public class Deck {
 
     /** Shuffle the Deck. */
     public void shuffle() {
-        if (!disable_shuffle) {
+        if (!disableShuffle) {
             Collections.shuffle(arr);
         }
     }
