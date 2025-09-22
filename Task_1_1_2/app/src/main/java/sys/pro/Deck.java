@@ -23,7 +23,7 @@ public class Deck {
         arr = new ArrayList<Card>(initial);
         this.disable_shuffle = disable_shuffle;
     }
-    
+
     /**
      * Constructor.
      *
