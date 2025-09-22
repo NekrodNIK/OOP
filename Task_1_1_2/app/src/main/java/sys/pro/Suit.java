@@ -17,9 +17,11 @@ public enum Suit {
         this.label = label;
     }
 
-    /** Returns label.
-    @return label
-    */
+    /**
+     * Returns label.
+     *
+     * @return label
+     */
     public String getLabel() {
         return label;
     }

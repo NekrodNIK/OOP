@@ -4,184 +4,184 @@ import java.util.Optional;
 
 /** Game driver. */
 public class Game {
-  private Deck deck;
-  private Hand player;
-  private Hand dealer;
+    private Deck deck;
+    private Hand player;
+    private Hand dealer;
 
-  private int pscore;
-  private int dscore;
-  private State state;
+    private int pscore;
+    private int dscore;
+    private State state;
 
-  /** Default constructor. */
-  public Game() {
-    this(new Deck());
-  }
-
-  /**
-   * Constructor.
-   *
-   * @param deck Initial deck
-   */
-  public Game(Deck deck) {
-    this.deck = deck;
-    player = new Hand();
-    dealer = new Hand();
-    pscore = 0;
-    dscore = 0;
-    state = State.START;
-  }
-
-  /** Deal cards at the beginning of the game. */
-  public void dealStartingCards() {
-    deck.dealFaceUp(player);
-    deck.dealFaceUp(player);
-
-    if (player.getTotal() == 21) {
-      state = State.BLACKJACK_WIN;
+    /** Default constructor. */
+    public Game() {
+        this(new Deck());
     }
 
-    deck.dealFaceDown(dealer);
-    deck.dealFaceUp(dealer);
-  }
-
-  /**
-   * Deal a card to a player.
-   *
-   * @return Card
-   */
-  public Card dealToPlayer() {
-    deck.dealFaceUp(player);
-
-    if (player.getTotal() > 21) {
-      state = State.LOSE;
+    /**
+     * Constructor.
+     *
+     * @param deck Initial deck
+     */
+    public Game(Deck deck) {
+        this.deck = deck;
+        player = new Hand();
+        dealer = new Hand();
+        pscore = 0;
+        dscore = 0;
+        state = State.START;
     }
 
-    return player.getLastAddedCard();
-  }
+    /** Deal cards at the beginning of the game. */
+    public void dealStartingCards() {
+        deck.dealFaceUp(player);
+        deck.dealFaceUp(player);
 
-  /**
-   * Make one dealer turn. If the dealer's move is not possible, returns None.
-   *
-   * @return Card or None
-   */
-  public Optional<Card> dealerTurn() {
-    if (state != State.START) {
-      return Optional.empty();
+        if (player.getTotal() == 21) {
+            state = State.BLACKJACK_WIN;
+        }
+
+        deck.dealFaceDown(dealer);
+        deck.dealFaceUp(dealer);
     }
 
-    Optional<Card> card = dealer.findHiddenCard();
-    if (dealer.getTotal() < 17 && card.isPresent()) {
-      card.get().show();
-      selectState();
-      return card;
+    /**
+     * Deal a card to a player.
+     *
+     * @return Card
+     */
+    public Card dealToPlayer() {
+        deck.dealFaceUp(player);
+
+        if (player.getTotal() > 21) {
+            state = State.LOSE;
+        }
+
+        return player.getLastAddedCard();
     }
 
-    selectState();
-    return Optional.empty();
-  }
+    /**
+     * Make one dealer turn. If the dealer's move is not possible, returns None.
+     *
+     * @return Card or None
+     */
+    public Optional<Card> dealerTurn() {
+        if (state != State.START) {
+            return Optional.empty();
+        }
 
-  private void selectState() {
-    if (dealer.getTotal() == 21 && player.getTotal() == 21) {
-      state = State.BLACKJACK_DRAW;
-    } else if (dealer.getTotal() == 21) {
-      state = State.BLACKJACK_LOSE;
-    } else if (dealer.getTotal() > 21) {
-      state = State.WIN;
-    } else if (dealer.getTotal() == player.getTotal()) {
-      state = State.DRAW;
-    } else if (dealer.getTotal() > player.getTotal()) {
-      state = State.LOSE;
-    } else {
-      state = State.WIN;
+        Optional<Card> card = dealer.findHiddenCard();
+        if (dealer.getTotal() < 17 && card.isPresent()) {
+            card.get().show();
+            selectState();
+            return card;
+        }
+
+        selectState();
+        return Optional.empty();
     }
-  }
 
-  /** Update score. */
-  public void updateScore() {
-    switch (state) {
-      case WIN:
-      case BLACKJACK_WIN:
-        pscore++;
-        break;
-      case LOSE:
-      case BLACKJACK_LOSE:
-        dscore++;
-        break;
-      default:
+    private void selectState() {
+        if (dealer.getTotal() == 21 && player.getTotal() == 21) {
+            state = State.BLACKJACK_DRAW;
+        } else if (dealer.getTotal() == 21) {
+            state = State.BLACKJACK_LOSE;
+        } else if (dealer.getTotal() > 21) {
+            state = State.WIN;
+        } else if (dealer.getTotal() == player.getTotal()) {
+            state = State.DRAW;
+        } else if (dealer.getTotal() > player.getTotal()) {
+            state = State.LOSE;
+        } else {
+            state = State.WIN;
+        }
     }
-  }
 
-  /** Start the next round. */
-  public void nextRound() {
-    deck.restore();
-    deck.shuffle();
-    player.clear();
-    dealer.clear();
-    state = State.START;
+    /** Update score. */
+    public void updateScore() {
+        switch (state) {
+            case WIN:
+            case BLACKJACK_WIN:
+                pscore++;
+                break;
+            case LOSE:
+            case BLACKJACK_LOSE:
+                dscore++;
+                break;
+            default:
+        }
+    }
 
-    dealStartingCards();
-  }
+    /** Start the next round. */
+    public void nextRound() {
+        deck.restore();
+        deck.shuffle();
+        player.clear();
+        dealer.clear();
+        state = State.START;
 
-  /**
-   * Get game state.
-   *
-   * @return state
-   */
-  public State getState() {
-    return state;
-  }
+        dealStartingCards();
+    }
 
-  /**
-   * Returns player score.
-   * 
-   * @return score
-   */
-  public int getPlayerScore() {
-    return pscore;
-  }
+    /**
+     * Get game state.
+     *
+     * @return state
+     */
+    public State getState() {
+        return state;
+    }
 
-  /**
-   * Returns dealer score.
-   * 
-   * @return score
-   */
-  public int getDealerScore() {
-    return dscore;
-  }
+    /**
+     * Returns player score.
+     *
+     * @return score
+     */
+    public int getPlayerScore() {
+        return pscore;
+    }
 
-  /**
-   * Returns player hand.
-   * 
-   * @return hand
-   */
-  public Hand getPlayerHand() {
-    return new Hand(player);
-  }
+    /**
+     * Returns dealer score.
+     *
+     * @return score
+     */
+    public int getDealerScore() {
+        return dscore;
+    }
 
-  /**
-   * Returns dealer hand.
-   * 
-   * @return hand
-   */
-  public Hand getDealerHand() {
-    return new Hand(dealer);
-  }
+    /**
+     * Returns player hand.
+     *
+     * @return hand
+     */
+    public Hand getPlayerHand() {
+        return new Hand(player);
+    }
 
-  /**
-   * Returns player points.
-   * 
-   * @return points
-   */
-  public int getPlayerPoints() {
-    return player.getTotal();
-  }
+    /**
+     * Returns dealer hand.
+     *
+     * @return hand
+     */
+    public Hand getDealerHand() {
+        return new Hand(dealer);
+    }
 
-  /**
-   * Returns dealer points.
-   * 
-   * @return points
-   */
-  public int getDealerPoints() {
-    return dealer.getTotal();
-  }
+    /**
+     * Returns player points.
+     *
+     * @return points
+     */
+    public int getPlayerPoints() {
+        return player.getTotal();
+    }
+
+    /**
+     * Returns dealer points.
+     *
+     * @return points
+     */
+    public int getDealerPoints() {
+        return dealer.getTotal();
+    }
 }
