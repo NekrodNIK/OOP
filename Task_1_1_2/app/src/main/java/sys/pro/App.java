@@ -32,6 +32,7 @@ public class App {
      *
      * @param game Some game
      * @param input Scanner object
+     * @return state
      */
     protected static State nextRound(Game game, Scanner input) {
         game.nextRound();
