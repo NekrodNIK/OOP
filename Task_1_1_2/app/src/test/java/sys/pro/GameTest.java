@@ -47,10 +47,9 @@ public class GameTest {
         game.dealStartingCards();
 
         assertEquals(21, game.getPlayerPoints());
-        assertTrue(game.isBlackJack() && game.isEnd() && game.isVictory());
-
+        assertEquals(State.BLACKJACK_WIN, game.getState());
+        
         game.updateScore();
-
         assertEquals(1, game.getPlayerScore());
         assertEquals(0, game.getDealerScore());
     }
@@ -63,7 +62,7 @@ public class GameTest {
         game.dealStartingCards();
 
         assertNotEquals(21, game.getPlayerPoints());
-        assertFalse(game.isBlackJack() || game.isEnd());
+        assertEquals(State.START, game.getState());
     }
 
     @Test
@@ -89,7 +88,7 @@ public class GameTest {
         game.nextRound();
 
         game.dealToPlayer();
-        assertTrue(game.isEnd() && !game.isVictory());
+        assertEquals(State.LOSE, game.getState());
     }
 
     @Test
@@ -99,14 +98,12 @@ public class GameTest {
         Game game = new Game(new Deck(initial));
 
         game.dealStartingCards();
-        assertFalse(game.isBlackJack());
+        assertEquals(State.START, game.getState());
 
         while (game.dealerTurn().isPresent()) {}
 
-        assertTrue(game.isBlackJack() && game.isEnd() && !game.isVictory());
-
+        assertEquals(State.BLACKJACK_LOSE, game.getState());
         game.updateScore();
-
         assertEquals(0, game.getPlayerScore());
         assertEquals(1, game.getDealerScore());
     }
@@ -119,8 +116,9 @@ public class GameTest {
 
         game.dealStartingCards();
         game.dealerTurn();
+        game.dealerTurn();
 
         assertTrue(game.getDealerPoints() < 21);
-        assertTrue(game.isVictory());
+        assertEquals(State.WIN, game.getState());
     }
 }

@@ -22,23 +22,18 @@ public class App {
             println("Раунд %d".formatted(r));
             println("Дилер раздал карты");
             nextRound(game, input);
+            game.updateScore();
+            printScore(game);
         }
     }
 
-    protected static boolean nextRound(Game game, Scanner input) {
-        runRound(game, input);
-        game.updateScore();
-        printScore(game);
-        return game.isVictory();
-    }
-
-    private static void runRound(Game game, Scanner input) {
+    protected static State nextRound(Game game, Scanner input) {
         game.nextRound();
 
         printStatus(game);
 
-        if (game.isBlackJack()) {
-            return;
+        if (game.getState() == State.BLACKJACK_WIN) {
+            return game.getState();
         }
 
         println("Ваш ход:\n-------");
@@ -54,8 +49,8 @@ public class App {
                     case "1":
                         println("Вы открыли карту %s".formatted(game.dealToPlayer()));
                         printStatus(game);
-                        if (game.isEnd()) {
-                            return;
+                        if (game.getState() != State.START) {
+                            return game.getState();
                         }
 
                         break inner;
@@ -73,6 +68,8 @@ public class App {
             printStatus(game);
             break;
         }
+
+        return game.getState();
     }
 
     private static void printStatus(Game game) {
@@ -81,11 +78,24 @@ public class App {
     }
 
     private static void printScore(Game game) {
-        print(game.isBlackJack() ? "Блэкждэк! " : "");
-
-        print(game.isVictory() ? "Вы выиграли раунд!" : "Вы проиграли раунд.");
-        print(" ");
-
+        switch (game.getState()) {
+            case BLACKJACK_LOSE:
+                print("Блэкждэк! ");
+            case LOSE:
+                print("Вы проиграли раунд. ");
+                break;
+            default:
+        }
+        
+        switch (game.getState()) {
+            case BLACKJACK_WIN:
+                print("Блэкждэк! ");
+            case WIN:
+                print("Вы выиграли раунд! ");
+                break;
+            default:
+        }
+        
         int pscore = game.getPlayerScore();
         int dscore = game.getDealerScore();
 

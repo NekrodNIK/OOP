@@ -1,8 +1,6 @@
 package sys.pro;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -24,7 +22,8 @@ public class AppTest {
         Game game = new Game(deck);
         Scanner input = new Scanner("1\n0\n");
 
-        assertTrue(App.nextRound(game, input));
+        assertEquals(State.WIN, App.nextRound(game, input));
+        game.updateScore();
         assertEquals(1, game.getPlayerScore());
         assertEquals(0, game.getDealerScore());
     }
@@ -41,14 +40,14 @@ public class AppTest {
         Game game = new Game(deck);
         Scanner input = new Scanner("");
 
-        assertTrue(App.nextRound(game, input));
-        assertTrue(game.isBlackJack());
+        assertEquals(State.BLACKJACK_WIN, App.nextRound(game, input));
+        game.updateScore();
         assertEquals(1, game.getPlayerScore());
         assertEquals(0, game.getDealerScore());
     }
 
     @Test
-    void testNextRoundDealerVictory() {
+    void testNextRoundLose() {
         ArrayList<Card> initialDeck = new ArrayList<Card>();
         initialDeck.add(new Card(Rank.KING, Suit.HEARTS, true));
         initialDeck.add(new Card(Rank.FIVE, Suit.CLUBS, true));
@@ -60,7 +59,8 @@ public class AppTest {
         Game game = new Game(deck);
         Scanner input = new Scanner("0\n");
 
-        assertFalse(App.nextRound(game, input));
+        assertEquals(State.LOSE, App.nextRound(game, input));
+        game.updateScore();
         assertEquals(0, game.getPlayerScore());
         assertEquals(1, game.getDealerScore());
     }
@@ -79,8 +79,10 @@ public class AppTest {
         Scanner input0 = new Scanner("0\n");
         Scanner input1 = new Scanner("1\n0\n");
 
-        assertFalse(App.nextRound(game, input0));
-        assertTrue(App.nextRound(game, input1));
+        assertEquals(State.LOSE, App.nextRound(game, input0));
+        game.updateScore();
+        assertEquals(State.WIN, App.nextRound(game, input1));
+        game.updateScore();
         assertEquals(1, game.getPlayerScore());
         assertEquals(1, game.getDealerScore());
     }
