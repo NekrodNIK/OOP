@@ -21,7 +21,7 @@ public class Deck {
         arr = new ArrayList<Card>(initial);
     }
 
-    /** Default constructor. */
+    /** Creates a standard 52-card deck. */
     public Deck() {
         this(
                 Stream.of(Rank.values())
