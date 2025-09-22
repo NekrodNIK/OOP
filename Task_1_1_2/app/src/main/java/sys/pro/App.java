@@ -79,15 +79,16 @@ public class App {
 
     private static void printScore(Game game) {
         switch (game.getState()) {
+            case BLACKJACK_DRAW:
+                print("Блэкждэк! ");
+            case DRAW:
+                print("В этом раунде ничья. ");
+                break;
             case BLACKJACK_LOSE:
                 print("Блэкждэк! ");
             case LOSE:
                 print("Вы проиграли раунд. ");
                 break;
-            default:
-        }
-        
-        switch (game.getState()) {
             case BLACKJACK_WIN:
                 print("Блэкждэк! ");
             case WIN:

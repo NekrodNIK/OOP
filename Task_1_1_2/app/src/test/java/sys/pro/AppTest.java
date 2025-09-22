@@ -49,8 +49,7 @@ public class AppTest {
     @Test
     void testNextRoundLose() {
         ArrayList<Card> initialDeck = new ArrayList<Card>();
-        initialDeck.add(new Card(Rank.KING, Suit.HEARTS, true));
-        initialDeck.add(new Card(Rank.FIVE, Suit.CLUBS, true));
+        initialDeck.add(new Card(Rank.KING, Suit.CLUBS, true));
         initialDeck.add(new Card(Rank.FIVE, Suit.SPADES, true));
         initialDeck.add(new Card(Rank.FIVE, Suit.HEARTS, true));
         initialDeck.add(new Card(Rank.FIVE, Suit.DIAMONDS, true));
@@ -68,8 +67,8 @@ public class AppTest {
     @Test
     void testNextRoundDraw() {
         ArrayList<Card> initialDeck = new ArrayList<Card>();
+        initialDeck.add(new Card(Rank.ACE, Suit.HEARTS, true));
         initialDeck.add(new Card(Rank.KING, Suit.HEARTS, true));
-        initialDeck.add(new Card(Rank.FIVE, Suit.CLUBS, true));
         initialDeck.add(new Card(Rank.FIVE, Suit.SPADES, true));
         initialDeck.add(new Card(Rank.FIVE, Suit.HEARTS, true));
         initialDeck.add(new Card(Rank.FIVE, Suit.DIAMONDS, true));

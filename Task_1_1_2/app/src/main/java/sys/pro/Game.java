@@ -72,20 +72,28 @@ public class Game {
     Optional<Card> card = dealer.findHiddenCard();
     if (dealer.getTotal() < 17 && card.isPresent()) {
       card.get().show();
-      
-      if (dealer.getTotal() == 21) {
-        state = State.BLACKJACK_LOSE;
-      } else if (dealer.getTotal() > 21) {
-        state = State.WIN;
-      } else {
-        state = dealer.getTotal() >= player.getTotal() ? State.LOSE : State.WIN;
-      }
-
+      selectState();
       return card;
     }
 
-    state = dealer.getTotal() >= player.getTotal() ? State.LOSE : State.WIN;
+    selectState();
     return Optional.empty();
+  }
+
+  private void selectState() {    
+    if (dealer.getTotal() == 21 && player.getTotal() == 21) {
+      state = State.BLACKJACK_DRAW;
+    } else if (dealer.getTotal() == 21) {
+      state = State.BLACKJACK_LOSE;
+    } else if (dealer.getTotal() > 21) {
+      state = State.WIN;
+    } else if (dealer.getTotal() == player.getTotal()) {
+      state = State.DRAW;
+    } else if (dealer.getTotal() > player.getTotal()) {
+      state = State.LOSE;
+    } else {
+      state = State.WIN;
+    }
   }
 
   /** Update score. */
