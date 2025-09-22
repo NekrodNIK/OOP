@@ -10,15 +10,27 @@ import java.util.stream.Stream;
 public class Deck {
     private ArrayList<Card> initial;
     private ArrayList<Card> arr;
+    private boolean disable_shuffle;
 
+    /**
+     * Constructor.
+     *
+     * @param initial Initial state
+     * @param disable_shuffle Turn off deck shuffling
+     */
+    public Deck(Collection<Card> initial, boolean disable_shuffle) {
+        this.initial = new ArrayList<Card>(initial);
+        arr = new ArrayList<Card>(initial);
+        this.disable_shuffle = disable_shuffle;
+    }
+    
     /**
      * Constructor.
      *
      * @param initial Initial state
      */
     public Deck(Collection<Card> initial) {
-        this.initial = new ArrayList<Card>(initial);
-        arr = new ArrayList<Card>(initial);
+        this(initial, false);
     }
 
     /** Creates a standard 52-card deck. */
@@ -34,7 +46,9 @@ public class Deck {
 
     /** Shuffle the Deck. */
     public void shuffle() {
-        Collections.shuffle(arr);
+        if (!disable_shuffle) {
+            Collections.shuffle(arr);
+        }
     }
 
     /** Restore initial state of Deck. */

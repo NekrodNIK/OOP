@@ -22,12 +22,17 @@ public class App {
             println("Раунд %d".formatted(r));
             println("Дилер раздал карты");
             nextRound(game, input);
-            game.updateScore();
-            printScore(game);
         }
     }
 
-    private static void nextRound(Game game, Scanner input) {
+    protected static boolean nextRound(Game game, Scanner input) {
+        runRound(game, input);
+        game.updateScore();
+        printScore(game);
+        return game.isVictory();
+    }
+
+    private static void runRound(Game game, Scanner input) {
         game.nextRound();
 
         printStatus(game);
