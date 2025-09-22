@@ -4,7 +4,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -48,7 +47,7 @@ public class GameTest {
 
         assertEquals(21, game.getPlayerPoints());
         assertEquals(State.BLACKJACK_WIN, game.getState());
-        
+
         game.updateScore();
         assertEquals(1, game.getPlayerScore());
         assertEquals(0, game.getDealerScore());

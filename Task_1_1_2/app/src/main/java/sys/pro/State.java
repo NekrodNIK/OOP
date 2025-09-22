@@ -1,11 +1,19 @@
 package sys.pro;
 
+/** Game state. */
 public enum State {
-  START,
-  WIN,
-  LOSE,
-  DRAW,
-  BLACKJACK_WIN,
-  BLACKJACK_LOSE,
-  BLACKJACK_DRAW,
+    /** START. */
+    START,
+    /** WIN. */
+    WIN,
+    /** LOSE. */
+    LOSE,
+    /** DRAW. */
+    DRAW,
+    /** BLACKJACK_WIN. */
+    BLACKJACK_WIN,
+    /** BLACKJACK_LOSE. */
+    BLACKJACK_LOSE,
+    /** BLACKJACK_DRAW. */
+    BLACKJACK_DRAW,
 }

@@ -96,7 +96,7 @@ public class App {
                 break;
             default:
         }
-        
+
         int pscore = game.getPlayerScore();
         int dscore = game.getDealerScore();
 
