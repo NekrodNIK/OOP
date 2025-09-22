@@ -93,16 +93,22 @@ public class App {
         switch (game.getState()) {
             case BLACKJACK_DRAW:
                 print("Блэкждэк! ");
+                print("В этом раунде ничья. ");
+                break;
             case DRAW:
                 print("В этом раунде ничья. ");
                 break;
             case BLACKJACK_LOSE:
                 print("Блэкждэк! ");
+                print("Вы проиграли раунд. ");
+                break;
             case LOSE:
                 print("Вы проиграли раунд. ");
                 break;
             case BLACKJACK_WIN:
                 print("Блэкждэк! ");
+                print("Вы выиграли раунд! ");
+                break;
             case WIN:
                 print("Вы выиграли раунд! ");
                 break;

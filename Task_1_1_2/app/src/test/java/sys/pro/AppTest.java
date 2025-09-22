@@ -96,5 +96,40 @@ public class AppTest {
         assertEquals(State.WIN, App.nextRound(game, input1));
         assertEquals(1, game.getPlayerScore());
         assertEquals(1, game.getDealerScore());
+    }    
+    
+    @Test
+    void testNextRoundBlackJackLose() {
+        ArrayList<Card> initialDeck = new ArrayList<Card>();
+        initialDeck.add(new Card(Rank.ACE, Suit.CLUBS, true));
+        initialDeck.add(new Card(Rank.QUEEN, Suit.SPADES, true));
+        initialDeck.add(new Card(Rank.FIVE, Suit.HEARTS, true));
+        initialDeck.add(new Card(Rank.FIVE, Suit.DIAMONDS, true));
+
+        Deck deck = new Deck(initialDeck, true);
+        Game game = new Game(deck);
+        Scanner input = new Scanner("0\n");
+
+        assertEquals(State.BLACKJACK_LOSE, App.nextRound(game, input));
+        assertEquals(0, game.getPlayerScore());
+        assertEquals(1, game.getDealerScore());
+    }
+    
+    @Test
+    void testNextRoundConfidentPlayer() {
+        ArrayList<Card> initialDeck = new ArrayList<Card>();
+        initialDeck.add(new Card(Rank.SEVEN, Suit.HEARTS, true));
+        initialDeck.add(new Card(Rank.FIVE, Suit.CLUBS, true));
+        initialDeck.add(new Card(Rank.FIVE, Suit.SPADES, true));
+        initialDeck.add(new Card(Rank.KING, Suit.HEARTS, true));
+        initialDeck.add(new Card(Rank.NINE, Suit.DIAMONDS, true));
+
+        Deck deck = new Deck(initialDeck, true);
+        Game game = new Game(deck);
+        Scanner input = new Scanner("1\n");
+
+        assertEquals(State.LOSE, App.nextRound(game, input));
+        assertEquals(0, game.getPlayerScore());
+        assertEquals(1, game.getDealerScore());
     }
 }
