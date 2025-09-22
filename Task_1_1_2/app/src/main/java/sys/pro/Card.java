@@ -40,22 +40,27 @@ public class Card {
         return this.rank.getDefaultPoints();
     }
 
+    /** Get card suit. */
     public Suit getSuit() {
         return suit;
     }
 
+    /** Get card rank. */
     public Rank getRank() {
         return rank;
     }
 
+    /** Check hard is hidden. */
     public Boolean isHidden() {
         return hidden;
     }
 
+    /** Hide card. */
     public void hide() {
         hidden = true;
     }
 
+    /** Show card. */
     public void show() {
         hidden = false;
     }

@@ -27,6 +27,12 @@ public class App {
         }
     }
 
+    /**
+     * Run next round.
+     *
+     * @param game Some game
+     * @param input Scanner object
+     */
     protected static State nextRound(Game game, Scanner input) {
         game.nextRound();
 
