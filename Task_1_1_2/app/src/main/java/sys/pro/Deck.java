@@ -16,7 +16,7 @@ public class Deck {
      * Constructor.
      *
      * @param initial Initial state
-     * @param disable_shuffle Turn off deck shuffling
+     * @param disableShuffle Turn off deck shuffling
      */
     public Deck(Collection<Card> initial, boolean disableShuffle) {
         this.initial = new ArrayList<Card>(initial);
