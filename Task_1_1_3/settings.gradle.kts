@@ -11,4 +11,4 @@ plugins {
 }
 
 rootProject.name = "Task_1_1_3"
-include("app")
+include("lib")
