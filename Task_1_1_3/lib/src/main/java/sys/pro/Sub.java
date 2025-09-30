@@ -24,10 +24,10 @@ public class Sub extends BinaryOperator {
             return some;
         }
 
-        Expression sLhs = lhs.simplify();
-        Expression sRhs = rhs.simplify();
+        Expression slhs = lhs.simplify();
+        Expression srhs = rhs.simplify();
 
-        if (sLhs.equals(sRhs)) {
+        if (slhs.equals(srhs)) {
             return new Number(0);
         }
 
