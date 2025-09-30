@@ -1,5 +1,7 @@
 package sys.pro;
 
+import java.util.List;
+
 public class Variable extends Expression {
   String name;
   
@@ -24,6 +26,17 @@ public class Variable extends Expression {
     } else {
       return new Number(0);
     }
+  }
+
+  @Override
+  protected Integer evalInternal(List<Variable> vars, List<Number> nums) {
+    for (int i = 0; i < vars.size(); i++) {
+      if (name.equals(vars.get(i).name)) {
+        return nums.get(i).getValue();
+      }
+    }
+
+    return 0;
   }
 }
 
