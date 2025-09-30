@@ -26,18 +26,20 @@ public class Mul extends BinaryOperator {
         Expression sLhs = lhs.simplify();
         Expression sRhs = rhs.simplify();
 
-        if (sLhs instanceof Number || sRhs instanceof Number) {
-            Number sLhsNum = (Number) sLhs;
-            Number sRhsNum = (Number) sRhs;
-            if (sLhsNum.getValue() == 0 || sRhsNum.getValue() == 0) {
-                return new Number(0);
-            }
-            if (sLhsNum.getValue() == 1) {
-                return sRhsNum;
-            }
-            if (sRhsNum.getValue() == 1) {
-                return sLhsNum;
-            }
+        if (sLhs instanceof Number && ((Number) sLhs).getValue() == 0) {
+            return new Number(0);
+        }
+        
+        if (sRhs instanceof Number && ((Number) sRhs).getValue() == 0) {
+            return new Number(0);
+        }
+        
+        if (sLhs instanceof Number && ((Number) sLhs).getValue() == 1) {
+            return rhs;
+        }
+        
+        if (sRhs instanceof Number && ((Number) sRhs).getValue() == 1) {
+            return lhs;
         }
 
         return this;
