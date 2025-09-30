@@ -1,5 +1,6 @@
 package sys.pro;
 
+/** 'Mul' binary operator. */
 public class Mul extends BinaryOperator {
     public Mul(Expression lhs, Expression rhs) {
         super(lhs, rhs);

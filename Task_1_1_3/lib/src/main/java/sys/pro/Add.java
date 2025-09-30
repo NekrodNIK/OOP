@@ -1,5 +1,6 @@
 package sys.pro;
 
+/** 'Add' binary operator. */
 public class Add extends BinaryOperator {
     public Add(Expression lhs, Expression rhs) {
         super(lhs, rhs);

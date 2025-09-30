@@ -2,6 +2,7 @@ package sys.pro;
 
 import java.util.List;
 
+/** 'Number' expression. */
 public class Number extends Expression {
     private Integer value;
 

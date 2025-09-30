@@ -2,6 +2,7 @@ package sys.pro;
 
 import java.util.List;
 
+/** 'Variable' expression. */
 public class Variable extends Expression {
     String name;
 
