@@ -38,5 +38,10 @@ public class Variable extends Expression {
 
     return 0;
   }
+
+  @Override
+  public Expression simplify() {
+    return this;
+  }
 }
 

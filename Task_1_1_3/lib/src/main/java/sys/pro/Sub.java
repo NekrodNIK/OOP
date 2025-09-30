@@ -1,7 +1,5 @@
 package sys.pro;
 
-import java.util.List;
-
 public class Sub extends BinaryOperator {
   public Sub(Expression lhs, Expression rhs) {
     super(lhs, rhs);
@@ -14,7 +12,7 @@ public class Sub extends BinaryOperator {
   }
 
   @Override
-  protected Integer evalInternal(List<Variable> vars, List<Number> nums) {
-    return lhs.evalInternal(vars, nums) - rhs.evalInternal(vars, nums);
-  }
+  protected Integer calcOperator(Integer a, Integer b) {
+    return a-b;
+  }  
 }

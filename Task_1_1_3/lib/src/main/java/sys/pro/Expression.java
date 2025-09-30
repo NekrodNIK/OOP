@@ -3,12 +3,13 @@ package sys.pro;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class Expression extends Object {
+public abstract class Expression {
   public String print() {
     return toString();
   }
 
   public abstract Expression derivative(Variable var);
+  public abstract Expression simplify();
   protected abstract Integer evalInternal(List<Variable> vars, List<Number> nums);
   
   public Integer eval(String def) {

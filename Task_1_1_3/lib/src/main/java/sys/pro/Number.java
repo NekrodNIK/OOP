@@ -32,4 +32,9 @@ public class Number extends Expression {
   protected Integer evalInternal(List<Variable> vars, List<Number> nums) {
     return value;
   }
+
+  @Override
+  public Expression simplify() {
+    return this;
+  }
 }
