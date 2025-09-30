@@ -15,7 +15,9 @@ public abstract class Expression {
 
     protected abstract Integer evalInternal(List<Variable> vars, List<Number> nums);
 
-    /** Evaluate expression.
+    /**
+     * Evaluate expression.
+     *
      * @param definition String definitions (like: int x = 1; int y = 0)
      * @return result
      */

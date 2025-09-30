@@ -30,15 +30,15 @@ public class Mul extends BinaryOperator {
         if (sLhs instanceof Number && ((Number) sLhs).getValue() == 0) {
             return new Number(0);
         }
-        
+
         if (sRhs instanceof Number && ((Number) sRhs).getValue() == 0) {
             return new Number(0);
         }
-        
+
         if (sLhs instanceof Number && ((Number) sLhs).getValue() == 1) {
             return rhs;
         }
-        
+
         if (sRhs instanceof Number && ((Number) sRhs).getValue() == 1) {
             return lhs;
         }
