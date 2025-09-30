@@ -8,6 +8,7 @@
 plugins {
     // Apply the java-library plugin for API and implementation separation.
     `java-library`
+    jacoco
 }
 
 repositories {
@@ -33,6 +34,28 @@ java {
     toolchain {
         languageVersion = JavaLanguageVersion.of(21)
     }
+}
+
+tasks.jacocoTestReport {
+    dependsOn(tasks.test) // tests are required to run before generating the report
+
+    reports {
+        xml.required = true
+        html.required = true
+    }
+}
+
+tasks {
+    withType<JavaCompile>().configureEach { options.encoding = "UTF-8" }
+    withType<JavaExec>().configureEach { defaultCharacterEncoding = "UTF-8" }
+    withType<Javadoc>().configureEach { options.encoding = "UTF-8" }
+    withType<Test>().configureEach { defaultCharacterEncoding = "UTF-8" }
+}
+
+tasks.named<Test>("test") {
+    // Use JUnit Platform for unit tests.
+    useJUnitPlatform()
+    finalizedBy(tasks.jacocoTestReport) // report is always generated after tests run
 }
 
 tasks.named<Test>("test") {

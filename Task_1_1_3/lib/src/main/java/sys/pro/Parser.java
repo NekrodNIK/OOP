@@ -2,41 +2,44 @@ package sys.pro;
 
 import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.List;
+import java.util.Optional;
 import java.util.Stack;
 
 public class Parser {
-  private static int operatorPrecedence(char c) {
-    switch (c) {
-      case '+':
-        return 0;
-      case '-':
-        return 0;
-      case '*':
-        return 1;
-      case '/':
-        return 1;
+  public static Expression parse(String string) {
+    ArrayList<String> tokens = new ArrayList<String>();
+    
+    for (int i = 0; i < string.length(); i++) {
+      String token = new String();
+      char c = string.charAt(i);
+
+      if (Character.isSpaceChar(c)) {
+        continue;
+      }
+
+      if (Character.isAlphabetic(c)) {
+        while (i < string.length() && Character.isAlphabetic((c = string.charAt(i)))) {
+          token += c;
+          i++;
+        }
+        i--;
+      } else if (Character.isDigit(c)) {
+        while (i < string.length() && Character.isDigit((c = string.charAt(i)))) {
+          token += c;
+          i++;
+        }
+        i--;
+      } else {
+        token += c;
+      }
+
+      tokens.add(token.trim());
     }
 
-    return 0;
+    return parseInternal(tokens.iterator());
   }
-
-  private static Expression genOperator(char c, Expression lhs, Expression rhs) {
-    switch (c) {
-      case '+':
-        return new Add(lhs, rhs);
-      case '-':
-        return new Sub(lhs, rhs);
-      case '*':
-        return new Mul(lhs, rhs);
-      case '/':
-        return new Div(lhs, rhs);
-      default:
-        return new Add(new Number(0), new Number(0));
-    }
-  }
-
-  public static Expression parseInternal(Iterator<String> tokens) {
+  
+  private static Expression parseInternal(Iterator<String> tokens) {
     Stack<String> operators = new Stack<String>();
     ArrayList<Expression> out = new ArrayList<Expression>();
 
@@ -47,9 +50,9 @@ public class Parser {
         case "-":
         case "*":
         case "/":
-          while (!operators.empty() && operators.peek() != "("
+          while (!operators.empty() && !operators.peek().equals("(")
               && operatorPrecedence(operators.peek().charAt(0)) > operatorPrecedence(cur.charAt(0))) {
-            out.add(genOperator(operators.pop().charAt(0), out.removeLast(), out.removeLast()));
+            out.add(genOperator(operators.pop().charAt(0), out.removeLast(), out.removeLast()).get());
           }
           operators.push(cur);
           break;
@@ -57,8 +60,8 @@ public class Parser {
           operators.push(cur);
           break;
         case ")":
-          while (!operators.empty() && operators.peek() != "(") {
-            out.add(genOperator(operators.pop().charAt(0), out.removeLast(), out.removeLast()));
+          while (!operators.empty() && !operators.peek().equals("(")) {
+            out.add(genOperator(operators.pop().charAt(0), out.removeLast(), out.removeLast()).get());
           }
           if (!operators.empty()) {
             operators.pop();
@@ -74,9 +77,39 @@ public class Parser {
     }
 
     while (!operators.empty()) {
-      out.add(genOperator(operators.pop().charAt(0), out.removeLast(), out.removeLast()));
+      out.add(genOperator(operators.pop().charAt(0), out.removeLast(), out.removeLast()).get());
     }
 
-    return out[0];
+    return out.get(0);
+  }
+  
+  private static int operatorPrecedence(char c) {
+    switch (c) {
+      case '+':
+        return 0;
+      case '-':
+        return 0;
+      case '*':
+        return 1;
+      case '/':
+        return 1;
+    }
+
+    return 0;
+  }
+
+  private static Optional<Expression> genOperator(char c, Expression rhs, Expression lhs) {
+    switch (c) {
+      case '+':
+        return Optional.of(new Add(lhs, rhs));
+      case '-':
+        return Optional.of(new Sub(lhs, rhs));
+      case '*':
+        return Optional.of(new Mul(lhs, rhs));
+      case '/':
+        return Optional.of(new Div(lhs, rhs));
+    }
+
+    return Optional.empty();
   }
 }
