@@ -18,7 +18,7 @@ public abstract class Expression {
     /**
      * Evaluate expression.
      *
-     * @param definition String definitions (like: int x = 1; int y = 0)
+     * @param def String definitions (like: int x = 1; int y = 0)
      * @return result
      */
     public Integer eval(String def) {
@@ -33,5 +33,4 @@ public abstract class Expression {
 
         return evalInternal(vars, nums);
     }
-    ;
 }
