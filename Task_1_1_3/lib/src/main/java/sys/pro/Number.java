@@ -21,7 +21,7 @@ public class Number extends Expression {
 
     @Override
     public boolean equals(Object other) {
-        return other instanceof Number && value.equals(((Number) other).value);
+        return other != null && other instanceof Number && value.equals(((Number) other).value);
     }
 
     @Override

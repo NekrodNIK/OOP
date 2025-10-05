@@ -18,7 +18,7 @@ public class Variable extends Expression {
 
     @Override
     public boolean equals(Object other) {
-        return other instanceof Variable && name.equals(((Variable) other).name);
+        return other != null && other instanceof Variable && name.equals(((Variable) other).name);
     }
 
     @Override

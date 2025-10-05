@@ -48,7 +48,7 @@ public abstract class BinaryOperator extends Expression {
 
     @Override
     public boolean equals(Object other) {
-        return getClass() == other.getClass()
+        return other != null && getClass() == other.getClass()
                 && lhs.equals(((BinaryOperator) other).lhs)
                 && rhs.equals(((BinaryOperator) other).rhs);
     }
