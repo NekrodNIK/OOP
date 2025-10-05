@@ -1,6 +1,5 @@
 package sys.pro;
 
-import java.util.List;
 import java.util.Map;
 
 public abstract class BinaryOperator extends Expression {
@@ -16,16 +15,30 @@ public abstract class BinaryOperator extends Expression {
         this.symbol = symbol;
     }
 
-    @Override
-    public Expression simplify() {
-        Expression sLhs = lhs.simplify();
-        Expression sRhs = rhs.simplify();
-
+    protected Expression simplifyInternal(Expression sLhs, Expression sRhs) {
         if (sLhs instanceof Number && sRhs instanceof Number) {
             return new Number(calcOperator(((Number) sLhs).getValue(), ((Number) sRhs).getValue()));
         } else {
-            return this;
+            if (this instanceof Add) {
+                return new Add(sLhs, sRhs);
+            } else if (this instanceof Sub) {
+                return new Sub(sLhs, sRhs);
+            } else if (this instanceof Mul) {
+                return new Mul(sLhs, sRhs);
+            } else if (this instanceof Div) {
+                return new Div(sLhs, sRhs);
+            } else {
+                throw new IllegalCallerException();
+            }
         }
+    }
+
+    @Override
+    public Expression simplify() {
+        Expression sLhs = lhs.simplify();        
+        Expression sRhs = rhs.simplify();        
+
+        return simplifyInternal(sLhs, sRhs);
     }
 
     @Override

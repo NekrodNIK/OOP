@@ -18,18 +18,13 @@ public class Sub extends BinaryOperator {
 
     @Override
     public Expression simplify() {
-        Expression some = super.simplify();
-        if (some instanceof Number) {
-            return some;
-        }
+        Expression sLhs = lhs.simplify();
+        Expression sRhs = rhs.simplify();
 
-        Expression slhs = lhs.simplify();
-        Expression srhs = rhs.simplify();
-
-        if (slhs.equals(srhs)) {
+        if (sLhs.equals(sRhs)) {
             return new Number(0);
         }
 
-        return this;
+        return this.simplifyInternal(sLhs, sRhs);
     }
 }

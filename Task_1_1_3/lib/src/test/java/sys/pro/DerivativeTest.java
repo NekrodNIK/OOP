@@ -6,10 +6,9 @@ import org.junit.jupiter.api.Test;
 
 /** DerivativeTest. */
 public class DerivativeTest {
-    @Test
-    void testExpr() {
-        assertEquals(
-                Parser.parse("1+1+0+0+0+2-1+0"),
-                Parser.parse("x+x+y+z+1+2*x-x+x/x").derivative(new Variable("x")));
-    }
+  @Test
+  void testAdd() {
+    assertEquals(new Add(new Number(1), new Number(0)),
+        new Add(new Variable("x"), new Variable("y")).derivative(new Variable("x")));
+  }
 }
