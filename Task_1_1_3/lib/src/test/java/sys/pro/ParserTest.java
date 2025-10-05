@@ -1,6 +1,7 @@
 package sys.pro;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.api.Test;
 
@@ -49,5 +50,14 @@ public class ParserTest {
         assertEquals(new Add(new Variable("x"), new Variable("y")), Parser.parse("((x+y))"));
         assertEquals(new Add(new Variable("x"), new Variable("y")), Parser.parse("(((x+y)))"));
         assertEquals(new Add(new Variable("x"), new Variable("y")), Parser.parse("((((x+y))))"));
+    }
+    
+    @Test
+    void testIncorrectInput1() {
+        assertThrows(IllegalArgumentException.class, () -> Parser.parse("x + "));
+    }
+    @Test
+    void testIncorrectInput2() {
+        assertThrows(IllegalArgumentException.class, () -> Parser.parse("x-10/"));
     }
 }
