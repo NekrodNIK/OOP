@@ -3,8 +3,7 @@ package sys.pro;
 /** 'Div' binary operator. */
 public class Div extends BinaryOperator {
     public Div(Expression lhs, Expression rhs) {
-        super(lhs, rhs);
-        symbol = '/';
+        super(lhs, rhs, '/');
     }
 
     @Override

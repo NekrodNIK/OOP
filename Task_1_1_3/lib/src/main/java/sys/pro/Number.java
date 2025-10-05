@@ -1,6 +1,6 @@
 package sys.pro;
 
-import java.util.List;
+import java.util.Map;
 
 /** 'Number' expression. */
 public class Number extends Expression {
@@ -30,7 +30,7 @@ public class Number extends Expression {
     }
 
     @Override
-    protected Integer evalInternal(List<Variable> vars, List<Number> nums) {
+    protected Integer evalInternal(Map<Variable, Number> map) {
         return value;
     }
 

@@ -1,17 +1,19 @@
 package sys.pro;
 
 import java.util.List;
+import java.util.Map;
 
 public abstract class BinaryOperator extends Expression {
-    protected Expression lhs;
-    protected Expression rhs;
-    protected char symbol;
+    final protected Expression lhs;
+    final protected Expression rhs;
+    final private char symbol;
 
     protected abstract Integer calcOperator(Integer a, Integer b);
 
-    public BinaryOperator(Expression lhs, Expression rhs) {
+    public BinaryOperator(Expression lhs, Expression rhs, char symbol) {
         this.lhs = lhs;
         this.rhs = rhs;
+        this.symbol = symbol;
     }
 
     @Override
@@ -27,8 +29,8 @@ public abstract class BinaryOperator extends Expression {
     }
 
     @Override
-    protected Integer evalInternal(List<Variable> vars, List<Number> nums) {
-        return calcOperator(lhs.evalInternal(vars, nums), rhs.evalInternal(vars, nums));
+    protected Integer evalInternal(Map<Variable, Number> map){
+        return calcOperator(lhs.evalInternal(map), rhs.evalInternal(map));
     }
 
     @Override

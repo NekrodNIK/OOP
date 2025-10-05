@@ -1,6 +1,7 @@
 package sys.pro;
 
 import java.util.List;
+import java.util.Map;
 
 /** 'Variable' expression. */
 public class Variable extends Expression {
@@ -30,14 +31,14 @@ public class Variable extends Expression {
     }
 
     @Override
-    protected Integer evalInternal(List<Variable> vars, List<Number> nums) {
-        for (int i = 0; i < vars.size(); i++) {
-            if (name.equals(vars.get(i).name)) {
-                return nums.get(i).getValue();
+    protected Integer evalInternal(Map<Variable, Number> map) {
+        for (Variable var : map.keySet()) {
+            if (name.equals(var.name)) {
+                return map.get(var).getValue();
             }
         }
 
-        return 0;
+        throw new IllegalArgumentException();
     }
 
     @Override

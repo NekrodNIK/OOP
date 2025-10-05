@@ -3,8 +3,7 @@ package sys.pro;
 /** 'Sub' binary operator. */
 public class Sub extends BinaryOperator {
     public Sub(Expression lhs, Expression rhs) {
-        super(lhs, rhs);
-        symbol = '-';
+        super(lhs, rhs, '-');
     }
 
     @Override
