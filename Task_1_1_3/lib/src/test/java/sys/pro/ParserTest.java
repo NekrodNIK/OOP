@@ -26,7 +26,7 @@ public class ParserTest {
     void testDiv() {
         assertEquals(new Div(new Variable("x"), new Number(2)), Parser.parse("x / 2"));
     }
-    
+
     @Test
     void testComplexExpr() {
         assertEquals(
@@ -35,7 +35,7 @@ public class ParserTest {
                         new Mul(new Number(20), new Div(new Variable("x"), new Variable("y")))),
                 Parser.parse("(x+y)/100-20*(x/y)"));
     }
-    
+
     @Test
     void testComplexExprWithFullBrackets() {
         assertEquals(
@@ -51,11 +51,12 @@ public class ParserTest {
         assertEquals(new Add(new Variable("x"), new Variable("y")), Parser.parse("(((x+y)))"));
         assertEquals(new Add(new Variable("x"), new Variable("y")), Parser.parse("((((x+y))))"));
     }
-    
+
     @Test
     void testIncorrectInput1() {
         assertThrows(IllegalArgumentException.class, () -> Parser.parse("x + "));
     }
+
     @Test
     void testIncorrectInput2() {
         assertThrows(IllegalArgumentException.class, () -> Parser.parse("x-10/"));

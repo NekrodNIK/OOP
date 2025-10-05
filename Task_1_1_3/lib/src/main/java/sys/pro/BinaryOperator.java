@@ -3,9 +3,9 @@ package sys.pro;
 import java.util.Map;
 
 public abstract class BinaryOperator extends Expression {
-    final protected Expression lhs;
-    final protected Expression rhs;
-    final private char symbol;
+    protected final Expression lhs;
+    protected final Expression rhs;
+    private final char symbol;
 
     protected abstract Integer calcOperator(Integer a, Integer b);
 
@@ -35,20 +35,21 @@ public abstract class BinaryOperator extends Expression {
 
     @Override
     public Expression simplify() {
-        Expression sLhs = lhs.simplify();        
-        Expression sRhs = rhs.simplify();        
+        Expression sLhs = lhs.simplify();
+        Expression sRhs = rhs.simplify();
 
         return simplifyInternal(sLhs, sRhs);
     }
 
     @Override
-    protected Integer evalInternal(Map<Variable, Number> map){
+    protected Integer evalInternal(Map<Variable, Number> map) {
         return calcOperator(lhs.evalInternal(map), rhs.evalInternal(map));
     }
 
     @Override
     public boolean equals(Object other) {
-        return other != null && getClass() == other.getClass()
+        return other != null
+                && getClass() == other.getClass()
                 && lhs.equals(((BinaryOperator) other).lhs)
                 && rhs.equals(((BinaryOperator) other).rhs);
     }
