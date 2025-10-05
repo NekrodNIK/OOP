@@ -2,7 +2,6 @@ package sys.pro;
 
 import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.Optional;
 import java.util.Stack;
 
 /** 'Parser' class. */
@@ -14,7 +13,7 @@ public class Parser {
    * 
    * @param string Some string
    * @return expression
-   * @throws ParseError
+   * @throws IllegalArgumentException
    */
   public static Expression parse(String string) {
     try {

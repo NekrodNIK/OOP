@@ -1,6 +1,7 @@
 package sys.pro;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.api.Test;
 
@@ -37,5 +38,14 @@ public class EvalTest {
             new Number(8)),
         new Variable("y"));
     assertEquals(121, expr.eval("x = 10; y = 15;"));
+  }
+  
+  @Test
+  void testIncorrectInput() {
+    Expression expr = new Sub(
+        new Mul(new Add(new Div(new Add(new Variable("x"), new Variable("x")), new Variable("x")), new Variable("y")),
+            new Number(8)),
+        new Variable("y"));
+    assertThrows(IllegalArgumentException.class, () -> expr.eval("x = 10; y ="));
   }
 }

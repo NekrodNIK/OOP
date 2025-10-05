@@ -1,6 +1,5 @@
 package sys.pro;
 
-import java.util.List;
 import java.util.Map;
 
 /** 'Variable' expression. */
