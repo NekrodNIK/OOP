@@ -18,25 +18,25 @@ public class Mul extends BinaryOperator {
 
     @Override
     public Expression simplify() {
-        Expression sLhs = lhs.simplify();
-        Expression sRhs = rhs.simplify();
+        Expression slhs = lhs.simplify();
+        Expression srhs = rhs.simplify();
 
-        if (sLhs instanceof Number && ((Number) sLhs).getValue() == 0) {
+        if (slhs instanceof Number && ((Number) slhs).getValue() == 0) {
             return new Number(0);
         }
 
-        if (sRhs instanceof Number && ((Number) sRhs).getValue() == 0) {
+        if (srhs instanceof Number && ((Number) srhs).getValue() == 0) {
             return new Number(0);
         }
 
-        if (sLhs instanceof Number && ((Number) sLhs).getValue() == 1) {
-            return sRhs;
+        if (slhs instanceof Number && ((Number) slhs).getValue() == 1) {
+            return srhs;
         }
 
-        if (sRhs instanceof Number && ((Number) sRhs).getValue() == 1) {
-            return sLhs;
+        if (srhs instanceof Number && ((Number) srhs).getValue() == 1) {
+            return slhs;
         }
 
-        return this.simplifyInternal(sLhs, sRhs);
+        return this.simplifyInternal(slhs, srhs);
     }
 }
