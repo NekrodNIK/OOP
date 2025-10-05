@@ -42,66 +42,64 @@ public class DerivativeTest {
 
     @Test
     void testExpr() {
-        Expression expected =
+        Expression expected = new Add(
+            new Number(1),
+            new Add(
+                new Number(1),
                 new Add(
-                        new Number(1),
+                    new Number(0),
+                    new Add(
+                        new Number(0),
                         new Add(
-                                new Number(1),
+                            new Number(0),
+                            new Sub(
                                 new Add(
+                                    new Mul(
                                         new Number(0),
-                                        new Add(
-                                                new Number(0),
-                                                new Add(
-                                                        new Number(0),
-                                                        new Sub(
-                                                                new Add(
-                                                                        new Mul(
-                                                                                new Number(0),
-                                                                                new Variable("x")),
-                                                                        new Mul(
-                                                                                new Number(2),
-                                                                                new Number(1))),
-                                                                new Add(
-                                                                        new Number(1),
-                                                                        new Div(
-                                                                                new Sub(
-                                                                                        new Mul(
-                                                                                                new Number(
-                                                                                                        1),
-                                                                                                new Variable(
-                                                                                                        "x")),
-                                                                                        new Mul(
-                                                                                                new Variable(
-                                                                                                        "x"),
-                                                                                                new Number(
-                                                                                                        1))),
-                                                                                new Mul(
-                                                                                        new Variable(
-                                                                                                "x"),
-                                                                                        new Variable(
-                                                                                                "x"))))))))));
-
-        Expression original =
-                new Add(
-                        new Variable("x"),
-                        new Add(
-                                new Variable("x"),
+                                        new Variable("x")),
+                                    new Mul(
+                                        new Number(2),
+                                        new Number(1))),
                                 new Add(
-                                        new Variable("y"),
-                                        new Add(
-                                                new Variable("z"),
-                                                new Add(
-                                                        new Number(1),
-                                                        new Sub(
-                                                                new Mul(
-                                                                        new Number(2),
-                                                                        new Variable("x")),
-                                                                new Add(
-                                                                        new Variable("x"),
-                                                                        new Div(
-                                                                                new Variable("x"),
-                                                                                new Variable(
-                                                                                        "x")))))))));
+                                    new Number(1),
+                                    new Div(
+                                        new Sub(
+                                            new Mul(
+                                                new Number(
+                                                    1),
+                                                new Variable(
+                                                    "x")),
+                                            new Mul(
+                                                new Variable(
+                                                    "x"),
+                                                new Number(
+                                                    1))),
+                                        new Mul(
+                                            new Variable(
+                                                "x"),
+                                            new Variable(
+                                                "x"))))))))));
+
+        Expression original = new Add(
+            new Variable("x"),
+            new Add(
+                new Variable("x"),
+                new Add(
+                    new Variable("y"),
+                    new Add(
+                        new Variable("z"),
+                        new Add(
+                            new Number(1),
+                            new Sub(
+                                new Mul(
+                                    new Number(2),
+                                    new Variable("x")),
+                                new Add(
+                                    new Variable("x"),
+                                    new Div(
+                                        new Variable("x"),
+                                        new Variable(
+                                            "x"))))))))); 
 
         assertEquals(expected, original.derivative(new Variable("x")));
     }
