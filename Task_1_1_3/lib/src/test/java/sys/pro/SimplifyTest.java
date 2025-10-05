@@ -31,4 +31,16 @@ public class SimplifyTest {
     expr = new Mul(new Number(1), new Variable("x"));
     assertEquals(expected, expr.simplify());
   }
+  
+  @Test
+  void testSubEquals() {
+    Expression expr = new Sub(new Variable("x"), new Variable("x"));
+    assertEquals(new Number(0), expr.simplify());
+  }
+  
+  @Test
+  void testNoVariables() {
+    Expression expr = new Mul(new Add(new Number(100), new Number(110)), new Number(500));
+    assertEquals(new Number(105000), expr.simplify());
+  }
 }
