@@ -62,7 +62,7 @@ loadScripts(document, 'script');</script>
 <dl class="index">
 <dt><a href="sys/pro/BinaryOperator.html" class="type-name-link" title="class in sys.pro">BinaryOperator</a> - Class in <a href="sys/pro/package-summary.html">sys.pro</a></dt>
 <dd>&nbsp;</dd>
-<dt><a href="sys/pro/BinaryOperator.html#%3Cinit%3E(sys.pro.Expression,sys.pro.Expression)" class="member-name-link">BinaryOperator(Expression, Expression)</a> - Constructor for class sys.pro.<a href="sys/pro/BinaryOperator.html" title="class in sys.pro">BinaryOperator</a></dt>
+<dt><a href="sys/pro/BinaryOperator.html#%3Cinit%3E(sys.pro.Expression,sys.pro.Expression,char)" class="member-name-link">BinaryOperator(Expression, Expression, char)</a> - Constructor for class sys.pro.<a href="sys/pro/BinaryOperator.html" title="class in sys.pro">BinaryOperator</a></dt>
 <dd>&nbsp;</dd>
 </dl>
 <h2 class="title" id="I:C">C</h2>
@@ -85,7 +85,9 @@ loadScripts(document, 'script');</script>
 <dt><a href="sys/pro/Div.html#derivative(sys.pro.Variable)" class="member-name-link">derivative(Variable)</a> - Method in class sys.pro.<a href="sys/pro/Div.html" title="class in sys.pro">Div</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="sys/pro/Expression.html#derivative(sys.pro.Variable)" class="member-name-link">derivative(Variable)</a> - Method in class sys.pro.<a href="sys/pro/Expression.html" title="class in sys.pro">Expression</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Take derivative of the expression.</div>
+</dd>
 <dt><a href="sys/pro/Mul.html#derivative(sys.pro.Variable)" class="member-name-link">derivative(Variable)</a> - Method in class sys.pro.<a href="sys/pro/Mul.html" title="class in sys.pro">Mul</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="sys/pro/Number.html#derivative(sys.pro.Variable)" class="member-name-link">derivative(Variable)</a> - Method in class sys.pro.<a href="sys/pro/Number.html" title="class in sys.pro">Number</a></dt>
@@ -111,15 +113,15 @@ loadScripts(document, 'script');</script>
 <dd>&nbsp;</dd>
 <dt><a href="sys/pro/Expression.html#eval(java.lang.String)" class="member-name-link">eval(String)</a> - Method in class sys.pro.<a href="sys/pro/Expression.html" title="class in sys.pro">Expression</a></dt>
 <dd>
-<div class="block">Evaluate expression.</div>
+<div class="block">Evaluate the expression.</div>
 </dd>
-<dt><a href="sys/pro/BinaryOperator.html#evalInternal(java.util.List,java.util.List)" class="member-name-link">evalInternal(List&lt;Variable&gt;, List&lt;Number&gt;)</a> - Method in class sys.pro.<a href="sys/pro/BinaryOperator.html" title="class in sys.pro">BinaryOperator</a></dt>
+<dt><a href="sys/pro/BinaryOperator.html#evalInternal(java.util.Map)" class="member-name-link">evalInternal(Map&lt;Variable, Number&gt;)</a> - Method in class sys.pro.<a href="sys/pro/BinaryOperator.html" title="class in sys.pro">BinaryOperator</a></dt>
 <dd>&nbsp;</dd>
-<dt><a href="sys/pro/Expression.html#evalInternal(java.util.List,java.util.List)" class="member-name-link">evalInternal(List&lt;Variable&gt;, List&lt;Number&gt;)</a> - Method in class sys.pro.<a href="sys/pro/Expression.html" title="class in sys.pro">Expression</a></dt>
+<dt><a href="sys/pro/Expression.html#evalInternal(java.util.Map)" class="member-name-link">evalInternal(Map&lt;Variable, Number&gt;)</a> - Method in class sys.pro.<a href="sys/pro/Expression.html" title="class in sys.pro">Expression</a></dt>
 <dd>&nbsp;</dd>
-<dt><a href="sys/pro/Number.html#evalInternal(java.util.List,java.util.List)" class="member-name-link">evalInternal(List&lt;Variable&gt;, List&lt;Number&gt;)</a> - Method in class sys.pro.<a href="sys/pro/Number.html" title="class in sys.pro">Number</a></dt>
+<dt><a href="sys/pro/Number.html#evalInternal(java.util.Map)" class="member-name-link">evalInternal(Map&lt;Variable, Number&gt;)</a> - Method in class sys.pro.<a href="sys/pro/Number.html" title="class in sys.pro">Number</a></dt>
 <dd>&nbsp;</dd>
-<dt><a href="sys/pro/Variable.html#evalInternal(java.util.List,java.util.List)" class="member-name-link">evalInternal(List&lt;Variable&gt;, List&lt;Number&gt;)</a> - Method in class sys.pro.<a href="sys/pro/Variable.html" title="class in sys.pro">Variable</a></dt>
+<dt><a href="sys/pro/Variable.html#evalInternal(java.util.Map)" class="member-name-link">evalInternal(Map&lt;Variable, Number&gt;)</a> - Method in class sys.pro.<a href="sys/pro/Variable.html" title="class in sys.pro">Variable</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="sys/pro/Expression.html" class="type-name-link" title="class in sys.pro">Expression</a> - Class in <a href="sys/pro/package-summary.html">sys.pro</a></dt>
 <dd>
@@ -165,7 +167,9 @@ loadScripts(document, 'script');</script>
 <dt><a href="sys/pro/Parser.html#%3Cinit%3E()" class="member-name-link">Parser()</a> - Constructor for class sys.pro.<a href="sys/pro/Parser.html" title="class in sys.pro">Parser</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="sys/pro/Expression.html#print()" class="member-name-link">print()</a> - Method in class sys.pro.<a href="sys/pro/Expression.html" title="class in sys.pro">Expression</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Print the expression.</div>
+</dd>
 </dl>
 <h2 class="title" id="I:R">R</h2>
 <dl class="index">
@@ -177,7 +181,9 @@ loadScripts(document, 'script');</script>
 <dt><a href="sys/pro/BinaryOperator.html#simplify()" class="member-name-link">simplify()</a> - Method in class sys.pro.<a href="sys/pro/BinaryOperator.html" title="class in sys.pro">BinaryOperator</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="sys/pro/Expression.html#simplify()" class="member-name-link">simplify()</a> - Method in class sys.pro.<a href="sys/pro/Expression.html" title="class in sys.pro">Expression</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Simplify the expression.</div>
+</dd>
 <dt><a href="sys/pro/Mul.html#simplify()" class="member-name-link">simplify()</a> - Method in class sys.pro.<a href="sys/pro/Mul.html" title="class in sys.pro">Mul</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="sys/pro/Number.html#simplify()" class="member-name-link">simplify()</a> - Method in class sys.pro.<a href="sys/pro/Number.html" title="class in sys.pro">Number</a></dt>
@@ -191,8 +197,6 @@ loadScripts(document, 'script');</script>
 <div class="block">'Sub' binary operator.</div>
 </dd>
 <dt><a href="sys/pro/Sub.html#%3Cinit%3E(sys.pro.Expression,sys.pro.Expression)" class="member-name-link">Sub(Expression, Expression)</a> - Constructor for class sys.pro.<a href="sys/pro/Sub.html" title="class in sys.pro">Sub</a></dt>
-<dd>&nbsp;</dd>
-<dt><a href="sys/pro/BinaryOperator.html#symbol" class="member-name-link">symbol</a> - Variable in class sys.pro.<a href="sys/pro/BinaryOperator.html" title="class in sys.pro">BinaryOperator</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="sys/pro/package-summary.html">sys.pro</a> - package sys.pro</dt>
 <dd>&nbsp;</dd>
