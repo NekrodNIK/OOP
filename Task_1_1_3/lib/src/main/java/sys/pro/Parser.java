@@ -100,13 +100,13 @@ public class Parser {
     private static int operatorPrecedence(char c) {
         switch (c) {
             case '+':
-                return 0;
+                return 1;
             case '-':
-                return 0;
+                return 1;
             case '*':
-                return 1;
+                return 2;
             case '/':
-                return 1;
+                return 2;
         }
 
         return 0;
