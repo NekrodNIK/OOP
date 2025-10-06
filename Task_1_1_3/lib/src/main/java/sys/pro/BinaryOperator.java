@@ -12,6 +12,7 @@ public abstract class BinaryOperator extends Expression {
 
     /**
       * BinaryOperator constructor.
+      *
       * @param lhs Left expr
       * @param rhs Right expr
       * @param symbol Operator symbol
