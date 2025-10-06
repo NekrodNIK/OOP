@@ -15,30 +15,18 @@ public abstract class BinaryOperator extends Expression {
         this.symbol = symbol;
     }
 
-    protected Expression simplifyInternal(Expression slhs, Expression srhs) {
-        if (slhs instanceof Number && srhs instanceof Number) {
-            return new Number(calcOperator(((Number) slhs).getValue(), ((Number) srhs).getValue()));
-        } else {
-            if (this instanceof Add) {
-                return new Add(slhs, srhs);
-            } else if (this instanceof Sub) {
-                return new Sub(slhs, srhs);
-            } else if (this instanceof Mul) {
-                return new Mul(slhs, srhs);
-            } else if (this instanceof Div) {
-                return new Div(slhs, srhs);
-            } else {
-                throw new IllegalCallerException();
-            }
-        }
-    }
+    protected abstract Expression simplifyInternal(Expression slhs, Expression srhs);
 
     @Override
     public Expression simplify() {
         Expression slhs = lhs.simplify();
         Expression srhs = rhs.simplify();
-
-        return simplifyInternal(slhs, srhs);
+        
+        if (slhs instanceof Number && srhs instanceof Number) {
+            return new Number(calcOperator(((Number) slhs).getValue(), ((Number) srhs).getValue()));
+        } else {
+            return simplifyInternal(slhs, srhs);
+        }
     }
 
     @Override

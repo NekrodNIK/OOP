@@ -17,14 +17,11 @@ public class Sub extends BinaryOperator {
     }
 
     @Override
-    public Expression simplify() {
-        Expression sLhs = lhs.simplify();
-        Expression sRhs = rhs.simplify();
-
-        if (sLhs.equals(sRhs)) {
+    protected Expression simplifyInternal(Expression slhs, Expression srhs) {
+        if (slhs.equals(srhs)) {
             return new Number(0);
         }
 
-        return this.simplifyInternal(sLhs, sRhs);
+        return new Sub(slhs, srhs);
     }
 }

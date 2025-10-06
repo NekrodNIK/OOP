@@ -17,10 +17,7 @@ public class Mul extends BinaryOperator {
     }
 
     @Override
-    public Expression simplify() {
-        Expression slhs = lhs.simplify();
-        Expression srhs = rhs.simplify();
-
+    protected Expression simplifyInternal(Expression slhs, Expression srhs) {
         if (slhs instanceof Number && ((Number) slhs).getValue() == 0) {
             return new Number(0);
         }
@@ -37,6 +34,6 @@ public class Mul extends BinaryOperator {
             return slhs;
         }
 
-        return this.simplifyInternal(slhs, srhs);
+        return new Mul(slhs, srhs);
     }
 }

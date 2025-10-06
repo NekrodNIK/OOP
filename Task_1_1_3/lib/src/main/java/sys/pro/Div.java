@@ -17,4 +17,9 @@ public class Div extends BinaryOperator {
     protected Integer calcOperator(Integer a, Integer b) {
         return a / b;
     }
+
+    @Override
+    protected Expression simplifyInternal(Expression slhs, Expression srhs) {
+        return new Div(slhs, srhs);
+    }
 }
