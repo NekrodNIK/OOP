@@ -21,6 +21,11 @@ public class Variable extends Expression {
     }
 
     @Override
+    public int hashCode() {
+      return name.hashCode();
+    }
+
+    @Override
     public Expression derivative(Variable var) {
         if (equals(var)) {
             return new Number(1);
@@ -31,10 +36,8 @@ public class Variable extends Expression {
 
     @Override
     protected Integer evalInternal(Map<Variable, Number> map) {
-        for (Variable var : map.keySet()) {
-            if (name.equals(var.name)) {
-                return map.get(var).getValue();
-            }
+        if (map.containsKey(this)) {
+            return map.get(this).getValue();
         }
 
         throw new IllegalArgumentException();
