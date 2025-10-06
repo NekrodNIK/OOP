@@ -141,17 +141,16 @@ loadScripts(document, 'script');</script>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Take derivative of the expression.</div>
 </div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="Expression.html" title="class in sys.pro">Expression</a></code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#simplify()" class="member-name-link">simplify</a>()</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Simplify the expression.</div>
-</div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>protected <a href="Expression.html" title="class in sys.pro">Expression</a></code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#simplifyInternal(sys.pro.Expression,sys.pro.Expression)" class="member-name-link">simplifyInternal</a><wbr>(<a href="Expression.html" title="class in sys.pro">Expression</a>&nbsp;slhs,
+ <a href="Expression.html" title="class in sys.pro">Expression</a>&nbsp;srhs)</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
 </div>
 </div>
 </div>
 <div class="inherited-list">
 <h3 id="methods-inherited-from-class-sys.pro.BinaryOperator">Methods inherited from class&nbsp;sys.pro.<a href="BinaryOperator.html" title="class in sys.pro">BinaryOperator</a></h3>
-<code><a href="BinaryOperator.html#equals(java.lang.Object)">equals</a>, <a href="BinaryOperator.html#evalInternal(java.util.Map)">evalInternal</a>, <a href="BinaryOperator.html#simplifyInternal(sys.pro.Expression,sys.pro.Expression)">simplifyInternal</a>, <a href="BinaryOperator.html#toString()">toString</a></code></div>
+<code><a href="BinaryOperator.html#equals(java.lang.Object)">equals</a>, <a href="BinaryOperator.html#evalInternal(java.util.Map)">evalInternal</a>, <a href="BinaryOperator.html#simplify()">simplify</a>, <a href="BinaryOperator.html#toString()">toString</a></code></div>
 <div class="inherited-list">
 <h3 id="methods-inherited-from-class-sys.pro.Expression">Methods inherited from class&nbsp;sys.pro.<a href="Expression.html" title="class in sys.pro">Expression</a></h3>
 <code><a href="Expression.html#eval(java.lang.String)">eval</a>, <a href="Expression.html#print()">print</a></code></div>
@@ -210,16 +209,13 @@ loadScripts(document, 'script');</script>
 </section>
 </li>
 <li>
-<section class="detail" id="simplify()">
-<h3>simplify</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="Expression.html" title="class in sys.pro">Expression</a></span>&nbsp;<span class="element-name">simplify</span>()</div>
-<div class="block"><span class="description-from-type-label">Description copied from class:&nbsp;<code><a href="Expression.html#simplify()">Expression</a></code></span></div>
-<div class="block">Simplify the expression.</div>
+<section class="detail" id="simplifyInternal(sys.pro.Expression,sys.pro.Expression)">
+<h3>simplifyInternal</h3>
+<div class="member-signature"><span class="modifiers">protected</span>&nbsp;<span class="return-type"><a href="Expression.html" title="class in sys.pro">Expression</a></span>&nbsp;<span class="element-name">simplifyInternal</span><wbr><span class="parameters">(<a href="Expression.html" title="class in sys.pro">Expression</a>&nbsp;slhs,
+ <a href="Expression.html" title="class in sys.pro">Expression</a>&nbsp;srhs)</span></div>
 <dl class="notes">
-<dt>Overrides:</dt>
-<dd><code><a href="BinaryOperator.html#simplify()">simplify</a></code>&nbsp;in class&nbsp;<code><a href="BinaryOperator.html" title="class in sys.pro">BinaryOperator</a></code></dd>
-<dt>Returns:</dt>
-<dd>new_expression</dd>
+<dt>Specified by:</dt>
+<dd><code><a href="BinaryOperator.html#simplifyInternal(sys.pro.Expression,sys.pro.Expression)">simplifyInternal</a></code>&nbsp;in class&nbsp;<code><a href="BinaryOperator.html" title="class in sys.pro">BinaryOperator</a></code></dd>
 </dl>
 </section>
 </li>
