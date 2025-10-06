@@ -46,7 +46,7 @@ public class Parser {
 
             return parseInternal(tokens.iterator());
         } catch (Exception e) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("Invalid string representation");
         }
     }
 

@@ -50,7 +50,7 @@ public abstract class Expression {
 
             return evalInternal(map);
         } catch (Exception e) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("Invalid definition");
         }
     }
 }

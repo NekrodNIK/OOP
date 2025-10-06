@@ -40,7 +40,7 @@ public class Variable extends Expression {
             return map.get(this).getValue();
         }
 
-        throw new IllegalArgumentException();
+        throw new IllegalArgumentException("No value for variable %s".formatted(name));
     }
 
     @Override
