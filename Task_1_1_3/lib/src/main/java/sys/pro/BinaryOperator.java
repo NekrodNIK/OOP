@@ -2,6 +2,7 @@ package sys.pro;
 
 import java.util.Map;
 
+/** 'Add' binary operator. */
 public abstract class BinaryOperator extends Expression {
     protected final Expression lhs;
     protected final Expression rhs;
@@ -9,6 +10,12 @@ public abstract class BinaryOperator extends Expression {
 
     protected abstract Integer calcOperator(Integer a, Integer b);
 
+    /**
+      * BinaryOperator constructor.
+      * @param lhs Left expr
+      * @param rhs Right expr
+      * @param symbol Operator symbol
+      */
     public BinaryOperator(Expression lhs, Expression rhs, char symbol) {
         this.lhs = lhs;
         this.rhs = rhs;
