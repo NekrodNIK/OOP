@@ -114,9 +114,9 @@ public class Parser {
                 return 2;
             case '/':
                 return 2;
+            default:
+                throw new IllegalArgumentException("Illegal operator");
         }
-
-        throw new IllegalArgumentException();
     }
 
     private static Expression genOperator(char c, Expression rhs, Expression lhs) {
@@ -129,8 +129,8 @@ public class Parser {
                 return new Mul(lhs, rhs);
             case '/':
                 return new Div(lhs, rhs);
+            default:
+                throw new IllegalArgumentException("Illegal operator");
         }
-
-        throw new IllegalArgumentException();
     }
 }
