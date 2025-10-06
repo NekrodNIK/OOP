@@ -31,11 +31,11 @@ public abstract class Expression {
     protected abstract Integer evalInternal(Map<Variable, Number> map);
 
     /**
-     * Evaluate the expression. If the definition is invalid, throws IllegalArgumentException.
+     * Evaluate the expression.
      *
      * @param def String definitions (like: int x = 1; int y = 0)
      * @return result
-     * @throws IllegalArgumentException
+     * @throws IllegalArgumentException if the definition is invalid
      */
     public Integer eval(String def) {
         try {

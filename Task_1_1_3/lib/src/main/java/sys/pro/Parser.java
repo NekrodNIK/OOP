@@ -7,12 +7,11 @@ import java.util.Stack;
 /** 'Parser' class. */
 public class Parser {
     /**
-     * Parse the expression from string. If the string is not a valid string representation of an
-     * expression a IllegalArgumentException is thrown.
+     * Parse the expression from string.  
      *
      * @param string Some string
      * @return expression
-     * @throws IllegalArgumentException
+     * @throws IllegalArgumentException if the string is not a valid string representation
      */
     public static Expression parse(String string) {
         try {
