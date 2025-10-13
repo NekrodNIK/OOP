@@ -3,6 +3,7 @@ package sys.pro;
 import java.util.Scanner;
 import java.util.stream.Stream;
 
+/** Graph interface. */
 public interface Graph {
     /*
      * Gets vertex count.
