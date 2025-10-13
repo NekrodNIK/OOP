@@ -5,36 +5,38 @@ import java.util.List;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
-import com.google.common.collect.Streams;
-
 /**
- * AdjGraph
+ * AdjListGraph
  */
-public class AdjGraph implements Graph {
+public class AdjListGraph implements Graph {
   protected ArrayList<ArrayList<Integer>> adj;
+  protected int vertexesCount;
 
-  public AdjGraph() {
+  public AdjListGraph() {
     adj = new ArrayList<ArrayList<Integer>>();
+    vertexesCount = 0;
   }
 
   @Override
   public int newVertex() {
     adj.addLast(new ArrayList<Integer>());
+    vertexesCount += 1;
     return adj.size() - 1;
   }
 
   @Override
   public void removeVertex(int index) {
-    for (Integer i : adj.get(index)) {
+    for (int i = 0; i < adj.size(); i++) {
       adj.get(i).remove(Integer.valueOf(index));
     }
 
     adj.get(index).clear();
+    vertexesCount -= 1;
   }
 
   @Override
   public void addDirectedEdge(int from, int to) {
-    while (size() <= from) {
+    while (adj.size() <= Math.max(from, to)) {
       newVertex();
     }
 
@@ -48,7 +50,9 @@ public class AdjGraph implements Graph {
 
   @Override
   public Stream<Integer> getAllVertexes() {
-    return IntStream.range(0, size()).mapToObj((item) -> Integer.valueOf(item));
+    return IntStream.range(0, adj.size())
+        .mapToObj((item) -> Integer.valueOf(item))
+        .filter((index) -> !adj.get(index).isEmpty());
   }
 
   @Override
@@ -57,8 +61,8 @@ public class AdjGraph implements Graph {
   }
 
   @Override
-  public int size() {
-    return adj.size();
+  public long vertexesCount() {
+    return vertexesCount;
   }
 
   private void dfs(List<Integer> result, List<Boolean> visited, Integer v) {
@@ -77,16 +81,13 @@ public class AdjGraph implements Graph {
     ArrayList<Integer> result = new ArrayList<Integer>();
 
     ArrayList<Boolean> visited = new ArrayList<Boolean>();
-    for (int i = 0; i < size(); i++) {
+    for (int i = 0; i < adj.size(); i++) {
       visited.add(false);
     }
 
-    for (int v = 0; v < size(); v++) {
-      if (!visited.get(v)) {
-        dfs(result, visited, v);
-      }
-    }
-
+    getAllVertexes()
+        .filter((v) -> !visited.get(v))
+        .forEach((v) -> dfs(result, visited, v));
     return result.reversed().stream();
   }
 

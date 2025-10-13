@@ -4,7 +4,7 @@ import java.util.Scanner;
 import java.util.stream.Stream;
 
 public interface Graph {
-  public int size();
+  public long vertexesCount();
 
   public int newVertex();
 
