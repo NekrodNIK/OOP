@@ -18,19 +18,22 @@ import org.junit.jupiter.params.provider.MethodSource;
  */
 public class GraphTest {
   private static Stream<Class<? extends Graph>> getImplementations() {
-    return Stream.of(AdjListGraph.class, AdjMatrixGraph.class);
+    return Stream.of(AdjListGraph.class, AdjMatrixGraph.class, IncidenceMatrixGraph.class);
   }
 
   private static Stream<Arguments> getImplementationsPairs() {
     ArrayList<Class<? extends Graph>> arr = new ArrayList<Class<? extends Graph>>();
     arr.add(AdjListGraph.class);
     arr.add(AdjMatrixGraph.class);
+    arr.add(IncidenceMatrixGraph.class);
 
     ArrayList<Arguments> result = new ArrayList<Arguments>();
 
     for (Class<? extends Graph> cls1 : arr) {
       for (Class<? extends Graph> cls2 : arr) {
-          result.add(Arguments.of(cls1, cls2));
+        for (Class<? extends Graph> cls3 : arr) {
+          result.add(Arguments.of(cls1, cls2, cls3));
+        }
       }
     }
     return result.stream();
