@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
+/** IncidenceMatrixGraph. */
 public class IncidenceMatrixGraph implements Graph {
     protected ArrayList<ArrayList<Integer>> inc;
     protected int vertexesCount;
