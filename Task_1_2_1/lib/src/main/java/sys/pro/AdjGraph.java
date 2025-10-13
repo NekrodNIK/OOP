@@ -104,11 +104,21 @@ public class AdjGraph implements Graph {
     }
 
     for (Integer v : vertexes) {
-      if (!this.getAdjacentVertexes(v).toList().equals(graph.getAdjacentVertexes(v).toList())) {
+      if (!this.getAdjacentVertexes(v).toList()
+          .equals(graph.getAdjacentVertexes(v).toList())) {
         return false;
       }
     }
 
     return true;
+  }
+
+  @Override
+  public String toString() {
+    return getAllVertexes()
+        .flatMap((from) -> getAdjacentVertexes(from)
+            .map((to) -> "%d %d\n"
+                .formatted(from, to)))
+        .reduce("", (x, y) -> x + y);
   }
 }

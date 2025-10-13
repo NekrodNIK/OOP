@@ -20,11 +20,11 @@ public class GraphTest {
   private static Stream<Class<? extends Graph>> getImplementations() {
     return Stream.of(AdjGraph.class);
   }
-  
+
   private static Stream<Arguments> getImplementationsPairs() {
     return Stream.of(Arguments.of(AdjGraph.class, AdjGraph.class));
   }
-  
+
   @ParameterizedTest
   @MethodSource("getImplementations")
   void testAddDirectedEdge(Class<? extends Graph> cls) {
@@ -163,7 +163,7 @@ public class GraphTest {
     assertEquals(11, graph.getAdjacentVertexes(10).findFirst().get());
     assertEquals(8, graph.getAdjacentVertexes(7).findFirst().get());
   }
-  
+
   @ParameterizedTest
   @MethodSource("getImplementationsPairs")
   void testEquals(Class<? extends Graph> cls1, Class<? extends Graph> cls2) {
@@ -183,25 +183,57 @@ public class GraphTest {
 
     graph1.addDirectedEdge(0, 1);
     graph2.addDirectedEdge(0, 1);
-    
+
     graph1.addDirectedEdge(3, 4);
     graph2.addDirectedEdge(3, 4);
-    
+
     graph1.addDirectedEdge(5, 1);
     graph2.addDirectedEdge(5, 1);
-    
+
     graph1.addDirectedEdge(10, 2);
     graph2.addDirectedEdge(10, 2);
-    
+
     graph1.addDirectedEdge(2, 1);
     graph2.addDirectedEdge(2, 1);
-    
+
     graph1.addDirectedEdge(2, 3);
     graph2.addDirectedEdge(2, 3);
-    
+
     graph1.addDirectedEdge(5, 10);
     graph2.addDirectedEdge(5, 10);
-    
+
     assertEquals(graph1, graph2);
+  }
+
+  @ParameterizedTest
+  @MethodSource("getImplementations")
+  void testToString(Class<? extends Graph> cls) {
+    Graph graph;
+
+    try {
+      graph = cls.getDeclaredConstructor().newInstance();
+    } catch (InstantiationException
+        | IllegalAccessException
+        | InvocationTargetException
+        | NoSuchMethodException e) {
+      fail();
+      return;
+    }
+
+    graph.addDirectedEdge(0, 1);
+    graph.addDirectedEdge(3, 4);
+    graph.addDirectedEdge(5, 1);
+    graph.addDirectedEdge(10, 2);
+    graph.addDirectedEdge(2, 1);
+    graph.addDirectedEdge(2, 3);
+    graph.addDirectedEdge(5, 10);
+
+    assertTrue(graph.toString().contains("0 1") &&
+        graph.toString().contains("3 4") &&
+        graph.toString().contains("5 1") &&
+        graph.toString().contains("10 2") &&
+        graph.toString().contains("2 1") &&
+        graph.toString().contains("2 3") &&
+        graph.toString().contains("5 10"));
   }
 }
