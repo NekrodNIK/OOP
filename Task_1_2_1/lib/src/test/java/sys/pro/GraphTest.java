@@ -4,13 +4,13 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.fail;
 
-import java.io.FileNotFoundException;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.stream.Stream;
 
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
 /**
@@ -20,7 +20,11 @@ public class GraphTest {
   private static Stream<Class<? extends Graph>> getImplementations() {
     return Stream.of(AdjGraph.class);
   }
-
+  
+  private static Stream<Arguments> getImplementationsPairs() {
+    return Stream.of(Arguments.of(AdjGraph.class, AdjGraph.class));
+  }
+  
   @ParameterizedTest
   @MethodSource("getImplementations")
   void testAddDirectedEdge(Class<? extends Graph> cls) {
@@ -158,5 +162,46 @@ public class GraphTest {
     assertEquals(10, graph.getAdjacentVertexes(6).findFirst().get());
     assertEquals(11, graph.getAdjacentVertexes(10).findFirst().get());
     assertEquals(8, graph.getAdjacentVertexes(7).findFirst().get());
+  }
+  
+  @ParameterizedTest
+  @MethodSource("getImplementationsPairs")
+  void testEquals(Class<? extends Graph> cls1, Class<? extends Graph> cls2) {
+    Graph graph1;
+    Graph graph2;
+
+    try {
+      graph1 = cls1.getDeclaredConstructor().newInstance();
+      graph2 = cls1.getDeclaredConstructor().newInstance();
+    } catch (InstantiationException
+        | IllegalAccessException
+        | InvocationTargetException
+        | NoSuchMethodException e) {
+      fail();
+      return;
+    }
+
+    graph1.addDirectedEdge(0, 1);
+    graph2.addDirectedEdge(0, 1);
+    
+    graph1.addDirectedEdge(3, 4);
+    graph2.addDirectedEdge(3, 4);
+    
+    graph1.addDirectedEdge(5, 1);
+    graph2.addDirectedEdge(5, 1);
+    
+    graph1.addDirectedEdge(10, 2);
+    graph2.addDirectedEdge(10, 2);
+    
+    graph1.addDirectedEdge(2, 1);
+    graph2.addDirectedEdge(2, 1);
+    
+    graph1.addDirectedEdge(2, 3);
+    graph2.addDirectedEdge(2, 3);
+    
+    graph1.addDirectedEdge(5, 10);
+    graph2.addDirectedEdge(5, 10);
+    
+    assertEquals(graph1, graph2);
   }
 }

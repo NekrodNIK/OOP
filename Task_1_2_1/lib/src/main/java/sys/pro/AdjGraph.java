@@ -2,7 +2,10 @@ package sys.pro;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.IntStream;
 import java.util.stream.Stream;
+
+import com.google.common.collect.Streams;
 
 /**
  * AdjGraph
@@ -17,7 +20,7 @@ public class AdjGraph implements Graph {
   @Override
   public int newVertex() {
     adj.addLast(new ArrayList<Integer>());
-    return adj.size()-1;
+    return adj.size() - 1;
   }
 
   @Override
@@ -28,15 +31,24 @@ public class AdjGraph implements Graph {
 
     adj.get(index).clear();
   }
-  
+
   @Override
   public void addDirectedEdge(int from, int to) {
+    while (size() <= from) {
+      newVertex();
+    }
+
     adj.get(from).add(to);
   }
-  
+
   @Override
   public void removeDirectedEdge(int from, int to) {
     adj.get(from).remove(Integer.valueOf(to));
+  }
+
+  @Override
+  public Stream<Integer> getAllVertexes() {
+    return IntStream.range(0, size()).mapToObj((item) -> Integer.valueOf(item));
   }
 
   @Override
@@ -63,18 +75,40 @@ public class AdjGraph implements Graph {
   @Override
   public Stream<Integer> topSort() {
     ArrayList<Integer> result = new ArrayList<Integer>();
-    
+
     ArrayList<Boolean> visited = new ArrayList<Boolean>();
     for (int i = 0; i < size(); i++) {
       visited.add(false);
     }
-    
+
     for (int v = 0; v < size(); v++) {
       if (!visited.get(v)) {
         dfs(result, visited, v);
       }
-    } 
+    }
 
     return result.reversed().stream();
+  }
+
+  @Override
+  public boolean equals(Object obj) {
+    if (!(obj instanceof Graph)) {
+      return false;
+    }
+
+    Graph graph = (Graph) obj;
+    List<Integer> vertexes = this.getAllVertexes().toList();
+
+    if (!vertexes.equals(graph.getAllVertexes().toList())) {
+      return false;
+    }
+
+    for (Integer v : vertexes) {
+      if (!this.getAdjacentVertexes(v).toList().equals(graph.getAdjacentVertexes(v).toList())) {
+        return false;
+      }
+    }
+
+    return true;
   }
 }
