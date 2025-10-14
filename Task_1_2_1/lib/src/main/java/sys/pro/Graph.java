@@ -7,14 +7,12 @@ import java.util.stream.Stream;
 public interface Graph {
     /*
      * Gets vertex count.
-     * @param index vertex index
      * @returns count
      */
     public long vertexesCount();
 
     /*
      * Creates new vertex and returns its vertex.
-     * @param index vertex index
      * @returns index
      */
     public int newVertex();
