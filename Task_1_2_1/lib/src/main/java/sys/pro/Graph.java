@@ -45,6 +45,7 @@ public interface Graph {
 
     /*
      * Gets adjacent vertexes.
+     * @param index vertex index
      * @returns result stream
      */
     public Stream<Integer> getAdjacentVertexes(int index);

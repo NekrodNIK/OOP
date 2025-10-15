@@ -2,22 +2,25 @@ package sys.pro;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 /** AdjMatrixGraph. */
 public class AdjMatrixGraph implements Graph {
-    protected ArrayList<ArrayList<Integer>> adj;
+    protected List<Optional<List<Integer>>> adj;
     protected int vertexesCount;
 
     public AdjMatrixGraph() {
-        adj = new ArrayList<ArrayList<Integer>>();
+        adj = new ArrayList<Optional<List<Integer>>>();
     }
 
     @Override
     public int newVertex() {
         for (int i = 0; i < adj.size(); i++) {
-            adj.get(i).add(0);
+            if (adj.get(i).isPresent()) {
+              adj.get(i).get().add(0);
+            }
         }
 
         ArrayList<Integer> arr = new ArrayList<Integer>();
@@ -26,23 +29,21 @@ public class AdjMatrixGraph implements Graph {
             arr.add(0);
         }
 
-        adj.add(arr);
+        adj.add(Optional.of(arr));
 
-        vertexesCount += 1;
+        vertexesCount++;
         return adj.size() - 1;
     }
 
     @Override
     public void removeVertex(int index) {
         for (int i = 0; i < adj.size(); i++) {
-            adj.get(i).set(index, 0);
+            if (adj.get(i).isPresent()) {
+              adj.get(i).get().set(index, 0);
+            }
         }
 
-        for (int i = 0; i < adj.size(); i++) {
-            adj.get(index).set(i, -1);
-        }
-
-        vertexesCount -= 1;
+        vertexesCount--;
     }
 
     @Override
@@ -51,38 +52,43 @@ public class AdjMatrixGraph implements Graph {
             newVertex();
         }
 
-        if (adj.size() > 0 && adj.get(from).get(0) == -1) {
+        if (adj.get(from).isEmpty()) {
+            adj.set(from, Optional.of(new ArrayList<Integer>()));
             for (int i = 0; i < adj.size(); i++) {
-                adj.get(from).set(i, 0);
+                adj.get(from).get().set(i, 0);
             }
+
+            vertexesCount++;
         }
 
-        if (adj.size() > 0 && adj.get(to).get(0) == -1) {
+        if (adj.get(to).isEmpty()) {
+            adj.set(to, Optional.of(new ArrayList<Integer>()));
             for (int i = 0; i < adj.size(); i++) {
-                adj.get(to).set(i, 0);
+                adj.get(to).get().set(i, 0);
             }
+
+            vertexesCount++;
         }
 
-        adj.get(from).set(to, 1);
+        adj.get(from).get().set(to, 1);
     }
 
     @Override
     public void removeDirectedEdge(int from, int to) {
-        adj.get(from).set(to, 0);
+        adj.get(from).get().set(to, 0);
     }
 
     @Override
     public Stream<Integer> getAllVertexes() {
         return IntStream.range(0, adj.size())
-                .filter((index) -> adj.get(index).get(0) != -1)
+                .filter((index) -> adj.get(index).isPresent())
                 .mapToObj((item) -> Integer.valueOf(item));
     }
 
     @Override
     public Stream<Integer> getAdjacentVertexes(int index) {
-        return IntStream.range(0, adj.size())
-                .filter((i) -> adj.get(index).get(i) == 1)
-                .mapToObj((item) -> Integer.valueOf(item));
+        return getAllVertexes()
+                .filter((i) -> adj.get(index).get().get(i) == 1);
     }
 
     @Override

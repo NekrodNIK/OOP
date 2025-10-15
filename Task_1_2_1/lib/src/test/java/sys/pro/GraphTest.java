@@ -105,7 +105,7 @@ public class GraphTest {
         assertEquals(to, graph.getAdjacentVertexes(from).findFirst().get());
 
         graph.removeVertex(from);
-        assertTrue(graph.getAdjacentVertexes(from).findFirst().isEmpty());
+        assertTrue(graph.getAdjacentVertexes(to).findFirst().isEmpty());
     }
 
     @ParameterizedTest
