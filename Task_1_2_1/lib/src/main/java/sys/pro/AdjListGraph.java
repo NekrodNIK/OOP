@@ -24,6 +24,10 @@ public class AdjListGraph implements Graph {
 
     @Override
     public void removeVertex(int index) {
+        if (adj.get(index).isEmpty()) {
+            return;
+        }
+        
         for (int i = 0; i < adj.size(); i++) {
             if (!adj.get(i).isEmpty()) {
                 adj.get(i).get().remove(Integer.valueOf(index));
@@ -59,7 +63,7 @@ public class AdjListGraph implements Graph {
 
     @Override
     public void removeDirectedEdge(int from, int to) {
-        if (adj.get(from).isEmpty()) {
+        if (adj.get(from).isEmpty() || adj.get(to).isEmpty()) {
             return;
         }
 

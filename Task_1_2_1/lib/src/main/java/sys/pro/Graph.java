@@ -37,6 +37,7 @@ public interface Graph {
 
   /*
    * Removes vertex.
+   * If vertex does not exist, nothing happens
    * 
    * @param index vertex index
    */
@@ -44,6 +45,8 @@ public interface Graph {
 
   /*
    * Adds directed edge.
+   * If 'from' vertex does not exist, it's created
+   * If 'to' vertex does not exist, it's created
    * 
    * @param from 'from' vertex
    * 
@@ -53,6 +56,8 @@ public interface Graph {
 
   /*
    * Removes directed edge.
+   * If 'from' vertex does not exist, nothing happens
+   * If 'to' vertex does not exist, nothing happens
    * 
    * @param from 'from' vertex
    * 
@@ -69,6 +74,7 @@ public interface Graph {
 
   /*
    * Gets adjacent vertexes.
+   * If vertex does not exist, returns empty stream
    * 
    * @param index vertex index
    * 

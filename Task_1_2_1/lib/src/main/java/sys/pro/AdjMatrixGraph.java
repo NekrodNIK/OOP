@@ -37,6 +37,10 @@ public class AdjMatrixGraph implements Graph {
 
     @Override
     public void removeVertex(int index) {
+        if (adj.get(index).isEmpty()) {
+            return;
+        }
+        
         for (int i = 0; i < adj.size(); i++) {
             if (adj.get(i).isPresent()) {
                 adj.get(i).get().set(index, 0);
@@ -84,6 +88,10 @@ public class AdjMatrixGraph implements Graph {
 
     @Override
     public void removeDirectedEdge(int from, int to) {
+        if (adj.get(from).isEmpty() || adj.get(to).isEmpty()) {
+            return;
+        }
+        
         adj.get(from).get().set(to, 0);
     }
 
@@ -96,6 +104,10 @@ public class AdjMatrixGraph implements Graph {
 
     @Override
     public Stream<Integer> getAdjacentVertexes(int index) {
+        if (adj.get(index).isEmpty()) {
+            return Stream.empty();
+        }
+        
         return getAllVertexes().filter((i) -> adj.get(index).get().get(i) == 1);
     }
 
