@@ -15,10 +15,8 @@ import java.util.Scanner;
 import java.util.stream.Stream;
 
 /** GraphTest. */
-public class GraphTest {
-    private static Stream<Class<? extends Graph>> getImplementations() {
-        return Stream.of(AdjListGraph.class, AdjMatrixGraph.class, IncidenceMatrixGraph.class);
-    }
+public abstract class GraphTest {
+    abstract Graph createGraph();
 
     private static Stream<Arguments> getImplementationsPairs() {
         ArrayList<Class<? extends Graph>> arr = new ArrayList<Class<? extends Graph>>();
@@ -38,43 +36,16 @@ public class GraphTest {
         return result.stream();
     }
 
-    @ParameterizedTest
-    @MethodSource("getImplementations")
-    void testAddDirectedEdge(Class<? extends Graph> cls) {
-        Graph graph;
-
-        try {
-            graph = cls.getDeclaredConstructor().newInstance();
-        } catch (InstantiationException
-                | IllegalAccessException
-                | InvocationTargetException
-                | NoSuchMethodException e) {
-            fail();
-            return;
-        }
-
+    void testAddDirectedEdge() {
+        Graph graph = createGraph();
         Integer from = graph.newVertex();
         Integer to = graph.newVertex();
         graph.addDirectedEdge(from, to);
 
         assertEquals(to, graph.getAdjacentVertexes(from).findFirst().get());
     }
-
-    @ParameterizedTest
-    @MethodSource("getImplementations")
-    void testRemoveDirectedEdge(Class<? extends Graph> cls) {
-        Graph graph;
-
-        try {
-            graph = cls.getDeclaredConstructor().newInstance();
-        } catch (InstantiationException
-                | IllegalAccessException
-                | InvocationTargetException
-                | NoSuchMethodException e) {
-            fail();
-            return;
-        }
-
+    void testRemoveDirectedEdge() {
+        Graph graph = createGraph();
         Integer from = graph.newVertex();
         Integer to = graph.newVertex();
         graph.addDirectedEdge(from, to);
@@ -83,22 +54,8 @@ public class GraphTest {
         graph.removeDirectedEdge(from, to);
         assertTrue(graph.getAdjacentVertexes(from).findFirst().isEmpty());
     }
-
-    @ParameterizedTest
-    @MethodSource("getImplementations")
-    void testRemoveVertex(Class<? extends Graph> cls) {
-        Graph graph;
-
-        try {
-            graph = cls.getDeclaredConstructor().newInstance();
-        } catch (InstantiationException
-                | IllegalAccessException
-                | InvocationTargetException
-                | NoSuchMethodException e) {
-            fail();
-            return;
-        }
-
+    void testRemoveVertex() {
+        Graph graph = createGraph();
         Integer from = graph.newVertex();
         Integer to = graph.newVertex();
         graph.addDirectedEdge(from, to);
@@ -108,21 +65,8 @@ public class GraphTest {
         assertTrue(graph.getAdjacentVertexes(to).findFirst().isEmpty());
     }
 
-    @ParameterizedTest
-    @MethodSource("getImplementations")
-    void testTopSortSimple(Class<? extends Graph> cls) {
-        Graph graph;
-
-        try {
-            graph = cls.getDeclaredConstructor().newInstance();
-        } catch (InstantiationException
-                | IllegalAccessException
-                | InvocationTargetException
-                | NoSuchMethodException e) {
-            fail();
-            return;
-        }
-
+    void testTopSortSimple() {
+        Graph graph = createGraph();
         ArrayList<Integer> expected = new ArrayList<Integer>();
 
         expected.add(graph.newVertex());
@@ -144,20 +88,8 @@ public class GraphTest {
         assertEquals(expected, graph.topSort().toList());
     }
 
-    @ParameterizedTest
-    @MethodSource("getImplementations")
-    void testTopSort(Class<? extends Graph> cls) {
-        Graph graph;
-
-        try {
-            graph = cls.getDeclaredConstructor().newInstance();
-        } catch (InstantiationException
-                | IllegalAccessException
-                | InvocationTargetException
-                | NoSuchMethodException e) {
-            fail();
-            return;
-        }
+    void testTopSort() {
+        Graph graph = createGraph();
 
         int v0 = graph.newVertex();
         int v1 = graph.newVertex();
@@ -198,20 +130,8 @@ public class GraphTest {
         assertEquals(9, result.stream().distinct().count());
     }
 
-    @ParameterizedTest
-    @MethodSource("getImplementations")
-    void testReadFile(Class<? extends Graph> cls) {
-        Graph graph;
-
-        try {
-            graph = cls.getDeclaredConstructor().newInstance();
-        } catch (InstantiationException
-                | IllegalAccessException
-                | InvocationTargetException
-                | NoSuchMethodException e) {
-            fail();
-            return;
-        }
+    void testReadFile() {
+        Graph graph = createGraph();
 
         Scanner scanner =
                 new Scanner(
@@ -273,20 +193,8 @@ public class GraphTest {
         assertEquals(graph1, graph2);
     }
 
-    @ParameterizedTest
-    @MethodSource("getImplementations")
-    void testToString(Class<? extends Graph> cls) {
-        Graph graph;
-
-        try {
-            graph = cls.getDeclaredConstructor().newInstance();
-        } catch (InstantiationException
-                | IllegalAccessException
-                | InvocationTargetException
-                | NoSuchMethodException e) {
-            fail();
-            return;
-        }
+    void testToString() {
+        Graph graph = createGraph();
 
         graph.addDirectedEdge(0, 1);
         graph.addDirectedEdge(3, 4);
