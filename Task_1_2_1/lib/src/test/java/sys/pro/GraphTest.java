@@ -211,4 +211,16 @@ public abstract class GraphTest {
                         && graph.toString().contains("2 3")
                         && graph.toString().contains("5 10"));
     }
+
+    void testAddVertexWithDeletedVertex() {
+        Graph graph = createGraph();
+
+        int v0 = graph.newVertex();
+        int v1 = graph.newVertex();
+
+        graph.removeVertex(v0);
+        graph.addDirectedEdge(v0, v1);
+
+        assertEquals(v1, graph.getAdjacentVertexes(v0).findFirst().get());                
+    }
 }
