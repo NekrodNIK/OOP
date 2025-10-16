@@ -19,7 +19,7 @@ public class AdjMatrixGraph implements Graph {
     public int newVertex() {
         for (int i = 0; i < adj.size(); i++) {
             if (adj.get(i).isPresent()) {
-              adj.get(i).get().add(0);
+                adj.get(i).get().add(0);
             }
         }
 
@@ -39,7 +39,7 @@ public class AdjMatrixGraph implements Graph {
     public void removeVertex(int index) {
         for (int i = 0; i < adj.size(); i++) {
             if (adj.get(i).isPresent()) {
-              adj.get(i).get().set(index, 0);
+                adj.get(i).get().set(index, 0);
             }
         }
 
@@ -49,16 +49,16 @@ public class AdjMatrixGraph implements Graph {
     @Override
     public void addDirectedEdge(int from, int to) {
         while (adj.size() <= Math.max(from, to)) {
-          if (adj.size() - 1 == from && adj.size() - 1 == to) {
-            newVertex();
-          } else {
-            for (int i = 0; i < adj.size(); i++) {
-                 if (adj.get(i).isPresent()) {
-                     adj.get(i).get().add(0);
-                 }
+            if (adj.size() - 1 == from && adj.size() - 1 == to) {
+                newVertex();
+            } else {
+                for (int i = 0; i < adj.size(); i++) {
+                    if (adj.get(i).isPresent()) {
+                        adj.get(i).get().add(0);
+                    }
+                }
+                adj.addLast(Optional.empty());
             }
-            adj.addLast(Optional.empty());
-          }
         }
 
         if (adj.get(from).isEmpty()) {
@@ -96,13 +96,22 @@ public class AdjMatrixGraph implements Graph {
 
     @Override
     public Stream<Integer> getAdjacentVertexes(int index) {
-        return getAllVertexes()
-                .filter((i) -> adj.get(index).get().get(i) == 1);
+        return getAllVertexes().filter((i) -> adj.get(index).get().get(i) == 1);
     }
 
     @Override
     public long vertexesCount() {
         return vertexesCount;
+    }
+
+    @Override
+    public long edgesCount() {
+        return -1;
+    }
+    
+    @Override
+    public long vertexWithMaxIndex() {
+        return adj.size() - 1;
     }
 
     private void dfs(List<Integer> result, List<Boolean> visited, Integer v) {
