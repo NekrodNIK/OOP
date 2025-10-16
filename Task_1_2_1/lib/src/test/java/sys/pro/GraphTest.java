@@ -113,6 +113,9 @@ public abstract class GraphTest {
 
         List<Integer> result = graph.topSort().toList();
 
+        assertEquals(9, graph.vertexesCount());
+        assertEquals(10, graph.edgesCount());
+        
         assertTrue(result.contains(v8));
         assertTrue(result.indexOf(v0) < result.indexOf(v1));
         assertTrue(result.indexOf(v1) < result.indexOf(v2));
