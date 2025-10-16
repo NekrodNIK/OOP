@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.fail;
 
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -34,6 +35,7 @@ public abstract class GraphTest {
         return result.stream();
     }
 
+    @Test
     void testAddDirectedEdge() {
         Graph graph = createGraph();
         Integer from = graph.newVertex();
@@ -43,6 +45,7 @@ public abstract class GraphTest {
         assertEquals(to, graph.getAdjacentVertexes(from).findFirst().get());
     }
 
+    @Test
     void testRemoveDirectedEdge() {
         Graph graph = createGraph();
         Integer from = graph.newVertex();
@@ -54,6 +57,7 @@ public abstract class GraphTest {
         assertTrue(graph.getAdjacentVertexes(from).findFirst().isEmpty());
     }
 
+    @Test
     void testRemoveVertex() {
         Graph graph = createGraph();
         Integer from = graph.newVertex();
@@ -65,6 +69,7 @@ public abstract class GraphTest {
         assertTrue(graph.getAdjacentVertexes(to).findFirst().isEmpty());
     }
 
+    @Test
     void testTopSortSimple() {
         Graph graph = createGraph();
         ArrayList<Integer> expected = new ArrayList<Integer>();
@@ -88,6 +93,7 @@ public abstract class GraphTest {
         assertEquals(expected, graph.topSort().toList());
     }
 
+    @Test
     void testTopSort() {
         Graph graph = createGraph();
 
@@ -133,6 +139,7 @@ public abstract class GraphTest {
         assertEquals(9, result.stream().distinct().count());
     }
 
+    @Test
     void testReadFile() {
         Graph graph = createGraph();
 
@@ -196,6 +203,7 @@ public abstract class GraphTest {
         assertEquals(graph1, graph2);
     }
 
+    @Test
     void testToString() {
         Graph graph = createGraph();
 
@@ -217,6 +225,7 @@ public abstract class GraphTest {
                         && graph.toString().contains("5 10"));
     }
 
+    @Test
     void testAddVertexFromDeletedVertex() {
         Graph graph = createGraph();
 
@@ -229,6 +238,7 @@ public abstract class GraphTest {
         assertEquals(v1, graph.getAdjacentVertexes(v0).findFirst().get());
     }
 
+    @Test
     void testAddVertexToDeletedVertex() {
         Graph graph = createGraph();
 
