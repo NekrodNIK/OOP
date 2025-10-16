@@ -27,7 +27,7 @@ public class AdjListGraph implements Graph {
         if (adj.get(index).isEmpty()) {
             return;
         }
-        
+
         for (int i = 0; i < adj.size(); i++) {
             if (!adj.get(i).isEmpty()) {
                 adj.get(i).get().remove(Integer.valueOf(index));
@@ -90,12 +90,12 @@ public class AdjListGraph implements Graph {
     public long vertexesCount() {
         return vertexesCount;
     }
-    
+
     @Override
     public long edgesCount() {
         return -1;
     }
-    
+
     @Override
     public long vertexWithMaxIndex() {
         return adj.size() - 1;

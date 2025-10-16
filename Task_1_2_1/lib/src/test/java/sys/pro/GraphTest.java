@@ -42,6 +42,7 @@ public abstract class GraphTest {
 
         assertEquals(to, graph.getAdjacentVertexes(from).findFirst().get());
     }
+
     void testRemoveDirectedEdge() {
         Graph graph = createGraph();
         Integer from = graph.newVertex();
@@ -52,6 +53,7 @@ public abstract class GraphTest {
         graph.removeDirectedEdge(from, to);
         assertTrue(graph.getAdjacentVertexes(from).findFirst().isEmpty());
     }
+
     void testRemoveVertex() {
         Graph graph = createGraph();
         Integer from = graph.newVertex();
@@ -115,7 +117,7 @@ public abstract class GraphTest {
 
         assertEquals(9, graph.vertexesCount());
         assertEquals(10, graph.edgesCount());
-        
+
         assertTrue(result.contains(v8));
         assertTrue(result.indexOf(v0) < result.indexOf(v1));
         assertTrue(result.indexOf(v1) < result.indexOf(v2));
@@ -224,9 +226,9 @@ public abstract class GraphTest {
         graph.removeVertex(v0);
         graph.addDirectedEdge(v0, v1);
 
-        assertEquals(v1, graph.getAdjacentVertexes(v0).findFirst().get());                
+        assertEquals(v1, graph.getAdjacentVertexes(v0).findFirst().get());
     }
-    
+
     void testAddVertexToDeletedVertex() {
         Graph graph = createGraph();
 
@@ -236,6 +238,6 @@ public abstract class GraphTest {
         graph.removeVertex(v1);
         graph.addDirectedEdge(v0, v1);
 
-        assertEquals(v1, graph.getAdjacentVertexes(v0).findFirst().get());                
+        assertEquals(v1, graph.getAdjacentVertexes(v0).findFirst().get());
     }
 }

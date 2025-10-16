@@ -40,7 +40,7 @@ public class AdjMatrixGraph implements Graph {
         if (adj.get(index).isEmpty()) {
             return;
         }
-        
+
         for (int i = 0; i < adj.size(); i++) {
             if (adj.get(i).isPresent()) {
                 adj.get(i).get().set(index, 0);
@@ -91,7 +91,7 @@ public class AdjMatrixGraph implements Graph {
         if (adj.get(from).isEmpty() || adj.get(to).isEmpty()) {
             return;
         }
-        
+
         adj.get(from).get().set(to, 0);
     }
 
@@ -107,7 +107,7 @@ public class AdjMatrixGraph implements Graph {
         if (adj.get(index).isEmpty()) {
             return Stream.empty();
         }
-        
+
         return getAllVertexes().filter((i) -> adj.get(index).get().get(i) == 1);
     }
 
@@ -120,7 +120,7 @@ public class AdjMatrixGraph implements Graph {
     public long edgesCount() {
         return -1;
     }
-    
+
     @Override
     public long vertexWithMaxIndex() {
         return adj.size() - 1;
