@@ -28,9 +28,7 @@ public abstract class GraphTest {
 
         for (Class<? extends Graph> cls1 : arr) {
             for (Class<? extends Graph> cls2 : arr) {
-                for (Class<? extends Graph> cls3 : arr) {
-                    result.add(Arguments.of(cls1, cls2, cls3));
-                }
+                result.add(Arguments.of(cls1, cls2));
             }
         }
         return result.stream();
