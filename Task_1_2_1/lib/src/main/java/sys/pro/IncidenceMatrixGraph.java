@@ -32,19 +32,41 @@ public class IncidenceMatrixGraph implements Graph {
   @Override
   public void removeVertex(int index) {
     for (int i = 0; i < edgesCount; i++) {
-      inc.set(index, Optional.empty());
-      edgesCount -= 2;
+      if (inc.get(index).get().get(i) != 0) {
+        edgesCount -= 2;
+      }
     }
+
+    inc.set(index, Optional.empty());
     vertexesCount -= 1;
   }
 
   @Override
   public void addDirectedEdge(int from, int to) {
     while (inc.size() <= Math.max(from, to)) {
-      newVertex();
+      inc.addLast(Optional.empty());
     }
 
-    inc.stream().forEach((item) -> item.ifPresent((list) -> list.add(0)));
+    if (inc.get(from).isEmpty()) {
+      ArrayList<Integer> arr = new ArrayList<Integer>();
+      for (int i = 0; i < edgesCount; i++) { arr.add(0);}
+      inc.set(from, Optional.of(arr));
+      vertexesCount += 1;
+    }
+    
+    if (inc.get(to).isEmpty()) {
+      ArrayList<Integer> arr = new ArrayList<Integer>();
+      for (int i = 0; i < edgesCount; i++) { arr.add(0);}
+      inc.set(to, Optional.of(arr));
+      vertexesCount += 1;
+    }
+
+    for (int i = 0; i < inc.size(); i++) {
+      if (inc.get(i).isPresent()){
+        inc.get(i).get().add(0);
+      }
+    }
+    
     inc.get(from).get().set(edgesCount, 1);
     inc.get(to).get().set(edgesCount, -1);
 
@@ -79,7 +101,7 @@ public class IncidenceMatrixGraph implements Graph {
     for (int edge = 0; edge < edgesCount; edge++) {
       if (inc.get(index).isPresent() && inc.get(index).get().get(edge) == 1) {
         for (int vertex = 0; vertex < inc.size(); vertex++) {
-          if (inc.get(index).isPresent() && vertex != index && inc.get(vertex).get().get(edge) == -1) {
+          if (inc.get(vertex).isPresent() && vertex != index && inc.get(vertex).get().get(edge) == -1) {
             adjacent.add(vertex);
             break;
           }

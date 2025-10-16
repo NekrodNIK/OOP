@@ -37,7 +37,11 @@ public class AdjListGraph implements Graph {
   @Override
   public void addDirectedEdge(int from, int to) {
     while (adj.size() <= Math.max(from, to)) {
-      newVertex();
+      if (adj.size() - 1 == from && adj.size() - 1 == to) {
+        newVertex();
+      } else {
+        adj.addLast(Optional.empty());
+      }
     }
 
     if (adj.get(from).isEmpty()) {

@@ -49,13 +49,22 @@ public class AdjMatrixGraph implements Graph {
     @Override
     public void addDirectedEdge(int from, int to) {
         while (adj.size() <= Math.max(from, to)) {
+          if (adj.size() - 1 == from && adj.size() - 1 == to) {
             newVertex();
+          } else {
+            for (int i = 0; i < adj.size(); i++) {
+                 if (adj.get(i).isPresent()) {
+                     adj.get(i).get().add(0);
+                 }
+            }
+            adj.addLast(Optional.empty());
+          }
         }
 
         if (adj.get(from).isEmpty()) {
             adj.set(from, Optional.of(new ArrayList<Integer>()));
             for (int i = 0; i < adj.size(); i++) {
-                adj.get(from).get().set(i, 0);
+                adj.get(from).get().add(0);
             }
 
             vertexesCount++;
@@ -64,7 +73,7 @@ public class AdjMatrixGraph implements Graph {
         if (adj.get(to).isEmpty()) {
             adj.set(to, Optional.of(new ArrayList<Integer>()));
             for (int i = 0; i < adj.size(); i++) {
-                adj.get(to).get().set(i, 0);
+                adj.get(to).get().add(0);
             }
 
             vertexesCount++;
