@@ -117,36 +117,8 @@ public class AdjMatrixGraph implements Graph {
     }
 
     @Override
-    public long edgesCount() {
-        return -1;
-    }
-
-    @Override
     public long vertexWithMaxIndex() {
         return adj.size() - 1;
-    }
-
-    private void dfs(List<Integer> result, List<Boolean> visited, Integer v) {
-        visited.set(v, true);
-        getAdjacentVertexes(v)
-                .filter((u) -> !visited.get(u))
-                .forEach((u) -> dfs(result, visited, u));
-
-        result.add(v);
-    }
-
-    @Override
-    public Stream<Integer> topSort() {
-        ArrayList<Integer> result = new ArrayList<Integer>();
-
-        ArrayList<Boolean> visited = new ArrayList<Boolean>();
-        for (int i = 0; i < adj.size(); i++) {
-            visited.add(false);
-        }
-
-        getAllVertexes().filter((v) -> !visited.get(v)).forEach((v) -> dfs(result, visited, v));
-
-        return result.reversed().stream();
     }
 
     @Override

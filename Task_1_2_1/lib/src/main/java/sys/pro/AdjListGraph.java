@@ -92,38 +92,8 @@ public class AdjListGraph implements Graph {
     }
 
     @Override
-    public long edgesCount() {
-        return -1;
-    }
-
-    @Override
     public long vertexWithMaxIndex() {
         return adj.size() - 1;
-    }
-
-    private void dfs(List<Integer> result, List<Boolean> visited, Integer v) {
-        visited.set(v, true);
-        for (int u : adj.get(v).orElse(new ArrayList<Integer>())) {
-            if (!visited.get(u)) {
-                dfs(result, visited, u);
-            }
-        }
-
-        result.add(v);
-    }
-
-    @Override
-    public Stream<Integer> topSort() {
-        ArrayList<Integer> result = new ArrayList<Integer>();
-
-        ArrayList<Boolean> visited = new ArrayList<Boolean>();
-        for (int i = 0; i < adj.size(); i++) {
-            visited.add(false);
-        }
-
-        getAllVertexes().filter((v) -> !visited.get(v)).forEach((v) -> dfs(result, visited, v));
-
-        return result.reversed().stream();
     }
 
     @Override

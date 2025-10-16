@@ -158,7 +158,6 @@ public class IncidenceMatrixGraph implements Graph {
         return vertexesCount;
     }
 
-    @Override
     public long edgesCount() {
         return edgesCount;
     }

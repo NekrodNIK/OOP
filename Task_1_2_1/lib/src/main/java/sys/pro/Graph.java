@@ -15,13 +15,6 @@ public interface Graph {
     public long vertexesCount();
 
     /*
-     * Gets edges count.
-     *
-     * @returns count
-     */
-    public long edgesCount();
-
-    /*
      * Gets vertex with max index.
      *
      * @returns index

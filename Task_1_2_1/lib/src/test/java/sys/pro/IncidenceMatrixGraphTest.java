@@ -12,7 +12,7 @@ class IncidenceMatrixGraphTest extends GraphTest {
 
     @Test
     void testEdgesCount() {
-        Graph graph = createGraph();
+        IncidenceMatrixGraph graph = new IncidenceMatrixGraph();
 
         graph.addDirectedEdge(0, 1);
         graph.addDirectedEdge(1, 5);
