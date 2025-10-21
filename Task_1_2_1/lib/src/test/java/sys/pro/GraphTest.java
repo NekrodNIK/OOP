@@ -38,11 +38,15 @@ public abstract class GraphTest {
     @Test
     void testAddDirectedEdge() {
         Graph graph = createGraph();
-        Integer from = graph.newVertex();
-        Integer to = graph.newVertex();
-        graph.addDirectedEdge(from, to);
+        
+        graph.addDirectedEdge(3, 10);
+        assertEquals(10, graph.getAdjacentVertexes(3).findFirst().get());
 
-        assertEquals(to, graph.getAdjacentVertexes(from).findFirst().get());
+        graph.removeVertex(3);
+        graph.removeVertex(10);
+        
+        graph.addDirectedEdge(1, 4);
+        assertEquals(4, graph.getAdjacentVertexes(1).findFirst().get());
     }
 
     @Test
