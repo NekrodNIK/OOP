@@ -3,6 +3,7 @@ package sys.pro;
 import java.util.ArrayList;
 import java.util.stream.Stream;
 
+/** Semester. */
 public class Semester {
     private ArrayList<AcademicRecord> records;
 
