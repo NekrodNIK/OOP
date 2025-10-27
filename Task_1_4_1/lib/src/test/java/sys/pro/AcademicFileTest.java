@@ -55,7 +55,7 @@ class AcademicFileTest {
     Semester s = new Semester();
     s.addRecord(new Exam("Матанализ", Grade.EXCELLENT));
     s.addRecord(new Exam("Алгебра", Grade.EXCELLENT));
-    s.addRecord(new DifferentialCredit("ДМТА", Grade.EXCELLENT));
+    s.addRecord(new DifferentialRecord("ДМТА", Grade.EXCELLENT));
     af.addSemester(s);
     af.setQualificationWorkGrade(Grade.EXCELLENT);
     assertTrue(af.possibleToGetHonorsDiploma());
@@ -87,7 +87,7 @@ class AcademicFileTest {
     af.switchToBudget();
     Semester s = new Semester();
     s.addRecord(new Exam("Матанализ", Grade.EXCELLENT));
-    s.addRecord(new DifferentialCredit("Ангеом", Grade.EXCELLENT));
+    s.addRecord(new DifferentialRecord("Ангеом", Grade.EXCELLENT));
     af.addSemester(s);
     assertTrue(af.possibleToIncreaseScholarship());
   }
@@ -109,7 +109,7 @@ class AcademicFileTest {
     s.addRecord(new Exam("Матанализ", Grade.EXCELLENT));
     s.addRecord(new Exam("Алгебра", Grade.EXCELLENT));
     s.addRecord(new Exam("Ангеом", Grade.GOOD));
-    s.addRecord(new DifferentialCredit("ДМТА", Grade.GOOD));
+    s.addRecord(new DifferentialRecord("ДМТА", Grade.GOOD));
     af.addSemester(s);
     af.setQualificationWorkGrade(Grade.EXCELLENT);
     assertFalse(af.possibleToGetHonorsDiploma());
@@ -121,7 +121,7 @@ class AcademicFileTest {
     af.switchToBudget();
     Semester s = new Semester();
     s.addRecord(new Exam("Матанализ", Grade.EXCELLENT));
-    s.addRecord(new DifferentialCredit("Алгебра", Grade.GOOD));
+    s.addRecord(new DifferentialRecord("Алгебра", Grade.GOOD));
     af.addSemester(s);
     assertTrue(af.possibleToIncreaseScholarship());
   }

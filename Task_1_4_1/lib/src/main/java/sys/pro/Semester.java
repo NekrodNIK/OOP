@@ -24,10 +24,10 @@ public class Semester {
         .map(record -> (Exam) record);
   }
 
-  public Stream<DifferentialCredit> getDifferentialCredits() {
+  public Stream<DifferentialRecord> getDifferentialRecords() {
     return getRecords()
-        .filter(record -> record instanceof DifferentialCredit)
-        .map(record -> (DifferentialCredit) record);
+        .filter(record -> record instanceof DifferentialRecord)
+        .map(record -> (DifferentialRecord) record);
   }
 
   public boolean hasSatisfactoryExams() {
