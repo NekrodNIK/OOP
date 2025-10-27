@@ -1,6 +1,6 @@
 package sys.pro;
 
-/** AcademicRecord */
+/** AcademicRecord. */
 public abstract class AcademicRecord {
     protected String subject;
     protected Grade grade;
@@ -8,8 +8,8 @@ public abstract class AcademicRecord {
     /**
      * Constructor.
      *
-     * @param subject
-     * @param grade
+     * @param subject subject name
+     * @param grade grade
      */
     public AcademicRecord(String subject, Grade grade) {
         this.subject = subject;

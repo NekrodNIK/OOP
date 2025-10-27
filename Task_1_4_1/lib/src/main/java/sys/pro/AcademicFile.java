@@ -4,13 +4,13 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-/** AcademicFile */
+/** AcademicFile. */
 public class AcademicFile {
     private ArrayList<Semester> semesters;
     private Grade qualificationWorkGrade;
     private boolean budget;
 
-    /** Constructor */
+    /** Constructor. */
     public AcademicFile() {
         this.semesters = new ArrayList<Semester>();
         this.qualificationWorkGrade = null;
@@ -20,7 +20,7 @@ public class AcademicFile {
     /**
      * Add semester.
      *
-     * @param semester
+     * @param semester Semester
      */
     public void addSemester(Semester semester) {
         semesters.add(semester);
@@ -29,7 +29,7 @@ public class AcademicFile {
     /**
      * Set qualification work grade.
      *
-     * @param grade
+     * @param grade Grade
      */
     public void setQualificationWorkGrade(Grade grade) {
         qualificationWorkGrade = grade;
