@@ -39,7 +39,7 @@ public class AcademicFile {
     if (semesters.isEmpty()) {
       return 0.0;
     }
-    int sum = semesters.stream().map((s) -> s.size()).reduce(0, (x, y) -> x + y);
+    int sum = semesters.stream().map((s) -> s.sum()).reduce(0, (x, y) -> x + y);
     int size = semesters.stream().map((s) -> s.size()).reduce(0, (x, y) -> x + y);
     return (double) sum / size;
   }

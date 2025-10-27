@@ -150,4 +150,16 @@ class AcademicFileTest {
     af.addSemester(s);
     assertFalse(af.possibleToIncreaseScholarship());
   }
+
+  @Test
+  void getAverage() {
+    AcademicFile af = new AcademicFile();
+    Semester s = new Semester();
+    s.addRecord(new Exam("Матанализ", Grade.EXCELLENT));
+    s.addRecord(new Exam("Ангеом", Grade.GOOD));
+    s.addRecord(new Exam("ДМТА", Grade.GOOD));
+    s.addRecord(new Exam("Алгебра", Grade.GOOD));
+    af.addSemester(s);
+    assertEquals(4.25, af.getAverage());
+  }
 }
