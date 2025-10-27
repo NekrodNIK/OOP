@@ -7,19 +7,19 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.Test;
 
 class AcademicRecordTest {
-  @Test
-  void testIsExam() {
-    AcademicRecord exam = new Exam("Диффуры", Grade.EXCELLENT);
-    AcademicRecord diff = new DifferentialRecord("Диффуры", Grade.EXCELLENT);
-    assertTrue(exam.isExam());
-    assertFalse(diff.isExam());
-  }
+    @Test
+    void testIsExam() {
+        AcademicRecord exam = new Exam("Диффуры", Grade.EXCELLENT);
+        AcademicRecord diff = new DifferentialRecord("Диффуры", Grade.EXCELLENT);
+        assertTrue(exam.isExam());
+        assertFalse(diff.isExam());
+    }
 
-  @Test
-  void testGetSubject() {
-    AcademicRecord r1 = new Exam("Диффуры", Grade.EXCELLENT);
-    AcademicRecord r2 = new DifferentialRecord("Функан", Grade.EXCELLENT);
-    assertEquals("Диффуры", r1.getSubject());
-    assertEquals("Функан", r2.getSubject());
-  }
+    @Test
+    void testGetSubject() {
+        AcademicRecord r1 = new Exam("Диффуры", Grade.EXCELLENT);
+        AcademicRecord r2 = new DifferentialRecord("Функан", Grade.EXCELLENT);
+        assertEquals("Диффуры", r1.getSubject());
+        assertEquals("Функан", r2.getSubject());
+    }
 }
