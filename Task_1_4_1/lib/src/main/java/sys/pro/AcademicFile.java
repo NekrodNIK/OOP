@@ -88,6 +88,10 @@ public class AcademicFile {
      * @return result
      */
     public boolean possibleToGetHonorsDiploma() {
+        if (qualificationWorkGrade == null) {
+            return true;
+        }
+
         if (qualificationWorkGrade != Grade.EXCELLENT) {
             return false;
         }
