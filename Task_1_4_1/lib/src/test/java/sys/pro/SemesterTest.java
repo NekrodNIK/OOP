@@ -2,11 +2,9 @@ package sys.pro;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
 import org.junit.jupiter.api.Test;
+
+import java.util.Arrays;
 
 /** SemesterTest. */
 class SemesterTest {
@@ -40,7 +38,7 @@ class SemesterTest {
         s.addRecord(new Exam("Матанализ", Grade.EXCELLENT));
         assertEquals(1, s.getRecords().count());
     }
-    
+
     @Test
     void testGetGraded() {
         Semester s = new Semester();
