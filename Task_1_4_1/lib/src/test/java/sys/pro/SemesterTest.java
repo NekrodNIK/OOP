@@ -15,19 +15,19 @@ class SemesterTest {
     }
 
     @Test
-    void testSum() {
+    void testSumGrades() {
         Semester s = new Semester();
         s.addRecord(new Exam("Матанализ", Grade.EXCELLENT));
         s.addRecord(new DifferentialRecord("Алгебра", Grade.GOOD));
-        assertEquals(9, s.sum());
+        assertEquals(9, s.sumGrades());
     }
 
     @Test
-    void testSize() {
+    void testCountGrades() {
         Semester s = new Semester();
         s.addRecord(new Exam("Матанализ", Grade.EXCELLENT));
         s.addRecord(new DifferentialRecord("Алгебра", Grade.GOOD));
-        assertEquals(2, s.size());
+        assertEquals(2, s.countGrades());
     }
 
     @Test

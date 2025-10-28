@@ -1,13 +1,8 @@
 package sys.pro;
 
 /** DifferentialRecord. */
-public class DifferentialRecord extends AcademicRecord {
+public class DifferentialRecord extends GradedAcademicRecord {
     public DifferentialRecord(String subject, Grade grade) {
         super(subject, grade);
-    }
-
-    @Override
-    public boolean isExam() {
-        return false;
     }
 }

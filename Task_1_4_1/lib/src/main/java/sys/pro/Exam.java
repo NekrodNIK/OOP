@@ -1,13 +1,8 @@
 package sys.pro;
 
 /** Exam. */
-public class Exam extends AcademicRecord {
+public class Exam extends GradedAcademicRecord {
     public Exam(String subject, Grade grade) {
         super(subject, grade);
-    }
-
-    @Override
-    public boolean isExam() {
-        return true;
     }
 }

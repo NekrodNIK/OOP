@@ -10,28 +10,28 @@ import org.junit.jupiter.api.Test;
 class AcademicFileTest {
     @Test
     void basicInitialState() {
-        AcademicFile af = new AcademicFile();
+        final AcademicFile af = new AcademicFile();
         assertFalse(af.isBudget());
         assertEquals(0.0, af.getAverage());
     }
 
     @Test
     void switchToBudgetWorks() {
-        AcademicFile af = new AcademicFile();
+        final AcademicFile af = new AcademicFile();
         af.switchToBudget();
         assertTrue(af.isBudget());
     }
 
     @Test
     void cantSwitchWhenAlreadyBudget() {
-        AcademicFile af = new AcademicFile();
+        final AcademicFile af = new AcademicFile();
         af.switchToBudget();
         assertFalse(af.possibleToSwitchToBudget());
     }
 
     @Test
     void switchToBudgetWithGoodGrades() {
-        AcademicFile af = new AcademicFile();
+        final AcademicFile af = new AcademicFile();
         Semester s1 = new Semester();
         Semester s2 = new Semester();
         s1.addRecord(new Exam("Матанализ", Grade.EXCELLENT));
@@ -43,7 +43,7 @@ class AcademicFileTest {
 
     @Test
     void cantSwitchWithBadGrades() {
-        AcademicFile af = new AcademicFile();
+        final AcademicFile af = new AcademicFile();
         Semester s1 = new Semester();
         Semester s2 = new Semester();
         s1.addRecord(new Exam("Матанализ", Grade.SATISFACTORY));
@@ -55,7 +55,7 @@ class AcademicFileTest {
 
     @Test
     void honorsDiplomaBasicCase() {
-        AcademicFile af = new AcademicFile();
+        final AcademicFile af = new AcademicFile();
         Semester s = new Semester();
         s.addRecord(new Exam("Матанализ", Grade.EXCELLENT));
         s.addRecord(new Exam("Алгебра", Grade.EXCELLENT));
@@ -67,7 +67,7 @@ class AcademicFileTest {
 
     @Test
     void noHonorsWithBadQualification() {
-        AcademicFile af = new AcademicFile();
+        final AcademicFile af = new AcademicFile();
         Semester s = new Semester();
         s.addRecord(new Exam("Матанализ", Grade.EXCELLENT));
         af.addSemester(s);
@@ -77,7 +77,7 @@ class AcademicFileTest {
 
     @Test
     void noHonorsWithSatisfactory() {
-        AcademicFile af = new AcademicFile();
+        final AcademicFile af = new AcademicFile();
         Semester s = new Semester();
         s.addRecord(new Exam("Матанализ", Grade.SATISFACTORY));
         af.addSemester(s);
@@ -87,7 +87,7 @@ class AcademicFileTest {
 
     @Test
     void scholarshipForExcellentStudent() {
-        AcademicFile af = new AcademicFile();
+        final AcademicFile af = new AcademicFile();
         af.switchToBudget();
         Semester s = new Semester();
         s.addRecord(new Exam("Матанализ", Grade.EXCELLENT));
@@ -98,7 +98,7 @@ class AcademicFileTest {
 
     @Test
     void noScholarshipWithGoodExams() {
-        AcademicFile af = new AcademicFile();
+        final AcademicFile af = new AcademicFile();
         af.switchToBudget();
         Semester s = new Semester();
         s.addRecord(new Exam("Матанализ", Grade.GOOD));
@@ -108,7 +108,7 @@ class AcademicFileTest {
 
     @Test
     void mixedGradesForHonors() {
-        AcademicFile af = new AcademicFile();
+        final AcademicFile af = new AcademicFile();
         Semester s = new Semester();
         s.addRecord(new Exam("Матанализ", Grade.EXCELLENT));
         s.addRecord(new Exam("Алгебра", Grade.EXCELLENT));
@@ -121,7 +121,7 @@ class AcademicFileTest {
 
     @Test
     void differentialGoodDoesntAffectScholarship() {
-        AcademicFile af = new AcademicFile();
+        final AcademicFile af = new AcademicFile();
         af.switchToBudget();
         Semester s = new Semester();
         s.addRecord(new Exam("Матанализ", Grade.EXCELLENT));
@@ -132,7 +132,7 @@ class AcademicFileTest {
 
     @Test
     void lastGradeCountsForHonors() {
-        AcademicFile af = new AcademicFile();
+        final AcademicFile af = new AcademicFile();
         Semester s1 = new Semester();
         Semester s2 = new Semester();
         s1.addRecord(new Exam("Матанализ", Grade.SATISFACTORY));
@@ -145,7 +145,7 @@ class AcademicFileTest {
 
     @Test
     void noScholarshipIfNotBudget() {
-        AcademicFile af = new AcademicFile();
+        final AcademicFile af = new AcademicFile();
         Semester s = new Semester();
         s.addRecord(new Exam("Матанализ", Grade.EXCELLENT));
         af.addSemester(s);
@@ -154,7 +154,7 @@ class AcademicFileTest {
 
     @Test
     void getAverage() {
-        AcademicFile af = new AcademicFile();
+        final AcademicFile af = new AcademicFile();
         Semester s = new Semester();
         s.addRecord(new Exam("Матанализ", Grade.EXCELLENT));
         s.addRecord(new Exam("Ангеом", Grade.GOOD));

@@ -2,42 +2,24 @@ package sys.pro;
 
 /** AcademicRecord. */
 public abstract class AcademicRecord {
-    protected String subject;
-    protected Grade grade;
+  protected String subject;
 
-    /**
-     * Constructor.
-     *
-     * @param subject subject name
-     * @param grade grade
-     */
-    public AcademicRecord(String subject, Grade grade) {
-        this.subject = subject;
-        this.grade = grade;
-    }
+  /**
+   * Constructor.
+   *
+   * @param subject subject name
+   * @param grade   grade
+   */
+  public AcademicRecord(String subject) {
+    this.subject = subject;
+  }
 
-    /**
-     * Get grade.
-     *
-     * @return result
-     */
-    public Grade getGrade() {
-        return grade;
-    }
-
-    /**
-     * Get subject name.
-     *
-     * @return result
-     */
-    public String getSubject() {
-        return subject;
-    }
-
-    /**
-     * Get is exam.
-     *
-     * @return result
-     */
-    public abstract boolean isExam();
+  /**
+   * Get subject name.
+   *
+   * @return result
+   */
+  public String getSubject() {
+    return subject;
+  }
 }
