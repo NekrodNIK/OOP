@@ -88,14 +88,6 @@ public class AcademicFile {
      * @return result
      */
     public boolean possibleToGetHonorsDiploma() {
-        if (qualificationWorkGrade == null) {
-            return true;
-        }
-
-        if (qualificationWorkGrade != Grade.EXCELLENT) {
-            return false;
-        }
-
         Map<String, Grade> finalGrades = new HashMap<String, Grade>();
         semesters.forEach(
                 (sem) ->
@@ -112,7 +104,10 @@ public class AcademicFile {
         long excellentCount =
                 finalGrades.values().stream().filter((g) -> g == Grade.EXCELLENT).count();
         double percentage = (double) excellentCount / finalGrades.size() * 100;
-        return percentage >= 75.0;
+        
+        boolean cond1 = qualificationWorkGrade == null || qualificationWorkGrade == Grade.EXCELLENT;
+        boolean cond2 = percentage >= 75.0;
+        return cond1 && cond2;
     }
 
     /**
