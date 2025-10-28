@@ -8,7 +8,6 @@ public abstract class AcademicRecord {
      * Constructor.
      *
      * @param subject subject name
-     * @param grade grade
      */
     public AcademicRecord(String subject) {
         this.subject = subject;
