@@ -48,7 +48,7 @@ loadScripts(document, 'script');</script>
 <div class="header">
 <h1>Index</h1>
 </div>
-<a href="#I:A">A</a>&nbsp;<a href="#I:D">D</a>&nbsp;<a href="#I:E">E</a>&nbsp;<a href="#I:G">G</a>&nbsp;<a href="#I:H">H</a>&nbsp;<a href="#I:I">I</a>&nbsp;<a href="#I:P">P</a>&nbsp;<a href="#I:S">S</a>&nbsp;<a href="#I:V">V</a>&nbsp;<br><a href="allclasses-index.html">All&nbsp;Classes&nbsp;and&nbsp;Interfaces</a><span class="vertical-separator">|</span><a href="allpackages-index.html">All&nbsp;Packages</a>
+<a href="#I:A">A</a>&nbsp;<a href="#I:C">C</a>&nbsp;<a href="#I:D">D</a>&nbsp;<a href="#I:E">E</a>&nbsp;<a href="#I:G">G</a>&nbsp;<a href="#I:H">H</a>&nbsp;<a href="#I:I">I</a>&nbsp;<a href="#I:P">P</a>&nbsp;<a href="#I:S">S</a>&nbsp;<a href="#I:V">V</a>&nbsp;<br><a href="allclasses-index.html">All&nbsp;Classes&nbsp;and&nbsp;Interfaces</a><span class="vertical-separator">|</span><a href="allpackages-index.html">All&nbsp;Packages</a>
 <h2 class="title" id="I:A">A</h2>
 <dl class="index">
 <dt><a href="sys/pro/AcademicFile.html" class="type-name-link" title="class in sys.pro">AcademicFile</a> - Class in <a href="sys/pro/package-summary.html">sys.pro</a></dt>
@@ -63,7 +63,7 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">AcademicRecord.</div>
 </dd>
-<dt><a href="sys/pro/AcademicRecord.html#%3Cinit%3E(java.lang.String,sys.pro.Grade)" class="member-name-link">AcademicRecord(String, Grade)</a> - Constructor for class sys.pro.<a href="sys/pro/AcademicRecord.html" title="class in sys.pro">AcademicRecord</a></dt>
+<dt><a href="sys/pro/AcademicRecord.html#%3Cinit%3E(java.lang.String)" class="member-name-link">AcademicRecord(String)</a> - Constructor for class sys.pro.<a href="sys/pro/AcademicRecord.html" title="class in sys.pro">AcademicRecord</a></dt>
 <dd>
 <div class="block">Constructor.</div>
 </dd>
@@ -74,6 +74,13 @@ loadScripts(document, 'script');</script>
 <dt><a href="sys/pro/AcademicFile.html#addSemester(sys.pro.Semester)" class="member-name-link">addSemester(Semester)</a> - Method in class sys.pro.<a href="sys/pro/AcademicFile.html" title="class in sys.pro">AcademicFile</a></dt>
 <dd>
 <div class="block">Add semester.</div>
+</dd>
+</dl>
+<h2 class="title" id="I:C">C</h2>
+<dl class="index">
+<dt><a href="sys/pro/Semester.html#countGrades()" class="member-name-link">countGrades()</a> - Method in class sys.pro.<a href="sys/pro/Semester.html" title="class in sys.pro">Semester</a></dt>
+<dd>
+<div class="block">Calculate count of Grades.</div>
 </dd>
 </dl>
 <h2 class="title" id="I:D">D</h2>
@@ -112,9 +119,13 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Get Exams stream.</div>
 </dd>
-<dt><a href="sys/pro/AcademicRecord.html#getGrade()" class="member-name-link">getGrade()</a> - Method in class sys.pro.<a href="sys/pro/AcademicRecord.html" title="class in sys.pro">AcademicRecord</a></dt>
+<dt><a href="sys/pro/GradedAcademicRecord.html#getGrade()" class="member-name-link">getGrade()</a> - Method in class sys.pro.<a href="sys/pro/GradedAcademicRecord.html" title="class in sys.pro">GradedAcademicRecord</a></dt>
 <dd>
 <div class="block">Get grade.</div>
+</dd>
+<dt><a href="sys/pro/Semester.html#getGraded()" class="member-name-link">getGraded()</a> - Method in class sys.pro.<a href="sys/pro/Semester.html" title="class in sys.pro">Semester</a></dt>
+<dd>
+<div class="block">Get GradedAcademicRecord stream</div>
 </dd>
 <dt><a href="sys/pro/Semester.html#getRecords()" class="member-name-link">getRecords()</a> - Method in class sys.pro.<a href="sys/pro/Semester.html" title="class in sys.pro">Semester</a></dt>
 <dd>
@@ -132,11 +143,19 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">GOOD.</div>
 </dd>
-<dt><a href="sys/pro/AcademicRecord.html#grade" class="member-name-link">grade</a> - Variable in class sys.pro.<a href="sys/pro/AcademicRecord.html" title="class in sys.pro">AcademicRecord</a></dt>
+<dt><a href="sys/pro/GradedAcademicRecord.html#grade" class="member-name-link">grade</a> - Variable in class sys.pro.<a href="sys/pro/GradedAcademicRecord.html" title="class in sys.pro">GradedAcademicRecord</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="sys/pro/Grade.html" class="type-name-link" title="enum class in sys.pro">Grade</a> - Enum Class in <a href="sys/pro/package-summary.html">sys.pro</a></dt>
 <dd>
 <div class="block">Grade.</div>
+</dd>
+<dt><a href="sys/pro/GradedAcademicRecord.html" class="type-name-link" title="class in sys.pro">GradedAcademicRecord</a> - Class in <a href="sys/pro/package-summary.html">sys.pro</a></dt>
+<dd>
+<div class="block">GradedAcademicRecord.</div>
+</dd>
+<dt><a href="sys/pro/GradedAcademicRecord.html#%3Cinit%3E(java.lang.String,sys.pro.Grade)" class="member-name-link">GradedAcademicRecord(String, Grade)</a> - Constructor for class sys.pro.<a href="sys/pro/GradedAcademicRecord.html" title="class in sys.pro">GradedAcademicRecord</a></dt>
+<dd>
+<div class="block">Constructor.</div>
 </dd>
 </dl>
 <h2 class="title" id="I:H">H</h2>
@@ -156,14 +175,6 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Check if current form is a budget.</div>
 </dd>
-<dt><a href="sys/pro/AcademicRecord.html#isExam()" class="member-name-link">isExam()</a> - Method in class sys.pro.<a href="sys/pro/AcademicRecord.html" title="class in sys.pro">AcademicRecord</a></dt>
-<dd>
-<div class="block">Get is exam.</div>
-</dd>
-<dt><a href="sys/pro/DifferentialRecord.html#isExam()" class="member-name-link">isExam()</a> - Method in class sys.pro.<a href="sys/pro/DifferentialRecord.html" title="class in sys.pro">DifferentialRecord</a></dt>
-<dd>&nbsp;</dd>
-<dt><a href="sys/pro/Exam.html#isExam()" class="member-name-link">isExam()</a> - Method in class sys.pro.<a href="sys/pro/Exam.html" title="class in sys.pro">Exam</a></dt>
-<dd>&nbsp;</dd>
 </dl>
 <h2 class="title" id="I:P">P</h2>
 <dl class="index">
@@ -196,15 +207,17 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Set qualification work grade.</div>
 </dd>
-<dt><a href="sys/pro/Semester.html#size()" class="member-name-link">size()</a> - Method in class sys.pro.<a href="sys/pro/Semester.html" title="class in sys.pro">Semester</a></dt>
+<dt><a href="sys/pro/SimpleRecord.html" class="type-name-link" title="class in sys.pro">SimpleRecord</a> - Class in <a href="sys/pro/package-summary.html">sys.pro</a></dt>
 <dd>
-<div class="block">Calculate size of AcademicRecords.</div>
+<div class="block">SimpleRecord.</div>
 </dd>
+<dt><a href="sys/pro/SimpleRecord.html#%3Cinit%3E(java.lang.String)" class="member-name-link">SimpleRecord(String)</a> - Constructor for class sys.pro.<a href="sys/pro/SimpleRecord.html" title="class in sys.pro">SimpleRecord</a></dt>
+<dd>&nbsp;</dd>
 <dt><a href="sys/pro/AcademicRecord.html#subject" class="member-name-link">subject</a> - Variable in class sys.pro.<a href="sys/pro/AcademicRecord.html" title="class in sys.pro">AcademicRecord</a></dt>
 <dd>&nbsp;</dd>
-<dt><a href="sys/pro/Semester.html#sum()" class="member-name-link">sum()</a> - Method in class sys.pro.<a href="sys/pro/Semester.html" title="class in sys.pro">Semester</a></dt>
+<dt><a href="sys/pro/Semester.html#sumGrades()" class="member-name-link">sumGrades()</a> - Method in class sys.pro.<a href="sys/pro/Semester.html" title="class in sys.pro">Semester</a></dt>
 <dd>
-<div class="block">Calculate sum of AcademicRecords.</div>
+<div class="block">Calculate sum of Grades.</div>
 </dd>
 <dt><a href="sys/pro/AcademicFile.html#switchToBudget()" class="member-name-link">switchToBudget()</a> - Method in class sys.pro.<a href="sys/pro/AcademicFile.html" title="class in sys.pro">AcademicFile</a></dt>
 <dd>
@@ -229,7 +242,7 @@ loadScripts(document, 'script');</script>
 the order they are declared.</div>
 </dd>
 </dl>
-<a href="#I:A">A</a>&nbsp;<a href="#I:D">D</a>&nbsp;<a href="#I:E">E</a>&nbsp;<a href="#I:G">G</a>&nbsp;<a href="#I:H">H</a>&nbsp;<a href="#I:I">I</a>&nbsp;<a href="#I:P">P</a>&nbsp;<a href="#I:S">S</a>&nbsp;<a href="#I:V">V</a>&nbsp;<br><a href="allclasses-index.html">All&nbsp;Classes&nbsp;and&nbsp;Interfaces</a><span class="vertical-separator">|</span><a href="allpackages-index.html">All&nbsp;Packages</a></main>
+<a href="#I:A">A</a>&nbsp;<a href="#I:C">C</a>&nbsp;<a href="#I:D">D</a>&nbsp;<a href="#I:E">E</a>&nbsp;<a href="#I:G">G</a>&nbsp;<a href="#I:H">H</a>&nbsp;<a href="#I:I">I</a>&nbsp;<a href="#I:P">P</a>&nbsp;<a href="#I:S">S</a>&nbsp;<a href="#I:V">V</a>&nbsp;<br><a href="allclasses-index.html">All&nbsp;Classes&nbsp;and&nbsp;Interfaces</a><span class="vertical-separator">|</span><a href="allpackages-index.html">All&nbsp;Packages</a></main>
 </div>
 </div>
 </body>
